@@ -13,6 +13,48 @@ The tool has two independent modes:
 
 ---
 
+## Quick demo
+
+Scanning the deliberately-insecure [`demo/vulnerable_app.py`](demo/vulnerable_app.py):
+
+```console
+$ jwtcheck scan demo/vulnerable_app.py --no-remediation
+
+CRITICAL R01 MissingAlgorithmsParameter
+  demo/vulnerable_app.py:21:11
+    return jwt.decode(token, secret)
+  jwt.decode() is called with no algorithms parameter, allowing the token
+  header to select the verification algorithm.
+  Weakness: CWE-757
+
+CRITICAL R02 NoneAlgorithmAccepted
+  demo/vulnerable_app.py:27:11
+    return jwt.decode(token, "k", algorithms=["none"])
+  The 'none' algorithm is present in the algorithms list, so an unsigned
+  token would be accepted.
+  Weakness: CWE-347
+
+HIGH R05 HardcodedSecretEncode
+  demo/vulnerable_app.py:14:11
+    return jwt.encode(payload, "hardcoded-secret", algorithm="HS256")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+
+  ... (R06, R07, R08, R09 also raised)
+
+Summary — 9 finding(s): CRITICAL: 2, HIGH: 3, MEDIUM: 4
+```
+
+Findings are colourised by severity in a real terminal, carry the exact
+line/column and CWE, and (unless `--no-remediation` is passed) a one-line fix.
+Run it yourself after installing — the full output lists all nine findings.
+
+> **Tip:** for a portfolio README, record this run as an animated GIF
+> (e.g. with [asciinema](https://asciinema.org/) + `agg`, or [vhs](https://github.com/charmbracelet/vhs))
+> and embed it here so the colourised output is visible at a glance.
+
+---
+
 ## Requirements
 
 - Python **3.9 or newer**
@@ -131,6 +173,44 @@ jwtcheck analyse --stdin --format json
 | R15 | MEDIUM | Env-var secret with algorithms not pinned to one algorithm |
 
 When signature verification is disabled, JWTCheck raises **only** R03 (the meaningful signal) and suppresses the now-moot R01/R08/R09, to avoid redundant noise on legitimate token-inspection code.
+
+---
+
+## Limitations
+
+JWTCheck is a **lightweight, intraprocedural static analyser**. It deliberately
+trades completeness for precision — it prefers to stay silent rather than guess
+about values it cannot resolve statically. The following patterns are, by design,
+**not** detected, and are documented here rather than left as silent blind spots:
+
+- **Multi-hop variable resolution.** Assignments are tracked one level deep in a
+  flat scope (last write wins). `a = SECRET; b = a; jwt.decode(token, b, ...)`
+  resolves `b` to `a`, not to `SECRET`, so a hardcoded key laundered through two
+  variables is missed. Branch-dependent reassignments (a value set differently in
+  two `if` arms) may also resolve to the wrong assignment.
+- **Indirection and wrappers.** Only direct `jwt.decode(...)` / `jwt.encode(...)`
+  (via a tracked import alias) and `from jwt import decode` calls are matched. A
+  decode hidden behind a helper (`self._decode(token)`, `auth.verify(token)`) or
+  a functools wrapper is not followed.
+- **Dynamically-built arguments.** An `algorithms` list assembled at runtime
+  (`.append()`, a comprehension, or returned from a function) resolves to
+  "unknown", so the algorithm rules (R01/R02/R04) are not evaluated for it.
+- **Non-literal keys and payloads are assumed safe.** To keep false positives
+  low, a computed key or a payload that is not a dict literal is treated as
+  benign. A genuinely weak key produced at runtime will not be flagged.
+- **Environment loads are pattern-matched narrowly.** R15 recognises
+  `os.environ.get(...)` / `os.environ[...]`; secrets loaded via `python-dotenv`,
+  a settings object, or a config framework are not recognised as env loads.
+- **No cross-file/interprocedural dataflow.** Analysis is per-function; a value
+  flowing in from another module or caller is not traced.
+- **Intent is undecidable statically.** The tool cannot distinguish an attack
+  from *deliberate* unverified decoding (inspection tools, "peek-then-verify"
+  claim extraction). This is the single source of residual false positives in the
+  real-world study (R03), and is discussed in `benchmark/real_world/RESULTS.md`.
+
+These boundaries are typical of a precision-first AST analyser. Closing them would
+require taint/dataflow analysis (e.g. a CodeQL-style approach) — noted as future
+work in the dissertation.
 
 ---
 
