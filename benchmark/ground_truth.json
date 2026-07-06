@@ -1,0 +1,190 @@
+{
+  "samples/vulnerable/r01_no_algorithms.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R01",
+      "R08",
+      "R09"
+    ],
+    "note": "no algorithms, audience or issuer"
+  },
+  "samples/vulnerable/r01_aliased_import.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R01",
+      "R08",
+      "R09"
+    ],
+    "note": "aliased import, no algorithms"
+  },
+  "samples/vulnerable/r02_none_isolated.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R02"
+    ],
+    "note": "algorithms=['none'] isolated"
+  },
+  "samples/vulnerable/r02_none_mixed.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R02"
+    ],
+    "note": "none mixed with a real algorithm"
+  },
+  "samples/vulnerable/r03_verify_signature_false.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R03"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r04_hs_rs.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R04"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r04_hs_es.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R04"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r05_hardcoded_encode.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R05"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r06_hardcoded_decode.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R06"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r07_no_exp_inline.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R07"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r07_no_exp_variable.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R07"
+    ],
+    "note": "variable-resolved payload (hard case)"
+  },
+  "samples/vulnerable/r08_no_audience.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R08"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r09_no_issuer.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R09"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r08_r09_both.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R08",
+      "R09"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r10_excessive_lifetime.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R10"
+    ],
+    "note": "exp - iat = 200000s > 86400"
+  },
+  "samples/vulnerable/r10_inline_lifetime.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R10"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r11_verify_iss_false.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R11"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r12_excessive_leeway.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R12"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r13_verify_exp_false.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R13"
+    ],
+    "note": ""
+  },
+  "samples/vulnerable/r14_pem_string_key.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R06",
+      "R14"
+    ],
+    "note": "PEM literal is both hardcoded (R06) and RSA-as-string (R14)"
+  },
+  "samples/vulnerable/r15_env_multi_alg.py": {
+    "category": "vulnerable",
+    "expected": [
+      "R15"
+    ],
+    "note": "env key + 2 HMAC algorithms (not single)"
+  },
+  "samples/safe/safe_correct_usage.py": {
+    "category": "safe",
+    "expected": [],
+    "note": ""
+  },
+  "samples/safe/safe_bytes_decode.py": {
+    "category": "safe",
+    "expected": [],
+    "note": "bytes.decode, not jwt"
+  },
+  "samples/safe/safe_str_encode.py": {
+    "category": "safe",
+    "expected": [],
+    "note": "str.encode, not jwt"
+  },
+  "samples/safe/safe_no_jwt.py": {
+    "category": "safe",
+    "expected": [],
+    "note": ""
+  },
+  "samples/safe/safe_dynamic_algorithms.py": {
+    "category": "safe",
+    "expected": [],
+    "note": "algorithms pinned via constant"
+  },
+  "samples/safe/safe_single_hmac_env.py": {
+    "category": "safe",
+    "expected": [],
+    "note": "env key but single algorithm -> no R15"
+  },
+  "samples/safe/safe_short_lifetime.py": {
+    "category": "safe",
+    "expected": [],
+    "note": "1-hour lifetime, has exp -> no R07/R10"
+  }
+}

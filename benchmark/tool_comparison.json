@@ -1,0 +1,195 @@
+{
+  "summary": {
+    "n_vulnerable": 15,
+    "n_safe": 4,
+    "jwt_detections": {
+      "jwtcheck": 15,
+      "bandit": 0,
+      "semgrep": 3
+    },
+    "safe_false_positives": {
+      "jwtcheck": 0,
+      "bandit": 0,
+      "semgrep": 0
+    },
+    "semgrep_ran": true
+  },
+  "rows": [
+    {
+      "file": "r01_no_algorithms.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R01",
+        "R08",
+        "R09"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r02_none_algorithm.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R02",
+        "R06",
+        "R08",
+        "R09"
+      ],
+      "bandit": [],
+      "semgrep": [
+        "jwt-python-none-alg"
+      ]
+    },
+    {
+      "file": "r03_verify_signature_false.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R03"
+      ],
+      "bandit": [],
+      "semgrep": [
+        "unverified-jwt-decode"
+      ]
+    },
+    {
+      "file": "r04_algorithm_confusion.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R04"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r05_hardcoded_secret_encode.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R05"
+      ],
+      "bandit": [],
+      "semgrep": [
+        "jwt-python-hardcoded-secret"
+      ]
+    },
+    {
+      "file": "r06_hardcoded_secret_decode.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R06"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r07_no_exp_claim.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R07"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r08_no_audience.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R08"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r09_no_issuer.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R09"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r10_excessive_lifetime.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R10"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r11_verify_iss_false.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R11"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r12_excessive_leeway.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R12"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r13_verify_exp_false.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R13"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r14_rsa_string_key.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R06",
+        "R14"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "r15_env_secret_multi_alg.py",
+      "category": "vulnerable",
+      "jwtcheck": [
+        "R04",
+        "R15"
+      ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "bytes_decode.py",
+      "category": "safe",
+      "jwtcheck": [],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "correct_usage.py",
+      "category": "safe",
+      "jwtcheck": [],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "no_jwt.py",
+      "category": "safe",
+      "jwtcheck": [],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "str_encode.py",
+      "category": "safe",
+      "jwtcheck": [],
+      "bandit": [],
+      "semgrep": []
+    }
+  ]
+}

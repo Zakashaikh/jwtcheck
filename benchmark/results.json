@@ -1,0 +1,405 @@
+{
+  "n_samples": 28,
+  "micro": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "tp": 27,
+    "fp": 0,
+    "fn": 0
+  },
+  "macro": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "scored_rules": 15
+  },
+  "exact_match_accuracy": 1.0,
+  "safe_false_positives": 0,
+  "per_rule": {
+    "R01": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 26
+    },
+    "R02": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 26
+    },
+    "R03": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 27
+    },
+    "R04": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 26
+    },
+    "R05": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 27
+    },
+    "R06": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 26
+    },
+    "R07": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 26
+    },
+    "R08": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "tn": 24
+    },
+    "R09": {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "tn": 24
+    },
+    "R10": {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 26
+    },
+    "R11": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 27
+    },
+    "R12": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 27
+    },
+    "R13": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 27
+    },
+    "R14": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 27
+    },
+    "R15": {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 27
+    }
+  },
+  "per_sample": [
+    {
+      "name": "r01_no_algorithms",
+      "category": "vulnerable",
+      "expected": [
+        "R01",
+        "R08",
+        "R09"
+      ],
+      "fired": [
+        "R01",
+        "R08",
+        "R09"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r01_aliased_import",
+      "category": "vulnerable",
+      "expected": [
+        "R01",
+        "R08",
+        "R09"
+      ],
+      "fired": [
+        "R01",
+        "R08",
+        "R09"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r02_none_isolated",
+      "category": "vulnerable",
+      "expected": [
+        "R02"
+      ],
+      "fired": [
+        "R02"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r02_none_mixed",
+      "category": "vulnerable",
+      "expected": [
+        "R02"
+      ],
+      "fired": [
+        "R02"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r03_verify_signature_false",
+      "category": "vulnerable",
+      "expected": [
+        "R03"
+      ],
+      "fired": [
+        "R03"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r04_hs_rs",
+      "category": "vulnerable",
+      "expected": [
+        "R04"
+      ],
+      "fired": [
+        "R04"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r04_hs_es",
+      "category": "vulnerable",
+      "expected": [
+        "R04"
+      ],
+      "fired": [
+        "R04"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r05_hardcoded_encode",
+      "category": "vulnerable",
+      "expected": [
+        "R05"
+      ],
+      "fired": [
+        "R05"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r06_hardcoded_decode",
+      "category": "vulnerable",
+      "expected": [
+        "R06"
+      ],
+      "fired": [
+        "R06"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r07_no_exp_inline",
+      "category": "vulnerable",
+      "expected": [
+        "R07"
+      ],
+      "fired": [
+        "R07"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r07_no_exp_variable",
+      "category": "vulnerable",
+      "expected": [
+        "R07"
+      ],
+      "fired": [
+        "R07"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r08_no_audience",
+      "category": "vulnerable",
+      "expected": [
+        "R08"
+      ],
+      "fired": [
+        "R08"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r09_no_issuer",
+      "category": "vulnerable",
+      "expected": [
+        "R09"
+      ],
+      "fired": [
+        "R09"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r08_r09_both",
+      "category": "vulnerable",
+      "expected": [
+        "R08",
+        "R09"
+      ],
+      "fired": [
+        "R08",
+        "R09"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r10_excessive_lifetime",
+      "category": "vulnerable",
+      "expected": [
+        "R10"
+      ],
+      "fired": [
+        "R10"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r10_inline_lifetime",
+      "category": "vulnerable",
+      "expected": [
+        "R10"
+      ],
+      "fired": [
+        "R10"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r11_verify_iss_false",
+      "category": "vulnerable",
+      "expected": [
+        "R11"
+      ],
+      "fired": [
+        "R11"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r12_excessive_leeway",
+      "category": "vulnerable",
+      "expected": [
+        "R12"
+      ],
+      "fired": [
+        "R12"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r13_verify_exp_false",
+      "category": "vulnerable",
+      "expected": [
+        "R13"
+      ],
+      "fired": [
+        "R13"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r14_pem_string_key",
+      "category": "vulnerable",
+      "expected": [
+        "R06",
+        "R14"
+      ],
+      "fired": [
+        "R06",
+        "R14"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "r15_env_multi_alg",
+      "category": "vulnerable",
+      "expected": [
+        "R15"
+      ],
+      "fired": [
+        "R15"
+      ],
+      "exact_match": true
+    },
+    {
+      "name": "safe_correct_usage",
+      "category": "safe",
+      "expected": [],
+      "fired": [],
+      "exact_match": true
+    },
+    {
+      "name": "safe_bytes_decode",
+      "category": "safe",
+      "expected": [],
+      "fired": [],
+      "exact_match": true
+    },
+    {
+      "name": "safe_str_encode",
+      "category": "safe",
+      "expected": [],
+      "fired": [],
+      "exact_match": true
+    },
+    {
+      "name": "safe_no_jwt",
+      "category": "safe",
+      "expected": [],
+      "fired": [],
+      "exact_match": true
+    },
+    {
+      "name": "safe_dynamic_algorithms",
+      "category": "safe",
+      "expected": [],
+      "fired": [],
+      "exact_match": true
+    },
+    {
+      "name": "safe_single_hmac_env",
+      "category": "safe",
+      "expected": [],
+      "fired": [],
+      "exact_match": true
+    },
+    {
+      "name": "safe_short_lifetime",
+      "category": "safe",
+      "expected": [],
+      "fired": [],
+      "exact_match": true
+    }
+  ]
+}

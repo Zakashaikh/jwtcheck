@@ -1,0 +1,979 @@
+{
+  "n_repos_listed": 96,
+  "n_repos_scanned": 96,
+  "total_findings": 332,
+  "by_rule": {
+    "R08": 112,
+    "R09": 119,
+    "R03": 13,
+    "R05": 16,
+    "R06": 30,
+    "R01": 21,
+    "R07": 21
+  },
+  "by_severity": {
+    "MEDIUM": 231,
+    "CRITICAL": 34,
+    "HIGH": 67
+  },
+  "per_repo": [
+    {
+      "repo": "onejgordon/flow-dashboard",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "sky22333/ansible-ui",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "swisscatplus/glas",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "S12cybersecurity/JWTq",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "opensaucerer/attribute-based-access-control",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "NoTinyxd/Hcaptcha-Solver",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "Central-University-IT-prod/2024-hack-msk-team24-Prod_Hackaton_Backend",
+      "n_findings": 4,
+      "by_rule": {
+        "R05": 1,
+        "R06": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 2,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "FidelityInternational/fly_wrapper",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Rjchauhan18/stockPortfolio",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "farukseker/Smart-Home-Desktop-App",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "reshkhan06/E-Commerce_project",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Oskarovsky/OskarroApp",
+      "n_findings": 13,
+      "by_rule": {
+        "R01": 4,
+        "R08": 4,
+        "R09": 4,
+        "R06": 1
+      },
+      "by_severity": {
+        "CRITICAL": 4,
+        "MEDIUM": 8,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "IceWizard4902/VulnJWT",
+      "n_findings": 17,
+      "by_rule": {
+        "R05": 5,
+        "R07": 6,
+        "R08": 3,
+        "R09": 3
+      },
+      "by_severity": {
+        "HIGH": 11,
+        "MEDIUM": 6
+      }
+    },
+    {
+      "repo": "arithmetic1728/python-id-token-demo",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "tastekim/Yoryjory",
+      "n_findings": 6,
+      "by_rule": {
+        "R06": 2,
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "HIGH": 2,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "liushunqi-647/majspirit",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "eduardotanqueiro/Shop-DB",
+      "n_findings": 19,
+      "by_rule": {
+        "R08": 9,
+        "R09": 9,
+        "R07": 1
+      },
+      "by_severity": {
+        "MEDIUM": 18,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "geosarr/mnist-train-predict-pipeline",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "naxit-01/DiplomovaPrace",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "w-yyh/Hospital_DBMS",
+      "n_findings": 5,
+      "by_rule": {
+        "R03": 1,
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "MatheusMarquesEiras/WorkerAnt",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "MartinNz0m0/finalyze_backend_old",
+      "n_findings": 22,
+      "by_rule": {
+        "R08": 11,
+        "R09": 11
+      },
+      "by_severity": {
+        "MEDIUM": 22
+      }
+    },
+    {
+      "repo": "DrunkenCloud/bba_labs",
+      "n_findings": 4,
+      "by_rule": {
+        "R05": 1,
+        "R06": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 2,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "gmoraitis/newsandbooks",
+      "n_findings": 1,
+      "by_rule": {
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 1
+      }
+    },
+    {
+      "repo": "saif958/fast-api---project",
+      "n_findings": 48,
+      "by_rule": {
+        "R06": 16,
+        "R08": 16,
+        "R09": 16
+      },
+      "by_severity": {
+        "HIGH": 16,
+        "MEDIUM": 32
+      }
+    },
+    {
+      "repo": "Erusagi/hw14",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "DHANYASHREE-MV/Data-Security-and-Privacy",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "HaoY-l/threat-intel-hub",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Sayvai-io/yoko",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Sanhith30/online-voting-system-cloud-Slot_A",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "rozium/rs-backend",
+      "n_findings": 3,
+      "by_rule": {
+        "R01": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "GOFONCK/ProxyPanel",
+      "n_findings": 8,
+      "by_rule": {
+        "R06": 2,
+        "R08": 2,
+        "R09": 2,
+        "R05": 2
+      },
+      "by_severity": {
+        "HIGH": 4,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "Kipl0/recipe_catalogue",
+      "n_findings": 3,
+      "by_rule": {
+        "R06": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "TGDK-ST108/OliviaAI-SO",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "tushar5526/sarthi",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Mik53385/ecommerce-api",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "backslash-security-tests/demidov-small-test",
+      "n_findings": 7,
+      "by_rule": {
+        "R05": 1,
+        "R06": 2,
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "HIGH": 3,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "emilyhorsman/socialauth",
+      "n_findings": 20,
+      "by_rule": {
+        "R01": 3,
+        "R08": 3,
+        "R09": 3,
+        "R07": 6,
+        "R05": 4,
+        "R06": 1
+      },
+      "by_severity": {
+        "CRITICAL": 3,
+        "MEDIUM": 6,
+        "HIGH": 11
+      }
+    },
+    {
+      "repo": "Sanhith30/cloud-voting-system",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "M4th3silvafatec/Zentrix",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "codelab7/py-chatbot-101",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Anas-jaf/zaincash_project_api",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "arthurocha-dev/fastapi-studies",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "quamejnr/Python",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "chanzuckerberg/elk-oidc-proxy",
+      "n_findings": 2,
+      "by_rule": {
+        "R01": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 1
+      }
+    },
+    {
+      "repo": "twaasoulElm3refa/FAQ-generating",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "TalaoDAO/sandbox",
+      "n_findings": 2,
+      "by_rule": {
+        "R09": 2
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "tavily-ai/tavily-sheets",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "gatovillano/KognitoAI",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "WaggleNet/WaggleNetCloudAPI",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "dev-sariel/Paragliding",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "nguyenkims/satellizer-demo",
+      "n_findings": 3,
+      "by_rule": {
+        "R01": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Arun1106/mytest",
+      "n_findings": 2,
+      "by_rule": {
+        "R03": 2
+      },
+      "by_severity": {
+        "CRITICAL": 2
+      }
+    },
+    {
+      "repo": "ENVERLEE/gonzalolearing",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "n0psn0ps/FernbachAPI",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "e4stw1nd/tempShell",
+      "n_findings": 9,
+      "by_rule": {
+        "R08": 4,
+        "R09": 4,
+        "R07": 1
+      },
+      "by_severity": {
+        "MEDIUM": 8,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "Mayowasamuel51/AquaSense-Backend",
+      "n_findings": 9,
+      "by_rule": {
+        "R08": 4,
+        "R09": 4,
+        "R07": 1
+      },
+      "by_severity": {
+        "MEDIUM": 8,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "darthchild/Blockchain-Sim-Env-with-HRB-Consensus",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "IBM-Cloud/trusted-profile-enterprise-security",
+      "n_findings": 2,
+      "by_rule": {
+        "R03": 2
+      },
+      "by_severity": {
+        "CRITICAL": 2
+      }
+    },
+    {
+      "repo": "dev-yoonik/YK-Authentication-SDK-Python",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "paulafredo/decode-jwt",
+      "n_findings": 3,
+      "by_rule": {
+        "R03": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Rev0kz/Flask-API-Token",
+      "n_findings": 3,
+      "by_rule": {
+        "R01": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "SwagCoder18/LynqX",
+      "n_findings": 4,
+      "by_rule": {
+        "R05": 1,
+        "R06": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 2,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "DanielArturoAlejoAlvarez/Rest-Api-Python-3-7-7-Flask-SQLAlchemy-JWT-Authentication",
+      "n_findings": 3,
+      "by_rule": {
+        "R01": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "shreyavaidya2311/mimvit-deepfake-detection",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "hafsahabib8/fypbackend",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "permitio/permit-hasura-python-example",
+      "n_findings": 3,
+      "by_rule": {
+        "R07": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "david4096/flask-auth0-example",
+      "n_findings": 2,
+      "by_rule": {
+        "R01": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 1
+      }
+    },
+    {
+      "repo": "Richard-97/Diplomovka-RPI-api",
+      "n_findings": 6,
+      "by_rule": {
+        "R01": 2,
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "CRITICAL": 2,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "danrneal/simple-jwt-api",
+      "n_findings": 4,
+      "by_rule": {
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "AlessandroBG/estoquinho",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Emotional-Infrastructure/emotional-infrastructure-ct",
+      "n_findings": 4,
+      "by_rule": {
+        "R06": 1,
+        "R08": 1,
+        "R09": 2
+      },
+      "by_severity": {
+        "HIGH": 1,
+        "MEDIUM": 3
+      }
+    },
+    {
+      "repo": "ayanshw/mca-project-major-main",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "3nabla3/jwt_chal",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "saadiste/api-flask",
+      "n_findings": 4,
+      "by_rule": {
+        "R05": 1,
+        "R06": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 2,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Minashin1120/blue_archive_non-official_discord",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "LuckDucapa/spidey-ff-spam",
+      "n_findings": 2,
+      "by_rule": {
+        "R03": 2
+      },
+      "by_severity": {
+        "CRITICAL": 2
+      }
+    },
+    {
+      "repo": "fnabiyevuz/fastapi-tutorial",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "hayam8/SmartHomeManagementSystem",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Terasay/probka",
+      "n_findings": 3,
+      "by_rule": {
+        "R07": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "jahnzab/Vr180_Back",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "tniquin/APPmecanica",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "Ah-ugo/Naija-concierge-api",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "geekgod382/CodeRunnerBackend",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "capjamesg/alto",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "RavalSahil1311/TodoApp",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "bvandewe/securedapi",
+      "n_findings": 1,
+      "by_rule": {
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 1
+      }
+    },
+    {
+      "repo": "yeonholee50/NyxHub",
+      "n_findings": 3,
+      "by_rule": {
+        "R07": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "songhahaha66/chaoxing_qq_notification",
+      "n_findings": 4,
+      "by_rule": {
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "muttehit/MarzneshinIpLimit",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "SMARTMarkers/practitioner-ehr-app",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "gbmeloo/iFinance-v2",
+      "n_findings": 10,
+      "by_rule": {
+        "R08": 5,
+        "R09": 5
+      },
+      "by_severity": {
+        "MEDIUM": 10
+      }
+    },
+    {
+      "repo": "marcusrsousa/courses-be",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "ticketfrei/ticketfrei",
+      "n_findings": 9,
+      "by_rule": {
+        "R07": 3,
+        "R01": 2,
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "HIGH": 3,
+        "CRITICAL": 2,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "revotechUET/File-Preview",
+      "n_findings": 12,
+      "by_rule": {
+        "R01": 4,
+        "R08": 4,
+        "R09": 4
+      },
+      "by_severity": {
+        "CRITICAL": 4,
+        "MEDIUM": 8
+      }
+    },
+    {
+      "repo": "fukumame/genelate-eternal-s3-signed-url",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    }
+  ]
+}
