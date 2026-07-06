@@ -1,0 +1,794 @@
+{
+  "R02": {
+    "findings": 23,
+    "repos": [
+      "Cybercommand-inc/webapp-vuln",
+      "NVIDIA-NeMo/nemo-platform",
+      "OlegEV/meeting-processor",
+      "Qualytics/qualytics-cli",
+      "RootCauseScan/Rules",
+      "Shreyas-135/CODEGLIA",
+      "Vulnetix/sast-rule-evals",
+      "bumahkib7/qryon",
+      "dacoburn/basics-test",
+      "fredericvl/py-agua-iot",
+      "hiepck/ctf",
+      "laloba04/CasinoCTF",
+      "semgrep/semgrep-rules",
+      "senrishi/DeltaForce_Sysad_Task3",
+      "teoconnect/aguaiot",
+      "vincentwolsink/home_assistant_micronova_agua_iot",
+      "viralvaghela/hack_jwt",
+      "willi34/vulnerable-labs"
+    ],
+    "examples": [
+      {
+        "repo": "vincentwolsink/home_assistant_micronova_agua_iot",
+        "path": "custom_components/aguaiot/aguaiot.py",
+        "line": 191,
+        "snippet": "claimset = jwt.decode("
+      },
+      {
+        "repo": "vincentwolsink/home_assistant_micronova_agua_iot",
+        "path": "custom_components/aguaiot/aguaiot.py",
+        "line": 233,
+        "snippet": "claimset = jwt.decode("
+      },
+      {
+        "repo": "fredericvl/py-agua-iot",
+        "path": "py_agua_iot/__init__.py",
+        "line": 232,
+        "snippet": "claimset = jwt.decode("
+      },
+      {
+        "repo": "fredericvl/py-agua-iot",
+        "path": "py_agua_iot/__init__.py",
+        "line": 266,
+        "snippet": "claimset = jwt.decode("
+      },
+      {
+        "repo": "Qualytics/qualytics-cli",
+        "path": "qualytics/mcp/server.py",
+        "line": 47,
+        "snippet": "decoded = jwt.decode("
+      },
+      {
+        "repo": "NVIDIA-NeMo/nemo-platform",
+        "path": "packages/nmp_common/src/nmp/common/auth/jwt.py",
+        "line": 157,
+        "snippet": "claims = jwt.decode("
+      },
+      {
+        "repo": "Qualytics/qualytics-cli",
+        "path": "qualytics/config.py",
+        "line": 76,
+        "snippet": "decoded_token = jwt.decode("
+      },
+      {
+        "repo": "Cybercommand-inc/webapp-vuln",
+        "path": "31/jwt/app.py",
+        "line": 34,
+        "snippet": "decoded = jwt.decode(token, key=None, algorithms=[\"none\"], options={\"verify_signature\": False})"
+      },
+      {
+        "repo": "Vulnetix/sast-rule-evals",
+        "path": "secrets/vnx-sec-015/jwt_none.py",
+        "line": 5,
+        "snippet": "decoded = jwt.decode(token, options={\"verify_signature\": False}, algorithms=[\"none\"])"
+      },
+      {
+        "repo": "Vulnetix/sast-rule-evals",
+        "path": "jwt/vnx-jwt-004/jwt_none_alg.py",
+        "line": 11,
+        "snippet": "return jwt.decode(token, options={\"verify_signature\": False}, algorithms=[\"none\"])"
+      },
+      {
+        "repo": "laloba04/CasinoCTF",
+        "path": "backend/app/utils/jwt_handler.py",
+        "line": 26,
+        "snippet": "return jwt.decode(token, options={\"verify_signature\": False}, algorithms=[\"none\"])"
+      },
+      {
+        "repo": "senrishi/DeltaForce_Sysad_Task3",
+        "path": "task3b/JWT Web App/jwt_webapp.py",
+        "line": 42,
+        "snippet": "decoded = jwt.decode(token, key=\"\", algorithms=[\"none\"], options={\"verify_signature\": False})"
+      },
+      {
+        "repo": "semgrep/semgrep-rules",
+        "path": "python/jwt/security/jwt-none-alg.py",
+        "line": 10,
+        "snippet": "jwt.decode(encoded, None, algorithms=['none'])"
+      },
+      {
+        "repo": "bumahkib7/qryon",
+        "path": "crates/rules/rules/python/jwt/security/jwt-none-alg.py",
+        "line": 10,
+        "snippet": "jwt.decode(encoded, None, algorithms=['none'])"
+      },
+      {
+        "repo": "viralvaghela/hack_jwt",
+        "path": "hack_jwt.py",
+        "line": 25,
+        "snippet": "print(jwt.decode(jwtToken, algorithms=['none']))"
+      },
+      {
+        "repo": "willi34/vulnerable-labs",
+        "path": "Token/src/app/jwt_handler.py",
+        "line": 21,
+        "snippet": "cookie = jwt.decode(token, options={\"verify_signature\": False}, algorithms=['None'])"
+      },
+      {
+        "repo": "RootCauseScan/Rules",
+        "path": "python/examples/jwt-none-alg.py",
+        "line": 10,
+        "snippet": "jwt.decode(encoded, None, algorithms=['none'])"
+      },
+      {
+        "repo": "OlegEV/meeting-processor",
+        "path": "debug_jwt.py",
+        "line": 53,
+        "snippet": "decoded_verified = jwt.decode("
+      },
+      {
+        "repo": "hiepck/ctf",
+        "path": "CHH/web/The-JWT-Algorithm/create_jwt.py",
+        "line": 14,
+        "snippet": "decoded_payload = jwt.decode(token, key=None, algorithms=['none'])"
+      },
+      {
+        "repo": "teoconnect/aguaiot",
+        "path": "py_agua_iot/__init__.py",
+        "line": 186,
+        "snippet": "claimset = jwt.decode(res['token'], options={\"verify_signature\": False}, algorithms=['none'])"
+      },
+      {
+        "repo": "teoconnect/aguaiot",
+        "path": "py_agua_iot/__init__.py",
+        "line": 219,
+        "snippet": "claimset = jwt.decode(res['token'], options={\"verify_signature\": False}, algorithms=['none'])"
+      },
+      {
+        "repo": "dacoburn/basics-test",
+        "path": "custom_rules/python/jwt/security/jwt-none-alg.py",
+        "line": 10,
+        "snippet": "jwt.decode(encoded, None, algorithms=['none'])"
+      },
+      {
+        "repo": "Shreyas-135/CODEGLIA",
+        "path": "semgrep-rules/python/jwt/security/jwt-none-alg.py",
+        "line": 10,
+        "snippet": "jwt.decode(encoded, None, algorithms=['none'])"
+      }
+    ]
+  },
+  "R04": {
+    "findings": 28,
+    "repos": [
+      "Bihan-Banerjee/AI-Code-Security",
+      "Doogit/StackBadger",
+      "FarhadAlimohammadi-dir/vulnrepro-benchmark",
+      "LeoooDias/botchat-oss",
+      "MauriceBrg/cognito-alb-fargate-demo",
+      "Rodoro/CTF",
+      "SignalPilot-Labs/SignalPilot",
+      "acisoru/ctfcup22-quals",
+      "cwi-dis/igor",
+      "dannygar/ai-registry",
+      "data-dot-all/dataall",
+      "dmitrii-starikov/hackatons",
+      "fanout/pygripcontrol",
+      "hieudzpro2k10-svg/Pentest-API",
+      "krypob/keycloak-local",
+      "mikeschlottig/solar-website-builder",
+      "nfdi4plants/arcmanager_backend",
+      "pepito105/Reidar.ai",
+      "sajjadium/ctf-archives",
+      "th30d4y/OpenLearnX",
+      "valginer0/PGVectorRAGIndexer"
+    ],
+    "examples": [
+      {
+        "repo": "fanout/pygripcontrol",
+        "path": "src/gripcontrol.py",
+        "line": 89,
+        "snippet": "claim = jwt.decode(token, key, algorithms=[\"HS256\", \"RS256\", \"ES256\"])"
+      },
+      {
+        "repo": "cwi-dis/igor",
+        "path": "igor/access/issuer.py",
+        "line": 63,
+        "snippet": "content = jwt.decode(data, sharedKey, issuer=self.getSelfIssuer(), audience=self.getSelfAudience(), algorithms=['RS256', 'HS256'])"
+      },
+      {
+        "repo": "MauriceBrg/cognito-alb-fargate-demo",
+        "path": "src/webapp.py",
+        "line": 30,
+        "snippet": "jwt_decoded = jwt.decode("
+      },
+      {
+        "repo": "th30d4y/OpenLearnX",
+        "path": "backend/activity_logger.py",
+        "line": 25,
+        "snippet": "return jwt.decode("
+      },
+      {
+        "repo": "sajjadium/ctf-archives",
+        "path": "ctfs/idekCTF/2021/web/saas/util.py",
+        "line": 26,
+        "snippet": "return jwt.decode(token, pub_key, algorithms=['RS256', 'HS256'])"
+      },
+      {
+        "repo": "cwi-dis/igor",
+        "path": "igorServlet.py",
+        "line": 338,
+        "snippet": "content = jwt.decode(data, self.issuerSharedKey, issuer=self.issuer, audience=self.audience, algorithms=['RS256', 'HS256'])"
+      },
+      {
+        "repo": "data-dot-all/dataall",
+        "path": "deploy/custom_resources/custom_authorizer/jwt_services.py",
+        "line": 46,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "SignalPilot-Labs/SignalPilot",
+        "path": "signalpilot/gateway/gateway/auth/user.py",
+        "line": 255,
+        "snippet": "unverified = jwt.decode("
+      },
+      {
+        "repo": "valginer0/PGVectorRAGIndexer",
+        "path": "license.py",
+        "line": 321,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "valginer0/PGVectorRAGIndexer",
+        "path": "license.py",
+        "line": 331,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "valginer0/PGVectorRAGIndexer",
+        "path": "license.py",
+        "line": 351,
+        "snippet": "raw = jwt.decode("
+      },
+      {
+        "repo": "mikeschlottig/solar-website-builder",
+        "path": "services/api/routes.py",
+        "line": 676,
+        "snippet": "decoded_token = jwt.decode("
+      },
+      {
+        "repo": "Bihan-Banerjee/AI-Code-Security",
+        "path": "LLM Code Snippets/CoPilot/Python/Task 6/cond_b.py",
+        "line": 25,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "hieudzpro2k10-svg/Pentest-API",
+        "path": "vulnerable_server.py",
+        "line": 226,
+        "snippet": "payload = jwt.decode(token, SECRET, algorithms=[\"HS256\", \"RS256\"])"
+      },
+      {
+        "repo": "FarhadAlimohammadi-dir/vulnrepro-benchmark",
+        "path": "benchmark_release/public/case_000051/src/app/routes/auth.py",
+        "line": 127,
+        "snippet": "claims = pyjwt.decode("
+      },
+      {
+        "repo": "nfdi4plants/arcmanager_backend",
+        "path": "app/api/endpoints/authentication.py",
+        "line": 278,
+        "snippet": "decodedToken = jwt.decode(data, public_key, algorithms=[\"RS256\", \"HS256\"])"
+      },
+      {
+        "repo": "nfdi4plants/arcmanager_backend",
+        "path": "app/api/endpoints/authentication.py",
+        "line": 379,
+        "snippet": "decodedToken = jwt.decode(data, public_key, algorithms=[\"RS256\", \"HS256\"])"
+      },
+      {
+        "repo": "acisoru/ctfcup22-quals",
+        "path": "tasks/web/simple/deploy/app/app.py",
+        "line": 53,
+        "snippet": "decoded = jwt.decode(token, key, algorithms=[\"RS256\", \"HS256\"])"
+      },
+      {
+        "repo": "LeoooDias/botchat-oss",
+        "path": "backend/app/auth.py",
+        "line": 686,
+        "snippet": "claims = jwt.decode(id_token, options={\"verify_signature\": False}, algorithms=[\"RS256\", \"HS256\"])"
+      },
+      {
+        "repo": "LeoooDias/botchat-oss",
+        "path": "backend/app/auth.py",
+        "line": 771,
+        "snippet": "claims = jwt.decode(received_id_token, options={\"verify_signature\": False}, algorithms=[\"RS256\", \"HS256\"])"
+      },
+      {
+        "repo": "dannygar/ai-registry",
+        "path": "teams_bot/auth_middleware.py",
+        "line": 56,
+        "snippet": "return jwt.decode("
+      },
+      {
+        "repo": "Doogit/StackBadger",
+        "path": "auth/clerk.py",
+        "line": 435,
+        "snippet": "payload = pyjwt.decode("
+      },
+      {
+        "repo": "Rodoro/CTF",
+        "path": "task/web/2022/simple/deploy/app/app.py",
+        "line": 53,
+        "snippet": "decoded = jwt.decode(token, key, algorithms=[\"RS256\", \"HS256\"])"
+      },
+      {
+        "repo": "dannygar/ai-registry",
+        "path": "teams_bot/sso.py",
+        "line": 111,
+        "snippet": "claims = jwt.decode("
+      },
+      {
+        "repo": "krypob/keycloak-local",
+        "path": "examples/oidc-demo/app.py",
+        "line": 250,
+        "snippet": "claims = pyjwt.decode("
+      },
+      {
+        "repo": "pepito105/Reidar.ai",
+        "path": "backend/app/api/routes/memo.py",
+        "line": 27,
+        "snippet": "decoded = jwt.decode(token, options={\"verify_signature\": False}, algorithms=[\"RS256\", \"HS256\"])"
+      },
+      {
+        "repo": "dmitrii-starikov/hackatons",
+        "path": "duckerz-ctf/web/CATHAT/cathat/app.py",
+        "line": 181,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "nfdi4plants/arcmanager_backend",
+        "path": "app/api/endpoints/projects.py",
+        "line": 125,
+        "snippet": "decodedToken = jwt.decode(data, public_key, algorithms=[\"RS256\", \"HS256\"])"
+      }
+    ]
+  },
+  "R10": {
+    "findings": 11,
+    "repos": [
+      "FaultMaven/faultmaven",
+      "cyweee/haxa-sec",
+      "isabellepayer5062-alt/CaseCrack_Backup2",
+      "osirislab/CSAW-RED-2018-Quals",
+      "sstrntu/turfmapp-ai-agent",
+      "zionsworking/jwt-differential-fuzzer"
+    ],
+    "examples": [
+      {
+        "repo": "zionsworking/jwt-differential-fuzzer",
+        "path": "scripts/build_corpus.py",
+        "line": 72,
+        "snippet": "pyjwt.encode(CLAIMS, rsa_priv, algorithm=\"RS256\"),"
+      },
+      {
+        "repo": "zionsworking/jwt-differential-fuzzer",
+        "path": "scripts/build_corpus.py",
+        "line": 75,
+        "snippet": "pyjwt.encode(CLAIMS, hmac_key, algorithm=\"HS256\"),"
+      },
+      {
+        "repo": "zionsworking/jwt-differential-fuzzer",
+        "path": "scripts/build_corpus.py",
+        "line": 78,
+        "snippet": "pyjwt.encode(CLAIMS, ec_priv, algorithm=\"ES256\"),"
+      },
+      {
+        "repo": "zionsworking/jwt-differential-fuzzer",
+        "path": "scripts/build_corpus.py",
+        "line": 202,
+        "snippet": "good_hs = pyjwt.encode(CLAIMS, hmac_key, algorithm=\"HS256\")"
+      },
+      {
+        "repo": "zionsworking/jwt-differential-fuzzer",
+        "path": "scripts/build_corpus.py",
+        "line": 219,
+        "snippet": "good_es = pyjwt.encode(CLAIMS, ec_priv, algorithm=\"ES256\")"
+      },
+      {
+        "repo": "zionsworking/jwt-differential-fuzzer",
+        "path": "scripts/build_corpus.py",
+        "line": 305,
+        "snippet": "good = pyjwt.encode(CLAIMS, hmac_key, algorithm=\"HS256\")"
+      },
+      {
+        "repo": "osirislab/CSAW-RED-2018-Quals",
+        "path": "Web/Adrift/solver.py",
+        "line": 65,
+        "snippet": "auth_token = jwt.encode({"
+      },
+      {
+        "repo": "FaultMaven/faultmaven",
+        "path": "scripts/generate_oauth_keys.py",
+        "line": 95,
+        "snippet": "token = jwt.encode(test_payload, private_key, algorithm=\"RS256\")"
+      },
+      {
+        "repo": "sstrntu/turfmapp-ai-agent",
+        "path": "backend/app/core/jwt_auth.py",
+        "line": 125,
+        "snippet": "return jwt.encode(payload, secret, algorithm=\"HS256\")"
+      },
+      {
+        "repo": "cyweee/haxa-sec",
+        "path": "haxa-jwt.py",
+        "line": 5,
+        "snippet": "token = jwt.encode(payload, secret, algorithm=\"HS256\")"
+      },
+      {
+        "repo": "isabellepayer5062-alt/CaseCrack_Backup2",
+        "path": "_casecrack_dev/system_validation/_phase2_aud_extraction.py",
+        "line": 404,
+        "snippet": "token = PyJWT.encode(payload_d, priv_pem, algorithm=\"RS256\", headers=hdr)"
+      }
+    ]
+  },
+  "R11": {
+    "findings": 11,
+    "repos": [
+      "NVIDIA-NeMo/nemo-platform",
+      "OlegEV/meeting-processor",
+      "W1ndst0rm/Treillage",
+      "aleiepure/devtoolbox",
+      "dakotalatommy/Aube-Coding-Framework",
+      "dataloop-ai/dtlpy",
+      "jexia/jexia-sdk-python",
+      "jjulien/azure-query",
+      "rscarrera27/Sanic-JWT-Extended"
+    ],
+    "examples": [
+      {
+        "repo": "aleiepure/devtoolbox",
+        "path": "src/services/jwt_decoder.py",
+        "line": 56,
+        "snippet": "jwt.decode(token, key,"
+      },
+      {
+        "repo": "rscarrera27/Sanic-JWT-Extended",
+        "path": "sanic_jwt_extended/tokens.py",
+        "line": 130,
+        "snippet": "jwt_data = jwt.decode("
+      },
+      {
+        "repo": "W1ndst0rm/Treillage",
+        "path": "treillage/token_manager.py",
+        "line": 101,
+        "snippet": "self.__access_token_expiry = jwt.decode(jwt=tokens['accessToken'],"
+      },
+      {
+        "repo": "dataloop-ai/dtlpy",
+        "path": "dtlpy/entities/app.py",
+        "line": 168,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "jexia/jexia-sdk-python",
+        "path": "jexia_sdk/http.py",
+        "line": 186,
+        "snippet": "jwt.decode(self._access_token,"
+      },
+      {
+        "repo": "NVIDIA-NeMo/nemo-platform",
+        "path": "packages/nmp_common/src/nmp/common/auth/jwt.py",
+        "line": 157,
+        "snippet": "claims = jwt.decode("
+      },
+      {
+        "repo": "OlegEV/meeting-processor",
+        "path": "debug_jwt.py",
+        "line": 53,
+        "snippet": "decoded_verified = jwt.decode("
+      },
+      {
+        "repo": "dakotalatommy/Aube-Coding-Framework",
+        "path": "src/backend/app/auth.py",
+        "line": 77,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "dakotalatommy/Aube-Coding-Framework",
+        "path": "src/backend/app/auth.py",
+        "line": 161,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "dakotalatommy/Aube-Coding-Framework",
+        "path": "src/backend/app/auth.py",
+        "line": 243,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "jjulien/azure-query",
+        "path": "src/aq/token.py",
+        "line": 114,
+        "snippet": "decoded_key = jwt.decode(raw_token, cert_obj.public_key(), verify=False, algorithms=[headers['alg']], options=options)"
+      }
+    ]
+  },
+  "R12": {
+    "findings": 7,
+    "repos": [
+      "Kamalesh1512/pleero",
+      "knutj42/snowrobot",
+      "lifcompany/Blitzwrite_Backend",
+      "maxdiegoduron/Measurement-Hub",
+      "tarun-khatri/auto-twitter-replies",
+      "tw1nflame/nwc"
+    ],
+    "examples": [
+      {
+        "repo": "maxdiegoduron/Measurement-Hub",
+        "path": "src/components/get_user.py",
+        "line": 30,
+        "snippet": "payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)"
+      },
+      {
+        "repo": "tarun-khatri/auto-twitter-replies",
+        "path": "backend/clerk_auth.py",
+        "line": 30,
+        "snippet": "payload = decode("
+      },
+      {
+        "repo": "knutj42/snowrobot",
+        "path": "remotecontrol/server/controlcenter/controlcenter/views/authentication.py",
+        "line": 53,
+        "snippet": "id_token_payload = jwt.decode(resp[\"id_token\"], verify=False, leeway=3600,"
+      },
+      {
+        "repo": "maxdiegoduron/Measurement-Hub",
+        "path": "utils/st_utils.py",
+        "line": 855,
+        "snippet": "payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)"
+      },
+      {
+        "repo": "tw1nflame/nwc",
+        "path": "backend/app/utils/auth.py",
+        "line": 18,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "Kamalesh1512/pleero",
+        "path": "backend/app/utils/app_bridge_auth.py",
+        "line": 51,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "lifcompany/Blitzwrite_Backend",
+        "path": "users/views.py",
+        "line": 592,
+        "snippet": "decoded_token = jwt.decode(credential, rsa_key, algorithms=[\"RS256\"], audience=clientId, leeway=600)"
+      }
+    ]
+  },
+  "R13": {
+    "findings": 24,
+    "repos": [
+      "CSCfi/pebbles",
+      "Kenxu2022/MUChat",
+      "MLT-OSS/open-assistant-api",
+      "NousResearch/hermes-agent",
+      "airladon/ThisIGet",
+      "aleiepure/devtoolbox",
+      "anbu101/scalp-app",
+      "dakotalatommy/Aube-Coding-Framework",
+      "dannygar/ai-registry",
+      "dataloop-ai/dtlpy",
+      "eastmoon1117/JKerCloudMonitor",
+      "java-crypto/cross_platform_crypto",
+      "jjulien/azure-query",
+      "kujirashark/user_restful_api",
+      "phuvinh010701/mezon-sdk-python",
+      "presidio-v/presidio-hardened-fastapi",
+      "valginer0/PGVectorRAGIndexer"
+    ],
+    "examples": [
+      {
+        "repo": "presidio-v/presidio-hardened-fastapi",
+        "path": "attack.py",
+        "line": 60,
+        "snippet": "jwt.decode(token, word, algorithms=[\"HS256\"], options={\"verify_exp\": False})"
+      },
+      {
+        "repo": "aleiepure/devtoolbox",
+        "path": "src/services/jwt_decoder.py",
+        "line": 56,
+        "snippet": "jwt.decode(token, key,"
+      },
+      {
+        "repo": "dataloop-ai/dtlpy",
+        "path": "dtlpy/entities/app.py",
+        "line": 168,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "kujirashark/user_restful_api",
+        "path": "utils/auth_helper.py",
+        "line": 70,
+        "snippet": "payload = jwt.decode(auth_token, api.Config.SECRET_KEY, options={'verify_exp': False})"
+      },
+      {
+        "repo": "MLT-OSS/open-assistant-api",
+        "path": "app/libs/util.py",
+        "line": 34,
+        "snippet": "decoded_token = jwt.decode(token, options={\"verify_signature\": False, \"verify_exp\": False})"
+      },
+      {
+        "repo": "eastmoon1117/JKerCloudMonitor",
+        "path": "auth/__init__.py",
+        "line": 36,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "eastmoon1117/JKerCloudMonitor",
+        "path": "auth/__init__.py",
+        "line": 74,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "CSCfi/pebbles",
+        "path": "pebbles/client.py",
+        "line": 29,
+        "snippet": "claims = jwt.decode(self.token, options={\"verify_signature\": False, \"verify_exp\": False})"
+      },
+      {
+        "repo": "phuvinh010701/mezon-sdk-python",
+        "path": "mezon/session.py",
+        "line": 50,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "phuvinh010701/mezon-sdk-python",
+        "path": "mezon/session.py",
+        "line": 102,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "phuvinh010701/mezon-sdk-python",
+        "path": "mezon/session.py",
+        "line": 110,
+        "snippet": "r_payload = jwt.decode("
+      },
+      {
+        "repo": "airladon/ThisIGet",
+        "path": "app/app/models.py",
+        "line": 171,
+        "snippet": "id = jwt.decode("
+      },
+      {
+        "repo": "airladon/ThisIGet",
+        "path": "app/app/models.py",
+        "line": 215,
+        "snippet": "decoded_token = jwt.decode("
+      },
+      {
+        "repo": "Kenxu2022/MUChat",
+        "path": "utils/token.py",
+        "line": 81,
+        "snippet": "tokenStatus = jwt.decode(token, options = {\"verify_signature\": False, \"verify_exp\": False})"
+      },
+      {
+        "repo": "java-crypto/cross_platform_crypto",
+        "path": "JwtJwsRs256Signature/JwsRs256Signature.py",
+        "line": 26,
+        "snippet": "decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm, options={\"verify_exp\": False})"
+      },
+      {
+        "repo": "NousResearch/hermes-agent",
+        "path": "plugins/dashboard_auth/self_hosted/__init__.py",
+        "line": 640,
+        "snippet": "unverified = jwt.decode("
+      },
+      {
+        "repo": "dakotalatommy/Aube-Coding-Framework",
+        "path": "src/backend/app/auth.py",
+        "line": 161,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "dakotalatommy/Aube-Coding-Framework",
+        "path": "src/backend/app/auth.py",
+        "line": 243,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "jjulien/azure-query",
+        "path": "src/aq/token.py",
+        "line": 114,
+        "snippet": "decoded_key = jwt.decode(raw_token, cert_obj.public_key(), verify=False, algorithms=[headers['alg']], options=options)"
+      },
+      {
+        "repo": "anbu101/scalp-app",
+        "path": "backend/app/license/license_client.py",
+        "line": 195,
+        "snippet": "claims = jwt.decode("
+      },
+      {
+        "repo": "valginer0/PGVectorRAGIndexer",
+        "path": "license.py",
+        "line": 331,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "valginer0/PGVectorRAGIndexer",
+        "path": "license.py",
+        "line": 351,
+        "snippet": "raw = jwt.decode("
+      },
+      {
+        "repo": "dannygar/ai-registry",
+        "path": "teams_bot/auth_middleware.py",
+        "line": 56,
+        "snippet": "return jwt.decode("
+      },
+      {
+        "repo": "dannygar/ai-registry",
+        "path": "teams_bot/sso.py",
+        "line": 111,
+        "snippet": "claims = jwt.decode("
+      }
+    ]
+  },
+  "R14": {
+    "findings": 3,
+    "repos": [
+      "24f2000062/jwt-verifier",
+      "Matthew1471/Enphase-API",
+      "sajjadium/ctf-archives"
+    ],
+    "examples": [
+      {
+        "repo": "sajjadium/ctf-archives",
+        "path": "ctfs/TBTL/2024/misc/Your_papers_please/server.py",
+        "line": 38,
+        "snippet": "return jwt.decode(token, algorithms=[alg], key=PUBLIC_KEY)"
+      },
+      {
+        "repo": "Matthew1471/Enphase-API",
+        "path": "Python/src/enphase_api/cloud/authentication.py",
+        "line": 386,
+        "snippet": "jwt.decode("
+      },
+      {
+        "repo": "24f2000062/jwt-verifier",
+        "path": "main.py",
+        "line": 31,
+        "snippet": "payload = jwt.decode("
+      }
+    ]
+  },
+  "R15": {
+    "findings": 2,
+    "repos": [
+      "Bihan-Banerjee/AI-Code-Security",
+      "hieudzpro2k10-svg/Pentest-API"
+    ],
+    "examples": [
+      {
+        "repo": "Bihan-Banerjee/AI-Code-Security",
+        "path": "LLM Code Snippets/CoPilot/Python/Task 6/cond_b.py",
+        "line": 25,
+        "snippet": "payload = jwt.decode("
+      },
+      {
+        "repo": "hieudzpro2k10-svg/Pentest-API",
+        "path": "vulnerable_server.py",
+        "line": 226,
+        "snippet": "payload = jwt.decode(token, SECRET, algorithms=[\"HS256\", \"RS256\"])"
+      }
+    ]
+  }
+}

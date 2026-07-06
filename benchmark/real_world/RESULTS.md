@@ -90,10 +90,32 @@ After the refinement, the remaining 11 false positives are all the single R03 fl
 
 These are arguably *worth surfacing anyway*: a SOC analyst reviewing unfamiliar code genuinely should look at every place signature verification is switched off, even if it turns out to be a deliberate inspection tool. The tool now raises exactly one precise finding per such site instead of a cluster of redundant ones. The construction-accurate rules (R05/R06/R07 hardcoded secrets and missing exp, R08/R09 missing audience/issuer on verified decodes) are 100% true positives.
 
+## Rule coverage in the wild — and the eight rules this sample missed
+
+Only **7 of the 15 rules fired** across these 96 quasi-random projects: R01, R03,
+R05, R06, R07, R08, R09. The other eight (R02, R04, R10, R11, R12, R13, R14, R15)
+detect rarer, more advanced misuses that simply did not occur in this sample. That
+is not evidence the rules are inert — every rule is validated at 100% recall on
+the controlled benchmark — but a fair reader will ask whether they ever fire on
+real code.
+
+A separate targeted **rule-coverage study** (`../rule_coverage/RULE_COVERAGE.md`)
+answers that: searching GitHub specifically for each missing pattern and scanning
+the candidates with JWTCheck confirms **all eight** fire on genuine third-party
+public code (109 confirmed findings across 71 repositories), so **all 15 rules now
+have real-world evidence.** Because that study searches *for* each pattern, it is a
+coverage/existence result, not a precision measurement, and is kept strictly
+separate from the 96.7% figure above. A notable qualitative finding: the rules that
+appear readily in production (R11/R12/R13/R02/R04) are the "trying-to-make-it-work"
+verification and algorithm mistakes, whereas the three rarest (R10/R14/R15) surface
+mostly in security-research and CTF code — reflecting how uncommon those patterns
+are in production Python.
+
 ## Relation to the other experiments
 - **Controlled benchmark (RQ1):** 100% precision / 100% recall on the 28 hand-labelled samples (`benchmark/results.json`).
 - **Tool comparison (RQ2):** JWTCheck 15/15 vs Bandit 0/15 vs Semgrep 3/15 on the same fixtures, with 0 false positives on safe code (`benchmark/tool_comparison.md`).
 - **This real-world study:** confirms the tool holds up on code it never saw, and surfaces the one realistic weakness (intentional unverified decoding).
+- **Rule-coverage study:** confirms every one of the 15 rules is triggered by real public code (`benchmark/rule_coverage/RULE_COVERAGE.md`).
 
 ## Note on recall
 Real-world *recall* is not directly computable: there is no ground-truth list of every JWT weakness across 96 external repositories. Recall is therefore reported on the controlled benchmark (100%), and the real-world study reports precision only — the standard approach for large-scale field studies.

@@ -229,6 +229,7 @@ Reproducible evaluation artefacts live under `benchmark/`:
 - **Tool comparison** — JWTCheck vs Bandit vs Semgrep (`benchmark/compare_tools.py` → `tool_comparison.md`).
 - **PortSwigger labs** — token-assessment validation (`benchmark/portswigger_eval.py`).
 - **Real-world study** — scan of 96 external GitHub projects with full triage and precision figures (`benchmark/real_world/RESULTS.md`).
+- **Rule-coverage study** — targeted search confirming all 15 rules fire on real third-party code, 109 findings across 71 repositories (`benchmark/rule_coverage/RULE_COVERAGE.md`).
 
 ## Project layout
 
