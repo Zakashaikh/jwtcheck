@@ -1,6 +1,11 @@
 # Real-world scan targets — cloned repos, can be regenerated, never committed
 realworld_targets/
 
+# Rule-coverage evidence — third-party source files under mixed licences.
+# The committable citation is benchmark/rule_coverage/evidence_manifest.{json,md}
+# (commit-pinned permalinks); the raw files live here for local backup only.
+evidence_archive/
+
 # Python
 __pycache__/
 *.py[cod]

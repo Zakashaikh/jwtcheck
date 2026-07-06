@@ -30,6 +30,25 @@ existence* study, deliberately kept separate from the precision study.
 
 Access date: 2026-07-06 (default branch of each repository at that time).
 
+**JWTCheck confirms, it does not find.** Step 1 is ordinary text search and returns
+many candidates that do *not* trigger any rule; the tool's own AST analysis in step
+2 is what validates each hit. The finding mechanism (GitHub code search) and the
+confirming mechanism (JWTCheck) are deliberately different, so the tool is never
+used to search for its own evidence.
+
+### Evidence — every hit is pinned and reproducible
+
+Each confirmed file was re-downloaded, **pinned to the exact commit SHA**, and
+re-scanned (all 78 re-confirmed their rule on re-download):
+
+- [`evidence_manifest.md`](evidence_manifest.md) — clickable, commit-pinned GitHub
+  permalinks for every hit, grouped by rule. These are immutable: they keep
+  pointing at the exact reviewed content even if a repo is later changed or deleted.
+- [`evidence_manifest.json`](evidence_manifest.json) — the same, machine-readable,
+  with commit SHA, blob SHA, line numbers, and the local archive path.
+- The raw source files are kept in a local `evidence_archive/` (gitignored — it is
+  third-party code under mixed licences, so it is not redistributed here).
+
 ## Result — 8 / 8 rules confirmed
 
 All eight rules that were absent from the 96-repo study are exercised by real

@@ -1,0 +1,1446 @@
+[
+  {
+    "repo": "24f2000062/jwt-verifier",
+    "path": "main.py",
+    "rules": [
+      "R14"
+    ],
+    "reconfirmed_rules": [
+      "R14"
+    ],
+    "lines": [
+      31
+    ],
+    "commit_sha": "a52f34271886dc8b7c3f1df30abdba01c7ec59c1",
+    "blob_sha": "be7bf78c793b7b94de088b45862934bf9a6ec763",
+    "permalink": "https://github.com/24f2000062/jwt-verifier/blob/a52f34271886dc8b7c3f1df30abdba01c7ec59c1/main.py",
+    "local_copy": "evidence_archive/24f2000062__jwt-verifier/main.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Bihan-Banerjee/AI-Code-Security",
+    "path": "LLM Code Snippets/CoPilot/Python/Task 6/cond_b.py",
+    "rules": [
+      "R04",
+      "R15"
+    ],
+    "reconfirmed_rules": [
+      "R04",
+      "R15"
+    ],
+    "lines": [
+      25
+    ],
+    "commit_sha": "62223a8e3b97f10ed19a0cda0c78e2ad062882f3",
+    "blob_sha": "ba9bd92fdc57f709583d8554fffca7f6991bb47b",
+    "permalink": "https://github.com/Bihan-Banerjee/AI-Code-Security/blob/62223a8e3b97f10ed19a0cda0c78e2ad062882f3/LLM%20Code%20Snippets/CoPilot/Python/Task%206/cond_b.py",
+    "local_copy": "evidence_archive/Bihan-Banerjee__AI-Code-Security/LLM Code Snippets/CoPilot/Python/Task 6/cond_b.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "CSCfi/pebbles",
+    "path": "pebbles/client.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      29
+    ],
+    "commit_sha": "3f0441858a2cbd80b859593c29068d121b929053",
+    "blob_sha": "64af7da1cae54d83e8f8c0a6ee7c8c48666ca2ee",
+    "permalink": "https://github.com/CSCfi/pebbles/blob/3f0441858a2cbd80b859593c29068d121b929053/pebbles/client.py",
+    "local_copy": "evidence_archive/CSCfi__pebbles/pebbles/client.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Cybercommand-inc/webapp-vuln",
+    "path": "31/jwt/app.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      34
+    ],
+    "commit_sha": "4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8",
+    "blob_sha": "712756f6802ca69dfb5c53f5ddb8811d49daa6ce",
+    "permalink": "https://github.com/Cybercommand-inc/webapp-vuln/blob/4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8/31/jwt/app.py",
+    "local_copy": "evidence_archive/Cybercommand-inc__webapp-vuln/31/jwt/app.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Doogit/StackBadger",
+    "path": "auth/clerk.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      435
+    ],
+    "commit_sha": "021b1f49a38c0e056e97236f4d1cf327fb124d0a",
+    "blob_sha": "e50228d526efee498e7c576909fdbfe9c7d78995",
+    "permalink": "https://github.com/Doogit/StackBadger/blob/021b1f49a38c0e056e97236f4d1cf327fb124d0a/auth/clerk.py",
+    "local_copy": "evidence_archive/Doogit__StackBadger/auth/clerk.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "FarhadAlimohammadi-dir/vulnrepro-benchmark",
+    "path": "benchmark_release/public/case_000051/src/app/routes/auth.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      127
+    ],
+    "commit_sha": "cd685b280d6678a7503fee3c19e2ac28f7847b02",
+    "blob_sha": "c931db1c55466c630a7a539f51903a1fae3a5c20",
+    "permalink": "https://github.com/FarhadAlimohammadi-dir/vulnrepro-benchmark/blob/cd685b280d6678a7503fee3c19e2ac28f7847b02/benchmark_release/public/case_000051/src/app/routes/auth.py",
+    "local_copy": "evidence_archive/FarhadAlimohammadi-dir__vulnrepro-benchmark/benchmark_release/public/case_000051/src/app/routes/auth.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "FaultMaven/faultmaven",
+    "path": "scripts/generate_oauth_keys.py",
+    "rules": [
+      "R10"
+    ],
+    "reconfirmed_rules": [
+      "R10"
+    ],
+    "lines": [
+      95
+    ],
+    "commit_sha": "5e0a0b6eb14a457880557556fd609ed7a46e8613",
+    "blob_sha": "281cb72bf07eea5c911134213407f2f0a424ded4",
+    "permalink": "https://github.com/FaultMaven/faultmaven/blob/5e0a0b6eb14a457880557556fd609ed7a46e8613/scripts/generate_oauth_keys.py",
+    "local_copy": "evidence_archive/FaultMaven__faultmaven/scripts/generate_oauth_keys.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Kamalesh1512/pleero",
+    "path": "backend/app/utils/app_bridge_auth.py",
+    "rules": [
+      "R12"
+    ],
+    "reconfirmed_rules": [
+      "R12"
+    ],
+    "lines": [
+      51
+    ],
+    "commit_sha": "a1f582ec64266e1e31f85a492a5c41b5992d0e5a",
+    "blob_sha": "d7a2f03a3d2bee581bc48e004a86424cdbc1fdc8",
+    "permalink": "https://github.com/Kamalesh1512/pleero/blob/a1f582ec64266e1e31f85a492a5c41b5992d0e5a/backend/app/utils/app_bridge_auth.py",
+    "local_copy": "evidence_archive/Kamalesh1512__pleero/backend/app/utils/app_bridge_auth.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Kenxu2022/MUChat",
+    "path": "utils/token.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      81
+    ],
+    "commit_sha": "2755f55260ab6707fb878c31a8b780e824824b98",
+    "blob_sha": "0da722fa34bd0b815f5391bba0ee75c502838245",
+    "permalink": "https://github.com/Kenxu2022/MUChat/blob/2755f55260ab6707fb878c31a8b780e824824b98/utils/token.py",
+    "local_copy": "evidence_archive/Kenxu2022__MUChat/utils/token.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "LeoooDias/botchat-oss",
+    "path": "backend/app/auth.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      686,
+      771
+    ],
+    "commit_sha": "3730d94a18af5eefb6bd38db99c0685209171d40",
+    "blob_sha": "91c6326b6a63e179e4c67187055d273456b58741",
+    "permalink": "https://github.com/LeoooDias/botchat-oss/blob/3730d94a18af5eefb6bd38db99c0685209171d40/backend/app/auth.py",
+    "local_copy": "evidence_archive/LeoooDias__botchat-oss/backend/app/auth.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "MLT-OSS/open-assistant-api",
+    "path": "app/libs/util.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      34
+    ],
+    "commit_sha": "bcdfb9bdaf9d755d126d491b82d28e6edf91d929",
+    "blob_sha": "f5096c5236e115a66826534c018d0ef912fd5746",
+    "permalink": "https://github.com/MLT-OSS/open-assistant-api/blob/bcdfb9bdaf9d755d126d491b82d28e6edf91d929/app/libs/util.py",
+    "local_copy": "evidence_archive/MLT-OSS__open-assistant-api/app/libs/util.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Matthew1471/Enphase-API",
+    "path": "Python/src/enphase_api/cloud/authentication.py",
+    "rules": [
+      "R14"
+    ],
+    "reconfirmed_rules": [
+      "R14"
+    ],
+    "lines": [
+      386
+    ],
+    "commit_sha": "1b434ac38e5335ca4ef2dfe268d992565653cd6f",
+    "blob_sha": "51e11a06faf059499c13e853c8c00ed550fc23cd",
+    "permalink": "https://github.com/Matthew1471/Enphase-API/blob/1b434ac38e5335ca4ef2dfe268d992565653cd6f/Python/src/enphase_api/cloud/authentication.py",
+    "local_copy": "evidence_archive/Matthew1471__Enphase-API/Python/src/enphase_api/cloud/authentication.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "MauriceBrg/cognito-alb-fargate-demo",
+    "path": "src/webapp.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      30
+    ],
+    "commit_sha": "89fcd8113880b51657dcc1dd8d5061604ce16200",
+    "blob_sha": "d3b4ce73cd964199a9597410a2f5af5dc0675e6c",
+    "permalink": "https://github.com/MauriceBrg/cognito-alb-fargate-demo/blob/89fcd8113880b51657dcc1dd8d5061604ce16200/src/webapp.py",
+    "local_copy": "evidence_archive/MauriceBrg__cognito-alb-fargate-demo/src/webapp.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "NVIDIA-NeMo/nemo-platform",
+    "path": "packages/nmp_common/src/nmp/common/auth/jwt.py",
+    "rules": [
+      "R02",
+      "R11"
+    ],
+    "reconfirmed_rules": [
+      "R02",
+      "R11"
+    ],
+    "lines": [
+      157
+    ],
+    "commit_sha": "4b9b24ec29adde8c0255cd08b7132d13da993a9b",
+    "blob_sha": "f68534abac0389616bb88a45786955fb07d01757",
+    "permalink": "https://github.com/NVIDIA-NeMo/nemo-platform/blob/4b9b24ec29adde8c0255cd08b7132d13da993a9b/packages/nmp_common/src/nmp/common/auth/jwt.py",
+    "local_copy": "evidence_archive/NVIDIA-NeMo__nemo-platform/packages/nmp_common/src/nmp/common/auth/jwt.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "NousResearch/hermes-agent",
+    "path": "plugins/dashboard_auth/self_hosted/__init__.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      640
+    ],
+    "commit_sha": "7426c09beee73bdff94d916015bac71384f6bc92",
+    "blob_sha": "fe01cb972327d7870c05e9dc2c4de22adfbe653a",
+    "permalink": "https://github.com/NousResearch/hermes-agent/blob/7426c09beee73bdff94d916015bac71384f6bc92/plugins/dashboard_auth/self_hosted/__init__.py",
+    "local_copy": "evidence_archive/NousResearch__hermes-agent/plugins/dashboard_auth/self_hosted/__init__.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "OlegEV/meeting-processor",
+    "path": "debug_jwt.py",
+    "rules": [
+      "R02",
+      "R11"
+    ],
+    "reconfirmed_rules": [
+      "R02",
+      "R11"
+    ],
+    "lines": [
+      53
+    ],
+    "commit_sha": "8c3383f7e996806311a948da814bd6ebd66935a6",
+    "blob_sha": "1605c23e51d7a6cc73f848cd529434a80ed20d3b",
+    "permalink": "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py",
+    "local_copy": "evidence_archive/OlegEV__meeting-processor/debug_jwt.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Qualytics/qualytics-cli",
+    "path": "qualytics/config.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      76
+    ],
+    "commit_sha": "fdf16c17f117a8eb2001c64f63d0b2e68cbee6d2",
+    "blob_sha": "fd1a93a3c58accc7d6386c3bbb1c9668059fc4e9",
+    "permalink": "https://github.com/Qualytics/qualytics-cli/blob/fdf16c17f117a8eb2001c64f63d0b2e68cbee6d2/qualytics/config.py",
+    "local_copy": "evidence_archive/Qualytics__qualytics-cli/qualytics/config.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Qualytics/qualytics-cli",
+    "path": "qualytics/mcp/server.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      47
+    ],
+    "commit_sha": "fdf16c17f117a8eb2001c64f63d0b2e68cbee6d2",
+    "blob_sha": "c7c9f07a1aa0069df0f7bbe8fe8c0d36862d7a06",
+    "permalink": "https://github.com/Qualytics/qualytics-cli/blob/fdf16c17f117a8eb2001c64f63d0b2e68cbee6d2/qualytics/mcp/server.py",
+    "local_copy": "evidence_archive/Qualytics__qualytics-cli/qualytics/mcp/server.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Rodoro/CTF",
+    "path": "task/web/2022/simple/deploy/app/app.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      53
+    ],
+    "commit_sha": "e5ce0f1951f817724308b9c11a704e4c09b7d913",
+    "blob_sha": "0b3399d501cee93cc5e6180fda8740d73e757084",
+    "permalink": "https://github.com/Rodoro/CTF/blob/e5ce0f1951f817724308b9c11a704e4c09b7d913/task/web/2022/simple/deploy/app/app.py",
+    "local_copy": "evidence_archive/Rodoro__CTF/task/web/2022/simple/deploy/app/app.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "RootCauseScan/Rules",
+    "path": "python/examples/jwt-none-alg.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      10
+    ],
+    "commit_sha": "8b559cc59eb7d2920dbc8f1cd51b7c959d1f8270",
+    "blob_sha": "cffea6753740dcd5dd7ae120f27e925cdb7cea5b",
+    "permalink": "https://github.com/RootCauseScan/Rules/blob/8b559cc59eb7d2920dbc8f1cd51b7c959d1f8270/python/examples/jwt-none-alg.py",
+    "local_copy": "evidence_archive/RootCauseScan__Rules/python/examples/jwt-none-alg.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Shreyas-135/CODEGLIA",
+    "path": "semgrep-rules/python/jwt/security/jwt-none-alg.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      10
+    ],
+    "commit_sha": "c433f69171d64eec4e7e0aa39837a5d9a3ffd564",
+    "blob_sha": "cffea6753740dcd5dd7ae120f27e925cdb7cea5b",
+    "permalink": "https://github.com/Shreyas-135/CODEGLIA/blob/c433f69171d64eec4e7e0aa39837a5d9a3ffd564/semgrep-rules/python/jwt/security/jwt-none-alg.py",
+    "local_copy": "evidence_archive/Shreyas-135__CODEGLIA/semgrep-rules/python/jwt/security/jwt-none-alg.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "SignalPilot-Labs/SignalPilot",
+    "path": "signalpilot/gateway/gateway/auth/user.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      255
+    ],
+    "commit_sha": "6b039ad5c6adfee9985a802282226e97c4e39cab",
+    "blob_sha": "72c5f5202c9fe3953e1a3966aa864bf1fc41a816",
+    "permalink": "https://github.com/SignalPilot-Labs/SignalPilot/blob/6b039ad5c6adfee9985a802282226e97c4e39cab/signalpilot/gateway/gateway/auth/user.py",
+    "local_copy": "evidence_archive/SignalPilot-Labs__SignalPilot/signalpilot/gateway/gateway/auth/user.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Vulnetix/sast-rule-evals",
+    "path": "jwt/vnx-jwt-004/jwt_none_alg.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      11
+    ],
+    "commit_sha": "99c56b0d68ad921c9c509325367a4e77bb835aec",
+    "blob_sha": "78c2792bdaa9d3698d6b6797c058ecdb0a642c78",
+    "permalink": "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/jwt/vnx-jwt-004/jwt_none_alg.py",
+    "local_copy": "evidence_archive/Vulnetix__sast-rule-evals/jwt/vnx-jwt-004/jwt_none_alg.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "Vulnetix/sast-rule-evals",
+    "path": "secrets/vnx-sec-015/jwt_none.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      5
+    ],
+    "commit_sha": "99c56b0d68ad921c9c509325367a4e77bb835aec",
+    "blob_sha": "d9ee748ce849800ecdb5ba483036061d928c0d67",
+    "permalink": "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/secrets/vnx-sec-015/jwt_none.py",
+    "local_copy": "evidence_archive/Vulnetix__sast-rule-evals/secrets/vnx-sec-015/jwt_none.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "W1ndst0rm/Treillage",
+    "path": "treillage/token_manager.py",
+    "rules": [
+      "R11"
+    ],
+    "reconfirmed_rules": [
+      "R11"
+    ],
+    "lines": [
+      101
+    ],
+    "commit_sha": "35942e21417837f61ad9a4b0edefdcc8e9daec7b",
+    "blob_sha": "389d3a1886d29925951689f0b11075c267915f4b",
+    "permalink": "https://github.com/W1ndst0rm/Treillage/blob/35942e21417837f61ad9a4b0edefdcc8e9daec7b/treillage/token_manager.py",
+    "local_copy": "evidence_archive/W1ndst0rm__Treillage/treillage/token_manager.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "acisoru/ctfcup22-quals",
+    "path": "tasks/web/simple/deploy/app/app.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      53
+    ],
+    "commit_sha": "80392a09e304fcd17c14dd96a9139c4c2edfbdd4",
+    "blob_sha": "0b3399d501cee93cc5e6180fda8740d73e757084",
+    "permalink": "https://github.com/acisoru/ctfcup22-quals/blob/80392a09e304fcd17c14dd96a9139c4c2edfbdd4/tasks/web/simple/deploy/app/app.py",
+    "local_copy": "evidence_archive/acisoru__ctfcup22-quals/tasks/web/simple/deploy/app/app.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "airladon/ThisIGet",
+    "path": "app/app/models.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      171,
+      215
+    ],
+    "commit_sha": "e54058056ed593ff1097ef4505a5ce97ea09d94b",
+    "blob_sha": "8e18e57ab417d25114d87c02c4458adc6893c1cf",
+    "permalink": "https://github.com/airladon/ThisIGet/blob/e54058056ed593ff1097ef4505a5ce97ea09d94b/app/app/models.py",
+    "local_copy": "evidence_archive/airladon__ThisIGet/app/app/models.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "aleiepure/devtoolbox",
+    "path": "src/services/jwt_decoder.py",
+    "rules": [
+      "R11",
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R11",
+      "R13"
+    ],
+    "lines": [
+      56
+    ],
+    "commit_sha": "de7d6f2c0198730651660b3618ec9da4a04b49cc",
+    "blob_sha": "1282565ade0c383167c04c7a2e7988fdb0fa0009",
+    "permalink": "https://github.com/aleiepure/devtoolbox/blob/de7d6f2c0198730651660b3618ec9da4a04b49cc/src/services/jwt_decoder.py",
+    "local_copy": "evidence_archive/aleiepure__devtoolbox/src/services/jwt_decoder.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "anbu101/scalp-app",
+    "path": "backend/app/license/license_client.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      195
+    ],
+    "commit_sha": "81e1e174e94516b729e3836f8c793714067a1c2d",
+    "blob_sha": "966ba0724f6295b4d2948732e207eb336354a42f",
+    "permalink": "https://github.com/anbu101/scalp-app/blob/81e1e174e94516b729e3836f8c793714067a1c2d/backend/app/license/license_client.py",
+    "local_copy": "evidence_archive/anbu101__scalp-app/backend/app/license/license_client.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "bumahkib7/qryon",
+    "path": "crates/rules/rules/python/jwt/security/jwt-none-alg.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      10
+    ],
+    "commit_sha": "227241f2e0f8b256787d2b08b603287175d7ecda",
+    "blob_sha": "cffea6753740dcd5dd7ae120f27e925cdb7cea5b",
+    "permalink": "https://github.com/bumahkib7/qryon/blob/227241f2e0f8b256787d2b08b603287175d7ecda/crates/rules/rules/python/jwt/security/jwt-none-alg.py",
+    "local_copy": "evidence_archive/bumahkib7__qryon/crates/rules/rules/python/jwt/security/jwt-none-alg.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "cwi-dis/igor",
+    "path": "igor/access/issuer.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      63
+    ],
+    "commit_sha": "1d973731a8e9378c8609401fe9fd5be963b54233",
+    "blob_sha": "823e300dbfd6953958f08ab178026adc9fb596a4",
+    "permalink": "https://github.com/cwi-dis/igor/blob/1d973731a8e9378c8609401fe9fd5be963b54233/igor/access/issuer.py",
+    "local_copy": "evidence_archive/cwi-dis__igor/igor/access/issuer.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "cwi-dis/igor",
+    "path": "igorServlet.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      338
+    ],
+    "commit_sha": "1d973731a8e9378c8609401fe9fd5be963b54233",
+    "blob_sha": "16db4d1a4312a98bdce9920bcf0d041546fcba98",
+    "permalink": "https://github.com/cwi-dis/igor/blob/1d973731a8e9378c8609401fe9fd5be963b54233/igorServlet.py",
+    "local_copy": "evidence_archive/cwi-dis__igor/igorServlet.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "cyweee/haxa-sec",
+    "path": "haxa-jwt.py",
+    "rules": [
+      "R10"
+    ],
+    "reconfirmed_rules": [
+      "R10"
+    ],
+    "lines": [
+      5
+    ],
+    "commit_sha": "8da356790f8b0c0bdf9dd22066531fd81b9ae98a",
+    "blob_sha": "2d0b648dd989a6ea0ce0ff7e75447d221a4b4471",
+    "permalink": "https://github.com/cyweee/haxa-sec/blob/8da356790f8b0c0bdf9dd22066531fd81b9ae98a/haxa-jwt.py",
+    "local_copy": "evidence_archive/cyweee__haxa-sec/haxa-jwt.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "dacoburn/basics-test",
+    "path": "custom_rules/python/jwt/security/jwt-none-alg.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      10
+    ],
+    "commit_sha": "2f37afd4d5ab3b36482507cd0fb7d97a5e79234c",
+    "blob_sha": "cffea6753740dcd5dd7ae120f27e925cdb7cea5b",
+    "permalink": "https://github.com/dacoburn/basics-test/blob/2f37afd4d5ab3b36482507cd0fb7d97a5e79234c/custom_rules/python/jwt/security/jwt-none-alg.py",
+    "local_copy": "evidence_archive/dacoburn__basics-test/custom_rules/python/jwt/security/jwt-none-alg.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "dakotalatommy/Aube-Coding-Framework",
+    "path": "src/backend/app/auth.py",
+    "rules": [
+      "R11",
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R11",
+      "R13"
+    ],
+    "lines": [
+      77,
+      161,
+      243
+    ],
+    "commit_sha": "d82bf7e19eb6c25a8fbc565e18cce34f45fac41b",
+    "blob_sha": "da47bf72a93b05248450d75ce97ddec2934668dc",
+    "permalink": "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py",
+    "local_copy": "evidence_archive/dakotalatommy__Aube-Coding-Framework/src/backend/app/auth.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "dannygar/ai-registry",
+    "path": "teams_bot/auth_middleware.py",
+    "rules": [
+      "R04",
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R04",
+      "R13"
+    ],
+    "lines": [
+      56
+    ],
+    "commit_sha": "ff9515b945e9384b103bdc9770a5071617f781e6",
+    "blob_sha": "3c2d05c0ab3ec880fcd4296de8fcf7347600418b",
+    "permalink": "https://github.com/dannygar/ai-registry/blob/ff9515b945e9384b103bdc9770a5071617f781e6/teams_bot/auth_middleware.py",
+    "local_copy": "evidence_archive/dannygar__ai-registry/teams_bot/auth_middleware.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "dannygar/ai-registry",
+    "path": "teams_bot/sso.py",
+    "rules": [
+      "R04",
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R04",
+      "R13"
+    ],
+    "lines": [
+      111
+    ],
+    "commit_sha": "ff9515b945e9384b103bdc9770a5071617f781e6",
+    "blob_sha": "afdde9bbb661fe33dc86d175d114ffdaf3e22474",
+    "permalink": "https://github.com/dannygar/ai-registry/blob/ff9515b945e9384b103bdc9770a5071617f781e6/teams_bot/sso.py",
+    "local_copy": "evidence_archive/dannygar__ai-registry/teams_bot/sso.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "data-dot-all/dataall",
+    "path": "deploy/custom_resources/custom_authorizer/jwt_services.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      46
+    ],
+    "commit_sha": "8227227466f3a8a8dabb37e7b8f875d613c37978",
+    "blob_sha": "c1f2f6a5c644fc2569562d706c16c09cf197038f",
+    "permalink": "https://github.com/data-dot-all/dataall/blob/8227227466f3a8a8dabb37e7b8f875d613c37978/deploy/custom_resources/custom_authorizer/jwt_services.py",
+    "local_copy": "evidence_archive/data-dot-all__dataall/deploy/custom_resources/custom_authorizer/jwt_services.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "dataloop-ai/dtlpy",
+    "path": "dtlpy/entities/app.py",
+    "rules": [
+      "R11",
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R11",
+      "R13"
+    ],
+    "lines": [
+      168
+    ],
+    "commit_sha": "17e171875ddf6ab7fbfdb08d828ebcbaaa049040",
+    "blob_sha": "47a23d343307cf6c0471c8f35de7260c78b208a0",
+    "permalink": "https://github.com/dataloop-ai/dtlpy/blob/17e171875ddf6ab7fbfdb08d828ebcbaaa049040/dtlpy/entities/app.py",
+    "local_copy": "evidence_archive/dataloop-ai__dtlpy/dtlpy/entities/app.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "dmitrii-starikov/hackatons",
+    "path": "duckerz-ctf/web/CATHAT/cathat/app.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      181
+    ],
+    "commit_sha": "1efdcde60438180adc9e5db6c2242c28a43eb636",
+    "blob_sha": "3ede4afd6987a94b884b2f57d91ba6dab760c964",
+    "permalink": "https://github.com/dmitrii-starikov/hackatons/blob/1efdcde60438180adc9e5db6c2242c28a43eb636/duckerz-ctf/web/CATHAT/cathat/app.py",
+    "local_copy": "evidence_archive/dmitrii-starikov__hackatons/duckerz-ctf/web/CATHAT/cathat/app.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "eastmoon1117/JKerCloudMonitor",
+    "path": "auth/__init__.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      36,
+      74
+    ],
+    "commit_sha": "94990407961ca4498278c50304b30162100e0389",
+    "blob_sha": "71e7050e4b1efe14f5d51b63a58dae7788ada3e5",
+    "permalink": "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py",
+    "local_copy": "evidence_archive/eastmoon1117__JKerCloudMonitor/auth/__init__.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "fanout/pygripcontrol",
+    "path": "src/gripcontrol.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      89
+    ],
+    "commit_sha": "2f26c395c3475435b8872a50767adea8c8e9ced3",
+    "blob_sha": "b2f0eb83cdbb311ea9ffc256baee939d76bed5a3",
+    "permalink": "https://github.com/fanout/pygripcontrol/blob/2f26c395c3475435b8872a50767adea8c8e9ced3/src/gripcontrol.py",
+    "local_copy": "evidence_archive/fanout__pygripcontrol/src/gripcontrol.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "fredericvl/py-agua-iot",
+    "path": "py_agua_iot/__init__.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      232,
+      266
+    ],
+    "commit_sha": "db3dd530772b68b67473432301f2b8635c13dc19",
+    "blob_sha": "2562d495d3130050ec5bc8096fdd92f68b8c85ee",
+    "permalink": "https://github.com/fredericvl/py-agua-iot/blob/db3dd530772b68b67473432301f2b8635c13dc19/py_agua_iot/__init__.py",
+    "local_copy": "evidence_archive/fredericvl__py-agua-iot/py_agua_iot/__init__.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "hiepck/ctf",
+    "path": "CHH/web/The-JWT-Algorithm/create_jwt.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      14
+    ],
+    "commit_sha": "b1889c5e31fadc9fc416f953bb6fbecd94608ba8",
+    "blob_sha": "55beb4a4016fda2aae08f96aa16b5799c1192c68",
+    "permalink": "https://github.com/hiepck/ctf/blob/b1889c5e31fadc9fc416f953bb6fbecd94608ba8/CHH/web/The-JWT-Algorithm/create_jwt.py",
+    "local_copy": "evidence_archive/hiepck__ctf/CHH/web/The-JWT-Algorithm/create_jwt.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "hieudzpro2k10-svg/Pentest-API",
+    "path": "vulnerable_server.py",
+    "rules": [
+      "R04",
+      "R15"
+    ],
+    "reconfirmed_rules": [
+      "R04",
+      "R15"
+    ],
+    "lines": [
+      226
+    ],
+    "commit_sha": "9f53b315496ff370469de2348b5940b056fd92bd",
+    "blob_sha": "9061980cd9b81ac356d74da6fd23818ecf9d9ae6",
+    "permalink": "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py",
+    "local_copy": "evidence_archive/hieudzpro2k10-svg__Pentest-API/vulnerable_server.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "isabellepayer5062-alt/CaseCrack_Backup2",
+    "path": "_casecrack_dev/system_validation/_phase2_aud_extraction.py",
+    "rules": [
+      "R10"
+    ],
+    "reconfirmed_rules": [
+      "R10"
+    ],
+    "lines": [
+      404
+    ],
+    "commit_sha": "e0c7cd92c777232c275b6c40667dd5190a607f4e",
+    "blob_sha": "3c435c72e1bdf2691713831991c97896ab1bef87",
+    "permalink": "https://github.com/isabellepayer5062-alt/CaseCrack_Backup2/blob/e0c7cd92c777232c275b6c40667dd5190a607f4e/_casecrack_dev/system_validation/_phase2_aud_extraction.py",
+    "local_copy": "evidence_archive/isabellepayer5062-alt__CaseCrack_Backup2/_casecrack_dev/system_validation/_phase2_aud_extraction.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "java-crypto/cross_platform_crypto",
+    "path": "JwtJwsRs256Signature/JwsRs256Signature.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      26
+    ],
+    "commit_sha": "0c8ec72d215afdd71da7c11e9a25b917b279e877",
+    "blob_sha": "56f30ef0a6dcf354af5094b34dc5bf8cb55ffa3a",
+    "permalink": "https://github.com/java-crypto/cross_platform_crypto/blob/0c8ec72d215afdd71da7c11e9a25b917b279e877/JwtJwsRs256Signature/JwsRs256Signature.py",
+    "local_copy": "evidence_archive/java-crypto__cross_platform_crypto/JwtJwsRs256Signature/JwsRs256Signature.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "jexia/jexia-sdk-python",
+    "path": "jexia_sdk/http.py",
+    "rules": [
+      "R11"
+    ],
+    "reconfirmed_rules": [
+      "R11"
+    ],
+    "lines": [
+      186
+    ],
+    "commit_sha": "6e934222f06ac7600f3f86940480899f570b226f",
+    "blob_sha": "acd830bcf64ea7b94c030d81324b8442a55491f9",
+    "permalink": "https://github.com/jexia/jexia-sdk-python/blob/6e934222f06ac7600f3f86940480899f570b226f/jexia_sdk/http.py",
+    "local_copy": "evidence_archive/jexia__jexia-sdk-python/jexia_sdk/http.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "jjulien/azure-query",
+    "path": "src/aq/token.py",
+    "rules": [
+      "R11",
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R11",
+      "R13"
+    ],
+    "lines": [
+      114
+    ],
+    "commit_sha": "2da8ee35a58602d70225946d915f172c4b7a452d",
+    "blob_sha": "eeaceeafabb5b8c82578d5a2c0ecec8c76b7670e",
+    "permalink": "https://github.com/jjulien/azure-query/blob/2da8ee35a58602d70225946d915f172c4b7a452d/src/aq/token.py",
+    "local_copy": "evidence_archive/jjulien__azure-query/src/aq/token.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "knutj42/snowrobot",
+    "path": "remotecontrol/server/controlcenter/controlcenter/views/authentication.py",
+    "rules": [
+      "R12"
+    ],
+    "reconfirmed_rules": [
+      "R12"
+    ],
+    "lines": [
+      53
+    ],
+    "commit_sha": "212da888d07d49a225c9ea8f626e80f8b7fe2141",
+    "blob_sha": "143b4a4d8f309e66b7161e5997086919d1cdc670",
+    "permalink": "https://github.com/knutj42/snowrobot/blob/212da888d07d49a225c9ea8f626e80f8b7fe2141/remotecontrol/server/controlcenter/controlcenter/views/authentication.py",
+    "local_copy": "evidence_archive/knutj42__snowrobot/remotecontrol/server/controlcenter/controlcenter/views/authentication.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "krypob/keycloak-local",
+    "path": "examples/oidc-demo/app.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      250
+    ],
+    "commit_sha": "235e2a3324386e58d39c516abe17bd95b5b68da7",
+    "blob_sha": "47bb8ae13c2f123fa5b263b61ed0390677d36cc5",
+    "permalink": "https://github.com/krypob/keycloak-local/blob/235e2a3324386e58d39c516abe17bd95b5b68da7/examples/oidc-demo/app.py",
+    "local_copy": "evidence_archive/krypob__keycloak-local/examples/oidc-demo/app.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "kujirashark/user_restful_api",
+    "path": "utils/auth_helper.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      70
+    ],
+    "commit_sha": "ac5fbd8b8e27096a90f1a8998506337fbb41324c",
+    "blob_sha": "03f34c7b97b14c771a995f21975522798abac681",
+    "permalink": "https://github.com/kujirashark/user_restful_api/blob/ac5fbd8b8e27096a90f1a8998506337fbb41324c/utils/auth_helper.py",
+    "local_copy": "evidence_archive/kujirashark__user_restful_api/utils/auth_helper.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "laloba04/CasinoCTF",
+    "path": "backend/app/utils/jwt_handler.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      26
+    ],
+    "commit_sha": "9357040f27cebac68df56fb821d74f9339d2723c",
+    "blob_sha": "d895e1345674649f1af60042cca5ecc2df2b68b2",
+    "permalink": "https://github.com/laloba04/CasinoCTF/blob/9357040f27cebac68df56fb821d74f9339d2723c/backend/app/utils/jwt_handler.py",
+    "local_copy": "evidence_archive/laloba04__CasinoCTF/backend/app/utils/jwt_handler.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "lifcompany/Blitzwrite_Backend",
+    "path": "users/views.py",
+    "rules": [
+      "R12"
+    ],
+    "reconfirmed_rules": [
+      "R12"
+    ],
+    "lines": [
+      592
+    ],
+    "commit_sha": "9942e77e174556173d11f9efd59739718c21934b",
+    "blob_sha": "20b6195481a35d9f449a6293969f9ed87dd97dae",
+    "permalink": "https://github.com/lifcompany/Blitzwrite_Backend/blob/9942e77e174556173d11f9efd59739718c21934b/users/views.py",
+    "local_copy": "evidence_archive/lifcompany__Blitzwrite_Backend/users/views.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "maxdiegoduron/Measurement-Hub",
+    "path": "src/components/get_user.py",
+    "rules": [
+      "R12"
+    ],
+    "reconfirmed_rules": [
+      "R12"
+    ],
+    "lines": [
+      30
+    ],
+    "commit_sha": "e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8",
+    "blob_sha": "df477fd2297451971b005b955d9c2f76c8df0ac0",
+    "permalink": "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/src/components/get_user.py",
+    "local_copy": "evidence_archive/maxdiegoduron__Measurement-Hub/src/components/get_user.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "maxdiegoduron/Measurement-Hub",
+    "path": "utils/st_utils.py",
+    "rules": [
+      "R12"
+    ],
+    "reconfirmed_rules": [
+      "R12"
+    ],
+    "lines": [
+      855
+    ],
+    "commit_sha": "e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8",
+    "blob_sha": "6f76acabba3ce54f2736052be6cdc6591359242c",
+    "permalink": "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/utils/st_utils.py",
+    "local_copy": "evidence_archive/maxdiegoduron__Measurement-Hub/utils/st_utils.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "mikeschlottig/solar-website-builder",
+    "path": "services/api/routes.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      676
+    ],
+    "commit_sha": "aafc3e8088c01f61c1bc62dbc3627b59da6143ac",
+    "blob_sha": "8f3fbf8e2346e412f6f2dd1139f84783decb1d5d",
+    "permalink": "https://github.com/mikeschlottig/solar-website-builder/blob/aafc3e8088c01f61c1bc62dbc3627b59da6143ac/services/api/routes.py",
+    "local_copy": "evidence_archive/mikeschlottig__solar-website-builder/services/api/routes.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "nfdi4plants/arcmanager_backend",
+    "path": "app/api/endpoints/authentication.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      278,
+      379
+    ],
+    "commit_sha": "2dfda647f4a9429e12c026daada611b0fd989eae",
+    "blob_sha": "607dd4e43d72371051b225de097a47623dcc4552",
+    "permalink": "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py",
+    "local_copy": "evidence_archive/nfdi4plants__arcmanager_backend/app/api/endpoints/authentication.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "nfdi4plants/arcmanager_backend",
+    "path": "app/api/endpoints/projects.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      125
+    ],
+    "commit_sha": "2dfda647f4a9429e12c026daada611b0fd989eae",
+    "blob_sha": "abb0b448ccb0a4091b2837f85a9422b91a36383d",
+    "permalink": "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/projects.py",
+    "local_copy": "evidence_archive/nfdi4plants__arcmanager_backend/app/api/endpoints/projects.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "osirislab/CSAW-RED-2018-Quals",
+    "path": "Web/Adrift/solver.py",
+    "rules": [
+      "R10"
+    ],
+    "reconfirmed_rules": [
+      "R10"
+    ],
+    "lines": [
+      65
+    ],
+    "commit_sha": "5228845c1aa5d07ccb4ae2de753922649e153078",
+    "blob_sha": "17d5b085e3b40a215e679ad8c61d012b817f5895",
+    "permalink": "https://github.com/osirislab/CSAW-RED-2018-Quals/blob/5228845c1aa5d07ccb4ae2de753922649e153078/Web/Adrift/solver.py",
+    "local_copy": "evidence_archive/osirislab__CSAW-RED-2018-Quals/Web/Adrift/solver.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "pepito105/Reidar.ai",
+    "path": "backend/app/api/routes/memo.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      27
+    ],
+    "commit_sha": "07d8ef3d1bb1e27d17e875f25db5f19576726dfe",
+    "blob_sha": "4775c41e8d589a2a2e32cd842caed92e32030776",
+    "permalink": "https://github.com/pepito105/Reidar.ai/blob/07d8ef3d1bb1e27d17e875f25db5f19576726dfe/backend/app/api/routes/memo.py",
+    "local_copy": "evidence_archive/pepito105__Reidar.ai/backend/app/api/routes/memo.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "phuvinh010701/mezon-sdk-python",
+    "path": "mezon/session.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      50,
+      102,
+      110
+    ],
+    "commit_sha": "4313c8cfc5bbd79f3d0e2cd92083306d39b7b028",
+    "blob_sha": "7ae7a27dd7981c7a9b8b9db3c9f010020d4978ae",
+    "permalink": "https://github.com/phuvinh010701/mezon-sdk-python/blob/4313c8cfc5bbd79f3d0e2cd92083306d39b7b028/mezon/session.py",
+    "local_copy": "evidence_archive/phuvinh010701__mezon-sdk-python/mezon/session.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "presidio-v/presidio-hardened-fastapi",
+    "path": "attack.py",
+    "rules": [
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R13"
+    ],
+    "lines": [
+      60
+    ],
+    "commit_sha": "a9284af018f7d21d68f4fdb109d99e8759b4a738",
+    "blob_sha": "d70ea888c26c21b7efcdfdc92a52e1ec3e644282",
+    "permalink": "https://github.com/presidio-v/presidio-hardened-fastapi/blob/a9284af018f7d21d68f4fdb109d99e8759b4a738/attack.py",
+    "local_copy": "evidence_archive/presidio-v__presidio-hardened-fastapi/attack.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "rscarrera27/Sanic-JWT-Extended",
+    "path": "sanic_jwt_extended/tokens.py",
+    "rules": [
+      "R11"
+    ],
+    "reconfirmed_rules": [
+      "R11"
+    ],
+    "lines": [
+      130
+    ],
+    "commit_sha": "0eb9282a4c21f6d9a81c3d3c2a4818353b79b429",
+    "blob_sha": "e32d9e821953265dfce5acadd2702b0be951f4d4",
+    "permalink": "https://github.com/rscarrera27/Sanic-JWT-Extended/blob/0eb9282a4c21f6d9a81c3d3c2a4818353b79b429/sanic_jwt_extended/tokens.py",
+    "local_copy": "evidence_archive/rscarrera27__Sanic-JWT-Extended/sanic_jwt_extended/tokens.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "sajjadium/ctf-archives",
+    "path": "ctfs/TBTL/2024/misc/Your_papers_please/server.py",
+    "rules": [
+      "R14"
+    ],
+    "reconfirmed_rules": [
+      "R14"
+    ],
+    "lines": [
+      38
+    ],
+    "commit_sha": "cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9",
+    "blob_sha": "5c10f3699d81f6f0a58407dd76bf99dd4aee1cc0",
+    "permalink": "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/TBTL/2024/misc/Your_papers_please/server.py",
+    "local_copy": "evidence_archive/sajjadium__ctf-archives/ctfs/TBTL/2024/misc/Your_papers_please/server.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "sajjadium/ctf-archives",
+    "path": "ctfs/idekCTF/2021/web/saas/util.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      26
+    ],
+    "commit_sha": "cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9",
+    "blob_sha": "fda34f45cb8cfe2ad006ec054dbd98927a9a901e",
+    "permalink": "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/idekCTF/2021/web/saas/util.py",
+    "local_copy": "evidence_archive/sajjadium__ctf-archives/ctfs/idekCTF/2021/web/saas/util.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "semgrep/semgrep-rules",
+    "path": "python/jwt/security/jwt-none-alg.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      10
+    ],
+    "commit_sha": "63b847ed18cb75582f49d29f8a44a349facd7a1d",
+    "blob_sha": "cffea6753740dcd5dd7ae120f27e925cdb7cea5b",
+    "permalink": "https://github.com/semgrep/semgrep-rules/blob/63b847ed18cb75582f49d29f8a44a349facd7a1d/python/jwt/security/jwt-none-alg.py",
+    "local_copy": "evidence_archive/semgrep__semgrep-rules/python/jwt/security/jwt-none-alg.py",
+    "default_branch": "develop"
+  },
+  {
+    "repo": "senrishi/DeltaForce_Sysad_Task3",
+    "path": "task3b/JWT Web App/jwt_webapp.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      42
+    ],
+    "commit_sha": "56103a3a389fc705273e40add64c4a124e0e6915",
+    "blob_sha": "4b1f0ae0fe3de19872c0610e2e8f5bbdd89ec602",
+    "permalink": "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py",
+    "local_copy": "evidence_archive/senrishi__DeltaForce_Sysad_Task3/task3b/JWT Web App/jwt_webapp.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "sstrntu/turfmapp-ai-agent",
+    "path": "backend/app/core/jwt_auth.py",
+    "rules": [
+      "R10"
+    ],
+    "reconfirmed_rules": [
+      "R10"
+    ],
+    "lines": [
+      125
+    ],
+    "commit_sha": "510bb9e5a2eda360d730fadf1d9a11fff0857b75",
+    "blob_sha": "c9bb61a483cc5208db7ece1a2b1ed36f48cf47ed",
+    "permalink": "https://github.com/sstrntu/turfmapp-ai-agent/blob/510bb9e5a2eda360d730fadf1d9a11fff0857b75/backend/app/core/jwt_auth.py",
+    "local_copy": "evidence_archive/sstrntu__turfmapp-ai-agent/backend/app/core/jwt_auth.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "tarun-khatri/auto-twitter-replies",
+    "path": "backend/clerk_auth.py",
+    "rules": [
+      "R12"
+    ],
+    "reconfirmed_rules": [
+      "R12"
+    ],
+    "lines": [
+      30
+    ],
+    "commit_sha": "8163ae2c46387328b859df53bc12419879a2c729",
+    "blob_sha": "d82cb480d8bc33c413bdc481e1ea40f63ddd5e9b",
+    "permalink": "https://github.com/tarun-khatri/auto-twitter-replies/blob/8163ae2c46387328b859df53bc12419879a2c729/backend/clerk_auth.py",
+    "local_copy": "evidence_archive/tarun-khatri__auto-twitter-replies/backend/clerk_auth.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "teoconnect/aguaiot",
+    "path": "py_agua_iot/__init__.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      186,
+      219
+    ],
+    "commit_sha": "6eec1ea10a2e99cc6524fdbbd70adcb309807abc",
+    "blob_sha": "0054c5e9beca10ea242fd03a050d22dcdde23ba7",
+    "permalink": "https://github.com/teoconnect/aguaiot/blob/6eec1ea10a2e99cc6524fdbbd70adcb309807abc/py_agua_iot/__init__.py",
+    "local_copy": "evidence_archive/teoconnect__aguaiot/py_agua_iot/__init__.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "th30d4y/OpenLearnX",
+    "path": "backend/activity_logger.py",
+    "rules": [
+      "R04"
+    ],
+    "reconfirmed_rules": [
+      "R04"
+    ],
+    "lines": [
+      25
+    ],
+    "commit_sha": "3e387c9663c15317100b481272de0158dc4aeab2",
+    "blob_sha": "711c571349021d7d1be86664230814b846026de6",
+    "permalink": "https://github.com/th30d4y/OpenLearnX/blob/3e387c9663c15317100b481272de0158dc4aeab2/backend/activity_logger.py",
+    "local_copy": "evidence_archive/th30d4y__OpenLearnX/backend/activity_logger.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "tw1nflame/nwc",
+    "path": "backend/app/utils/auth.py",
+    "rules": [
+      "R12"
+    ],
+    "reconfirmed_rules": [
+      "R12"
+    ],
+    "lines": [
+      18
+    ],
+    "commit_sha": "3b21bada89f642ec972902af39b3b7caf5f77d2b",
+    "blob_sha": "645ca70f5571e63281503c283ba0ca9af08c41f4",
+    "permalink": "https://github.com/tw1nflame/nwc/blob/3b21bada89f642ec972902af39b3b7caf5f77d2b/backend/app/utils/auth.py",
+    "local_copy": "evidence_archive/tw1nflame__nwc/backend/app/utils/auth.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "valginer0/PGVectorRAGIndexer",
+    "path": "license.py",
+    "rules": [
+      "R04",
+      "R13"
+    ],
+    "reconfirmed_rules": [
+      "R04",
+      "R13"
+    ],
+    "lines": [
+      321,
+      331,
+      351
+    ],
+    "commit_sha": "88b2787310cbd9e09a7edbe4edda04f07727e600",
+    "blob_sha": "2993befa15cbcf437f19097bca4cc80a9e7495e1",
+    "permalink": "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py",
+    "local_copy": "evidence_archive/valginer0__PGVectorRAGIndexer/license.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "vincentwolsink/home_assistant_micronova_agua_iot",
+    "path": "custom_components/aguaiot/aguaiot.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      191,
+      233
+    ],
+    "commit_sha": "b21aaf431a022b971ca3af2b75b8949083e18c12",
+    "blob_sha": "a35ea584e0f0e725290e673aa690119da4b14626",
+    "permalink": "https://github.com/vincentwolsink/home_assistant_micronova_agua_iot/blob/b21aaf431a022b971ca3af2b75b8949083e18c12/custom_components/aguaiot/aguaiot.py",
+    "local_copy": "evidence_archive/vincentwolsink__home_assistant_micronova_agua_iot/custom_components/aguaiot/aguaiot.py",
+    "default_branch": "master"
+  },
+  {
+    "repo": "viralvaghela/hack_jwt",
+    "path": "hack_jwt.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      25
+    ],
+    "commit_sha": "7b6efb694f0dd4f496f6d1ae6021d3a718be564f",
+    "blob_sha": "3b44ab7a51de43850401c9cde59439dc2639ec86",
+    "permalink": "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py",
+    "local_copy": "evidence_archive/viralvaghela__hack_jwt/hack_jwt.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "willi34/vulnerable-labs",
+    "path": "Token/src/app/jwt_handler.py",
+    "rules": [
+      "R02"
+    ],
+    "reconfirmed_rules": [
+      "R02"
+    ],
+    "lines": [
+      21
+    ],
+    "commit_sha": "b9042774fcd91f557d18d9eadadef4baef779898",
+    "blob_sha": "d070e327303054ed79ef24bd5e7f7fd83204e85d",
+    "permalink": "https://github.com/willi34/vulnerable-labs/blob/b9042774fcd91f557d18d9eadadef4baef779898/Token/src/app/jwt_handler.py",
+    "local_copy": "evidence_archive/willi34__vulnerable-labs/Token/src/app/jwt_handler.py",
+    "default_branch": "main"
+  },
+  {
+    "repo": "zionsworking/jwt-differential-fuzzer",
+    "path": "scripts/build_corpus.py",
+    "rules": [
+      "R10"
+    ],
+    "reconfirmed_rules": [
+      "R10"
+    ],
+    "lines": [
+      72,
+      75,
+      78,
+      202,
+      219,
+      305
+    ],
+    "commit_sha": "c8921f0cad681a6e74766754af129907fa5f4057",
+    "blob_sha": "1ff12a6a78f7ad443bbf312fb627edef1f92c1ee",
+    "permalink": "https://github.com/zionsworking/jwt-differential-fuzzer/blob/c8921f0cad681a6e74766754af129907fa5f4057/scripts/build_corpus.py",
+    "local_copy": "evidence_archive/zionsworking__jwt-differential-fuzzer/scripts/build_corpus.py",
+    "default_branch": "main"
+  }
+]
