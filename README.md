@@ -49,10 +49,6 @@ Findings are colourised by severity in a real terminal, carry the exact
 line/column and CWE, and (unless `--no-remediation` is passed) a one-line fix.
 Run it yourself after installing — the full output lists all nine findings.
 
-> **Tip:** for a portfolio README, record this run as an animated GIF
-> (e.g. with [asciinema](https://asciinema.org/) + `agg`, or [vhs](https://github.com/charmbracelet/vhs))
-> and embed it here so the colourised output is visible at a glance.
-
 ---
 
 ## Requirements
