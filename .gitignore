@@ -29,3 +29,7 @@ htmlcov/
 Thumbs.db
 .vscode/
 .idea/
+
+# AI tooling workspaces — not project content
+skill-observations/
+.serena/
