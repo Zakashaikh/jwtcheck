@@ -27,25 +27,55 @@ def _max_severity(severities: List[str]) -> str:
 # Algorithm risk table
 # ---------------------------------------------------------------------------
 
+# Risk grading for the "alg" header.
+#
+# The HMAC family is graded uniformly. Recoverability of an HMAC key is a
+# function of the *secret's entropy*, not of the digest length: RFC 8725 s2.2
+# describes exactly this ("a weak symmetric key with insufficient entropy
+# (such as a human-memorable password) ... vulnerable to offline brute-force"),
+# and s3.5 makes it a MUST NOT. Grading HS256 above HS384/HS512 would imply an
+# attack on SHA-256 that does not apply to SHA-512 at equal key entropy, which
+# is not the case — and bruteforce.py attacks all three identically.
+#
+# On the asymmetric side: RFC 8725 s3.2 does NOT recommend RSASSA-PSS over
+# RSASSA-PKCS1-v1_5 for signatures. Its PKCS#1 v1.5 warning concerns RSAES-
+# PKCS1-v1_5 *encryption* (the Bleichenbacher target), which is a different
+# primitive. PS is noted as preferable here on the strength of its security
+# proof, but that is an engineering preference, not a specification
+# requirement, and it is not given a different severity on that basis.
+_HMAC_NOTE = (
+    "Symmetric HMAC — security rests entirely on the entropy of the shared "
+    "secret; offline brute-force is feasible against a weak one (RFC 8725 s2.2)."
+)
+
 ALGORITHM_RISK: Dict[str, tuple] = {
     "none":  ("CRITICAL", "Unsigned token — no signature at all."),
 
-    "HS256": ("HIGH", "Symmetric HMAC-SHA256 — brute-forceable if the secret is weak."),
-    "HS384": ("MEDIUM", "Symmetric HMAC — security depends entirely on secret strength."),
-    "HS512": ("MEDIUM", "Symmetric HMAC — security depends entirely on secret strength."),
+    "HS256": ("HIGH", _HMAC_NOTE),
+    "HS384": ("HIGH", _HMAC_NOTE),
+    "HS512": ("HIGH", _HMAC_NOTE),
 
-    "RS256": ("LOW", "RSA PKCS1v15 — asymmetric, widely supported."),
-    "RS384": ("LOW", "RSA PKCS1v15 — asymmetric, widely supported."),
-    "RS512": ("LOW", "RSA PKCS1v15 — asymmetric, widely supported."),
+    "RS256": ("LOW", "RSASSA-PKCS1-v1_5 — asymmetric, widely supported."),
+    "RS384": ("LOW", "RSASSA-PKCS1-v1_5 — asymmetric, widely supported."),
+    "RS512": ("LOW", "RSASSA-PKCS1-v1_5 — asymmetric, widely supported."),
 
-    "ES256": ("LOW", "ECDSA — asymmetric, strong choice."),
-    "ES384": ("LOW", "ECDSA — asymmetric, strong choice."),
-    "ES512": ("LOW", "ECDSA — asymmetric, strong choice."),
+    "ES256": ("LOW", "ECDSA — asymmetric; RFC 8725 s3.2 advises deterministic ECDSA (RFC 6979)."),
+    "ES384": ("LOW", "ECDSA — asymmetric; RFC 8725 s3.2 advises deterministic ECDSA (RFC 6979)."),
+    "ES512": ("LOW", "ECDSA — asymmetric; RFC 8725 s3.2 advises deterministic ECDSA (RFC 6979)."),
 
-    "PS256": ("PASS", "RSA-PSS — recommended by RFC 8725."),
-    "PS384": ("PASS", "RSA-PSS — recommended by RFC 8725."),
-    "PS512": ("PASS", "RSA-PSS — recommended by RFC 8725."),
+    "PS256": ("LOW", "RSASSA-PSS — asymmetric; preferable to PKCS#1 v1.5 on proof strength."),
+    "PS384": ("LOW", "RSASSA-PSS — asymmetric; preferable to PKCS#1 v1.5 on proof strength."),
+    "PS512": ("LOW", "RSASSA-PSS — asymmetric; preferable to PKCS#1 v1.5 on proof strength."),
 }
+
+# Case-insensitive index. The "alg" value is case-sensitive per RFC 7515, so a
+# token presenting "None" or "NONE" is not a registered algorithm — but that is
+# precisely the documented filter-bypass for the none-algorithm attack, and it
+# must not be graded as merely unrecognised. Matching case-insensitively and
+# flagging the mismatch separately is the behaviour the scanner already has
+# (scanner.py lowercases before comparing), so this also removes a disagreement
+# between the tool's two modes.
+_ALG_INDEX: Dict[str, str] = {name.lower(): name for name in ALGORITHM_RISK}
 
 # Algorithms whose secret can be brute-forced from a wordlist
 _HMAC_ALGORITHMS = frozenset({"HS256", "HS384", "HS512"})
@@ -126,14 +156,37 @@ class Analyser:
         report.header = header
         report.payload = payload
 
-        # 2. Algorithm risk lookup
+        # 2. Algorithm risk lookup (case-insensitive — see _ALG_INDEX)
         alg = header.get("alg")
         report.algorithm = alg
-        if alg in ALGORITHM_RISK:
-            report.alg_severity, report.alg_notes = ALGORITHM_RISK[alg]
+
+        if alg is None:
+            # "alg" is REQUIRED by RFC 7515 s4.1.1. A token without one is
+            # structurally invalid and cannot be verified as signed.
+            report.alg_severity = "CRITICAL"
+            report.alg_notes = (
+                "No 'alg' header — REQUIRED by RFC 7515 s4.1.1. The token "
+                "cannot be verified and must be rejected."
+            )
         else:
-            report.alg_severity = "MEDIUM"
-            report.alg_notes = f"Unrecognised algorithm '{alg}' — review manually."
+            canonical = _ALG_INDEX.get(str(alg).lower())
+            if canonical is None:
+                report.alg_severity = "MEDIUM"
+                report.alg_notes = f"Unrecognised algorithm '{alg}' — review manually."
+            else:
+                report.alg_severity, report.alg_notes = ALGORITHM_RISK[canonical]
+                if alg != canonical:
+                    # Registered names are case-sensitive, so a case variant is
+                    # not a typo — it is the documented way of slipping a
+                    # rejected algorithm past a case-sensitive allowlist.
+                    report.alg_severity = "CRITICAL"
+                    report.alg_notes = (
+                        f"Algorithm '{alg}' differs in case from the registered "
+                        f"name '{canonical}'. Registered 'alg' values are "
+                        f"case-sensitive (RFC 7515), so this is characteristic of "
+                        f"an attempt to bypass a case-sensitive allowlist. "
+                        f"Underlying algorithm risk: {report.alg_notes}"
+                    )
 
         # 3. Claim checks + header key-injection checks
         report.claim_findings = self._check_claims(payload)
@@ -146,8 +199,10 @@ class Analyser:
             report.seconds_until_expiry = remaining
             report.is_expired = remaining <= 0
 
-        # 5. Brute-force candidacy
-        report.brute_force_candidate = alg in _HMAC_ALGORITHMS
+        # 5. Brute-force candidacy (case-insensitive, for the same reason)
+        report.brute_force_candidate = (
+            _ALG_INDEX.get(str(alg).lower()) in _HMAC_ALGORITHMS
+        )
 
         return report
 
@@ -165,15 +220,23 @@ class Analyser:
 
         # --- exp: presence and expiry ----------------------------------
         if exp is None:
+            # HIGH, not CRITICAL: this must agree with R07, which grades the
+            # same weakness HIGH in scan mode. Note also that RFC 7519 s4.1.4
+            # makes "exp" OPTIONAL, so this is a policy judgement rather than a
+            # specification violation.
             findings.append(ClaimFinding(
-                "exp", "CRITICAL", "MISSING — token never expires."
+                "exp", "HIGH", "MISSING — token never expires."
             ))
         elif isinstance(exp, (int, float)):
             remaining = int(exp - now)
             if remaining <= 0:
+                # An expired token is the expiry control working as intended.
+                # It is worth surfacing during triage, but it is not itself a
+                # weakness and should not inflate the token's overall severity.
                 findings.append(ClaimFinding(
-                    "exp", "HIGH",
-                    f"EXPIRED — token expired {abs(remaining)} seconds ago."
+                    "exp", "LOW",
+                    f"EXPIRED — token expired {abs(remaining)} seconds ago; "
+                    f"a conformant verifier would reject it."
                 ))
 
         # --- token lifetime (exp - iat > 24h) --------------------------

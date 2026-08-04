@@ -79,3 +79,62 @@ def test_malformed_token_returns_error():
 def test_completely_invalid_string():
     report = _analyser.analyse("notaJWTatall")
     assert report.error is not None
+
+
+# ---------------------------------------------------------------------------
+# Algorithm header handling — regression tests
+#
+# A case-variant "alg" is the documented way of slipping a rejected algorithm
+# past a case-sensitive allowlist, so it must not be graded as merely
+# unrecognised. The scanner already lowercases before comparing; these tests
+# pin the analyser to the same behaviour so the two modes cannot drift apart.
+# ---------------------------------------------------------------------------
+
+def _token_with_alg(alg) -> str:
+    """Hand-build a token so an arbitrary (or absent) alg can be set."""
+    import base64
+    import json
+
+    def seg(obj) -> str:
+        raw = json.dumps(obj).encode()
+        return base64.urlsafe_b64encode(raw).rstrip(b"=").decode()
+
+    header = {"typ": "JWT"} if alg is None else {"alg": alg, "typ": "JWT"}
+    return f"{seg(header)}.{seg({'sub': '1'})}.sig"
+
+
+@pytest.mark.parametrize("alg", ["none", "None", "NONE", "nOnE"])
+def test_none_algorithm_detected_in_any_case(alg):
+    report = _analyser.analyse(_token_with_alg(alg))
+    assert report.alg_severity == "CRITICAL", (
+        f"alg={alg!r} must be CRITICAL, not treated as unrecognised"
+    )
+
+
+def test_missing_alg_header_is_critical():
+    # "alg" is REQUIRED by RFC 7515 s4.1.1.
+    report = _analyser.analyse(_token_with_alg(None))
+    assert report.alg_severity == "CRITICAL"
+    assert "RFC 7515" in (report.alg_notes or "")
+
+
+def test_case_variant_is_flagged_as_bypass_attempt():
+    report = _analyser.analyse(_token_with_alg("hs256"))
+    assert report.alg_severity == "CRITICAL"
+    assert "differs in case" in (report.alg_notes or "")
+    # still recognised as HMAC, so still worth brute-forcing
+    assert report.brute_force_candidate is True
+
+
+def test_hmac_family_graded_uniformly():
+    # Recoverability depends on secret entropy, not digest length.
+    sevs = {
+        _analyser.analyse(_token_with_alg(a)).alg_severity
+        for a in ("HS256", "HS384", "HS512")
+    }
+    assert len(sevs) == 1, f"HMAC variants graded inconsistently: {sevs}"
+
+
+def test_unrecognised_algorithm_still_surfaces():
+    report = _analyser.analyse(_token_with_alg("FOO123"))
+    assert report.alg_severity == "MEDIUM"

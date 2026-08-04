@@ -5,13 +5,23 @@ Given a token signed with an HMAC algorithm (HS256/384/512), attempt to recover
 the signing secret by testing each candidate in a wordlist. Used to demonstrate
 the practical risk of weak symmetric secrets (R05, R06).
 
-Academic note
--------------
-Signature comparison uses ``hmac.compare_digest()`` rather than ``==``. A naive
-``==`` comparison short-circuits on the first differing byte, leaking timing
-information that can be exploited to recover a signature byte-by-byte. This is a
-deliberate demonstration of timing side-channel awareness and is required by the
-project's security design — it must not be replaced with ``==``.
+Note on the constant-time comparison
+------------------------------------
+Signature comparison uses ``hmac.compare_digest()`` rather than ``==``. It is
+worth being accurate about why, because the obvious justification is wrong.
+
+Constant-time comparison protects a *verifier*: there, the signature being
+compared is a secret-dependent value an attacker may probe repeatedly, and a
+short-circuiting ``==`` leaks how many leading bytes matched. None of that
+applies here. In this code path JWTCheck is the attacking side — it already
+holds the target signature in full and computes each candidate MAC locally, so
+there is no remote observer and no secret to leak. Timing here is not a channel.
+
+``compare_digest`` is kept for two lesser reasons: it keeps the comparison
+consistent with how a correct verifier would perform it, so the module is not a
+bad example to copy from; and the cost is irrelevant beside the HMAC
+computation that precedes it. It is *not* a security property of this tool, and
+earlier drafts of this project described it as one incorrectly.
 
 Timeout handling is platform-aware: a ``signal.SIGALRM`` alarm is used on Unix,
 falling back to a periodic wall-clock check on Windows (where SIGALRM is absent).
