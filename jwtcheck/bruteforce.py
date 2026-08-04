@@ -3,7 +3,7 @@ bruteforce.py — HMAC secret recovery via wordlist.
 
 Given a token signed with an HMAC algorithm (HS256/384/512), attempt to recover
 the signing secret by testing each candidate in a wordlist. Used to demonstrate
-the practical risk of weak symmetric secrets (R04, R13).
+the practical risk of weak symmetric secrets (R05, R06).
 
 Academic note
 -------------

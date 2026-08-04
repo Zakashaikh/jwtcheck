@@ -11,21 +11,26 @@ JWTVisitor  — walks the AST and fires rules on matching call sites.
                 (``jwt.decode``, ``j.decode``, ``from jwt import decode``), which
                 avoids false positives on ``bytes.decode()`` / ``str.encode()``.
               * Tracks variable assignments so ``payload = {...}; jwt.encode(payload)``
-                resolves correctly — essential for R06 and R09.
-              * Tracks ``try`` block depth (reset across function boundaries) for
-                accurate R15 detection.
+                and ``secret = "..."; jwt.decode(t, secret)`` resolve correctly —
+                required by R05–R07, R10 and R14.
 Scanner     — public interface; handles file and directory scanning.
 Finding     — dataclass representing one rule violation.
 
 Design note (deviation from the original brief)
 ------------------------------------------------
-The brief proposed matching call sites on the attribute name alone (``.decode``)
-and detecting R15 by scanning the 10 raw source lines above a call for ``try:``.
-Both are replaced here with import-alias tracking and AST-scope tracking
-respectively. The attribute-only approach misclassifies ``bytes.decode()`` /
-``str.encode()`` as PyJWT calls (producing spurious CRITICAL findings on ordinary
-code), and the text scan is defeated by comments, strings, and nested scopes. The
-AST-based approach is both more precise and more defensible academically.
+The brief proposed matching call sites on the attribute name alone (``.decode``).
+That is replaced here with import-alias tracking, because the attribute-only
+approach misclassifies ``bytes.decode()`` / ``str.encode()`` as PyJWT calls,
+producing spurious CRITICAL findings on ordinary code that never touches JWTs.
+
+The brief also defined R15 in terms of whether a decode call was wrapped in
+error handling, to be detected by scanning the 10 raw source lines above the
+call for ``try:``. That definition was abandoned: the text scan is defeated by
+comments, string literals and nested scopes, and — more fundamentally — the
+presence of a ``try`` block says nothing about cryptographic correctness. R15
+was redefined to detect a genuine misuse instead: a verification key loaded
+from ``os.environ`` while the algorithms list is left unpinned, which is the
+precondition for an algorithm-confusion attack (CVE-2022-29217).
 """
 
 import ast
@@ -75,9 +80,6 @@ class JWTVisitor(ast.NodeVisitor):
         # Directly-imported jwt members: local name -> original name
         # e.g. {'decode': 'decode', 'd': 'decode', 'PyJWKClient': 'PyJWKClient'}
         self._jwt_funcs: Dict[str, str] = {}
-
-        # try-block nesting depth (reset across function boundaries) for R15
-        self._try_depth = 0
 
     # ------------------------------------------------------------------
     # Reporting helper
@@ -342,40 +344,6 @@ class JWTVisitor(ast.NodeVisitor):
             if isinstance(target, ast.Name):
                 self._assignments[target.id] = node.value
         self.generic_visit(node)
-
-    def visit_Try(self, node: ast.Try) -> None:
-        """
-        Track try-block depth so R15 knows whether a decode is protected.
-
-        Only the ``body`` is protected by this try; code in ``except`` handlers,
-        ``else``, and ``finally`` is not (it may still be protected by an outer
-        try, which the depth counter accounts for).
-        """
-        self._try_depth += 1
-        for stmt in node.body:
-            self.visit(stmt)
-        self._try_depth -= 1
-        for stmt in node.handlers:
-            self.visit(stmt)
-        for stmt in node.orelse:
-            self.visit(stmt)
-        for stmt in node.finalbody:
-            self.visit(stmt)
-
-    def _visit_function(self, node: ast.AST) -> None:
-        """
-        Visit a function body with try-depth reset to zero.
-
-        A decode call lexically inside a ``def`` that sits within a ``try`` is not
-        actually protected at call time, since the function runs later.
-        """
-        saved = self._try_depth
-        self._try_depth = 0
-        self.generic_visit(node)
-        self._try_depth = saved
-
-    visit_FunctionDef = _visit_function
-    visit_AsyncFunctionDef = _visit_function
 
     # ------------------------------------------------------------------
     # Call dispatch
