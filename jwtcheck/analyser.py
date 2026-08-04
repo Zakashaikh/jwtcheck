@@ -10,27 +10,17 @@ import time
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
+from .rules import SEVERITY_ORDER
 from .utils import decode_jwt_parts
-
-
-# ---------------------------------------------------------------------------
-# Severity ordering (highest first) for summary computation
-# ---------------------------------------------------------------------------
-
-_SEVERITY_ORDER = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO", "PASS"]
 
 
 def _max_severity(severities: List[str]) -> str:
     """Return the highest-ranked severity from a list; 'PASS' if empty."""
-    best = "PASS"
-    best_rank = _SEVERITY_ORDER.index("PASS")
-    for sev in severities:
-        if sev in _SEVERITY_ORDER:
-            rank = _SEVERITY_ORDER.index(sev)
-            if rank < best_rank:
-                best_rank = rank
-                best = sev
-    return best
+    return min(
+        (s for s in severities if s in SEVERITY_ORDER),
+        key=SEVERITY_ORDER.index,
+        default="PASS",
+    )
 
 
 # ---------------------------------------------------------------------------

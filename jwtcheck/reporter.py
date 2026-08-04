@@ -10,12 +10,9 @@ import json
 from typing import Dict, List
 
 from .analyser import TokenReport
-from .rules import all_rules
+from .rules import SEVERITY_ORDER, all_rules
 from .scanner import Finding
 from .utils import severity_colour
-
-# Severity ordering used for sorting summaries (highest first)
-_SEVERITY_ORDER = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO", "PASS"]
 
 # SARIF level mapping (per blueprint: CRITICAL->error, HIGH->warning, MEDIUM->note)
 _SARIF_LEVEL = {
@@ -66,14 +63,14 @@ def render_text(findings: List[Finding], show_remediation: bool = True) -> str:
 
 def _render_summary(findings: List[Finding]) -> str:
     """Build a per-severity count summary line."""
-    counts: Dict[str, int] = {sev: 0 for sev in _SEVERITY_ORDER}
+    counts: Dict[str, int] = {sev: 0 for sev in SEVERITY_ORDER}
     for f in findings:
         if f.severity in counts:
             counts[f.severity] += 1
 
     parts = [
         f"{severity_colour(sev)}: {counts[sev]}"
-        for sev in _SEVERITY_ORDER if counts[sev] > 0
+        for sev in SEVERITY_ORDER if counts[sev] > 0
     ]
     total = len(findings)
     return f"{_BOLD}Summary{_RESET} — {total} finding(s): " + ", ".join(parts)

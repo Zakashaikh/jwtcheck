@@ -28,6 +28,11 @@ class Rule:
     cve_example: Optional[str] = None
 
 
+# Canonical severity ordering (worst first). Single source of truth — the
+# analyser, reporter, and CLI all rank findings against this list.
+SEVERITY_ORDER: List[str] = ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO", "PASS"]
+
+
 RULES: Dict[str, Rule] = {
 
     # ===================================================================

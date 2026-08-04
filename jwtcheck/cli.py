@@ -25,13 +25,15 @@ from .reporter import (
     render_text,
     render_token_report_text,
 )
+from .rules import SEVERITY_ORDER
 from .scanner import Finding, Scanner
 from .utils import extract_tokens_from_text, strip_ansi
 
 _HMAC_ALGS = {"HS256", "HS384", "HS512"}
 
-# Severity ranking for the --severity threshold filter (lower index = worse).
-_SEVERITY_RANK = {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3}
+# Severity ranking for the --severity threshold filter (lower index = worse),
+# derived from the canonical order so it can't drift out of sync.
+_SEVERITY_RANK = {sev: i for i, sev in enumerate(SEVERITY_ORDER)}
 _SEVERITY_THRESHOLDS = {"critical": 0, "high": 1, "medium": 2, "all": 99}
 
 
