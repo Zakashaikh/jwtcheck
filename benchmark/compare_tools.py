@@ -7,7 +7,7 @@ whether each tool flagged the JWT misuse the file was built to contain.
 
 A "JWT-relevant detection" means the tool produced at least one finding that
 concerns the intended JWT weakness. For JWTCheck this is any rule firing on the
-file. For Bandit/Semgrep — which have no JWT-cryptographic-misuse rules in their
+file. For Bandit — which has no JWT-specific rules in its
 standard Python rulesets — a detection is only counted when a generic rule
 (e.g. Bandit B105 hardcoded password) happens to overlap the JWT issue; this is
 recorded honestly so the comparison is fair.
@@ -199,10 +199,14 @@ def main():
         lines.append(f"| {r['file']} | {r['category']} | {jcc} | {bdc} | {sgc} |")
     lines.append("")
     lines.append(
-        "Note: Bandit and Semgrep's standard Python rulesets contain no "
-        "JWT-cryptographic-misuse rules. Any detections shown are generic rules "
-        "(e.g. Bandit B105 hardcoded password) that incidentally overlap a JWT "
-        "issue, not JWT-aware analysis."
+        "Note: Bandit's default ruleset contains no JWT-specific checks; its "
+        "detections here are generic rules (e.g. B105 hardcoded password) that "
+        "incidentally overlap a JWT issue. Semgrep's `p/python` pack DOES ship "
+        "JWT-specific rules (`jwt-python-none-alg`, `jwt-python-hardcoded-secret`, "
+        "`unverified-jwt-decode`), which is what it detects above. The gap is "
+        "therefore one of coverage, not of existence: Semgrep covers 3 of the 15 "
+        "misuse patterns catalogued here, with no coverage of algorithm confusion, "
+        "claim validation, leeway configuration, or key-material handling."
     )
     with open(os.path.join(HERE, "tool_comparison.md"), "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines))

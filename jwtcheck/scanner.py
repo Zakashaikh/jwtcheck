@@ -273,69 +273,8 @@ class JWTVisitor(ast.NodeVisitor):
                 return True
         return False
 
-    def _timedelta_hours(self, node: Optional[ast.AST]) -> Optional[float]:
-        """
-        Return the total hours represented by a ``timedelta(...)`` call.
-
-        Handles both ``timedelta(days=N)`` (Name) and ``datetime.timedelta(days=N)``
-        (Attribute), summing days/hours/minutes/seconds keyword arguments. Returns
-        None if the node is not a timedelta call.
-        """
-        if not isinstance(node, ast.Call):
-            return None
-        func = node.func
-        is_timedelta = (
-            (isinstance(func, ast.Name) and func.id == 'timedelta')
-            or (isinstance(func, ast.Attribute) and func.attr == 'timedelta')
-        )
-        if not is_timedelta:
-            return None
-
-        days = hours = minutes = seconds = 0.0
-        for kw in node.keywords:
-            if not (
-                isinstance(kw.value, ast.Constant)
-                and isinstance(kw.value.value, (int, float))
-                and not isinstance(kw.value.value, bool)
-            ):
-                continue
-            val = float(kw.value.value)
-            if kw.arg == 'days':
-                days = val
-            elif kw.arg == 'hours':
-                hours = val
-            elif kw.arg == 'minutes':
-                minutes = val
-            elif kw.arg == 'seconds':
-                seconds = val
-        return days * 24.0 + hours + minutes / 60.0 + seconds / 3600.0
-
-    def _find_exp_timedelta(self, payload_node: Optional[ast.AST]) -> Optional[float]:
-        """
-        Return the lifetime in hours implied by the payload's ``exp`` value.
-
-        The exp value is typically ``datetime.utcnow() + timedelta(days=N)`` (a
-        BinOp) or a bare ``timedelta(...)`` call. Returns None if no timedelta is
-        found.
-        """
-        resolved = self._resolve(payload_node)
-        if not isinstance(resolved, ast.Dict):
-            return None
-        for key, val in zip(resolved.keys, resolved.values):
-            if not (isinstance(key, ast.Constant) and key.value == 'exp'):
-                continue
-            direct = self._timedelta_hours(val)
-            if direct is not None:
-                return direct
-            if isinstance(val, ast.BinOp):
-                for side in (val.left, val.right):
-                    side_hours = self._timedelta_hours(side)
-                    if side_hours is not None:
-                        return side_hours
-        return None
-
     # ------------------------------------------------------------------
-    # Scope / control-flow visitors (for R15 and assignment tracking)
+    # Assignment tracking
     # ------------------------------------------------------------------
 
     def visit_Assign(self, node: ast.Assign) -> None:
@@ -464,7 +403,15 @@ class JWTVisitor(ast.NodeVisitor):
         if payload_node is not None and not self._payload_has_exp(payload_node):
             self._report('R07', node)
 
-        # R10 — exp and iat integer literals more than 86400 seconds apart
+        # R10 — exp and iat integer literals more than 86400 seconds apart.
+        #
+        # KNOWN LIMITATION: this matches integer literals only. The idiomatic
+        # form — exp: datetime.now(tz) + timedelta(days=30) — is an ast.BinOp
+        # and is NOT detected. R10's low real-world frequency is therefore at
+        # least partly an artefact of this rule, not solely evidence that long
+        # lifetimes are rare. Extending it would change detection behaviour and
+        # so invalidate the evaluation figures already reported; it is recorded
+        # as future work instead.
         exp = self._get_int_claim(payload_node, 'exp')
         iat = self._get_int_claim(payload_node, 'iat')
         if exp is not None and iat is not None and (exp - iat) > 86400:
