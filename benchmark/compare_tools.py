@@ -88,6 +88,21 @@ def run_semgrep(directory):
 # Driver
 # ---------------------------------------------------------------------------
 
+def _tool_versions():
+    """Record the version of each tool taking part in the comparison."""
+    import importlib.metadata as md
+
+    from jwtcheck import __version__ as jwtcheck_version
+
+    versions = {"jwtcheck": jwtcheck_version}
+    for pkg in ("bandit", "semgrep"):
+        try:
+            versions[pkg] = md.version(pkg)
+        except md.PackageNotFoundError:
+            versions[pkg] = None
+    return versions
+
+
 def main():
     vuln_files = [os.path.join(VULN, f) for f in sorted(os.listdir(VULN))]
     safe_files = [os.path.join(SAFE, f) for f in sorted(os.listdir(SAFE))]
@@ -138,6 +153,10 @@ def main():
         "jwt_detections": {"jwtcheck": jc_hits, "bandit": bd_hits, "semgrep": sg_hits},
         "safe_false_positives": {"jwtcheck": jc_fp, "bandit": bd_fp, "semgrep": sg_fp},
         "semgrep_ran": semgrep_ran,
+        # Pin the baseline versions into the results. A tool comparison is not
+        # reproducible without them: Bandit and Semgrep both ship frequently,
+        # and a future run against different versions is a different experiment.
+        "tool_versions": _tool_versions(),
     }
 
     with open(os.path.join(HERE, "tool_comparison.json"), "w", encoding="utf-8") as fh:
