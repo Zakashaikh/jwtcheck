@@ -19,7 +19,7 @@ from typing import List
 
 from . import __version__
 from .analyser import Analyser
-from .bruteforce import crack
+from .bruteforce import CrackResult, CrackStatus, crack_detailed
 from .reporter import (
     render_sarif,
     render_text,
@@ -137,18 +137,29 @@ def _run_analyse(args: argparse.Namespace) -> int:
         report = analyser.analyse(token)
 
         # Brute-force only when explicitly requested, with a wordlist, on HMAC.
-        if (
-            args.bruteforce
-            and args.wordlist
-            and report.algorithm in _HMAC_ALGS
-            and not report.error
-        ):
+        # Gate on brute_force_candidate rather than an exact algorithm-name
+        # match: the analyser resolves the alg case-insensitively, so a token
+        # presenting "hs256" is still an HMAC token worth attacking.
+        if args.bruteforce and args.wordlist and report.brute_force_candidate \
+                and not report.error:
             try:
-                report.cracked_secret = crack(
-                    token, args.wordlist, timeout=args.timeout
+                result = crack_detailed(token, args.wordlist, timeout=args.timeout)
+            except ValueError:
+                result = CrackResult(CrackStatus.MALFORMED)
+            report.cracked_secret = result.secret
+            # store the plain value, not the enum member, so the JSON output
+            # and the text renderer both get "exhausted" rather than
+            # "CrackStatus.EXHAUSTED"
+            report.crack_status = result.status.value
+            report.crack_tried = result.tried
+            if result.status is CrackStatus.IO_ERROR:
+                # Previously this was swallowed, so an unreadable wordlist was
+                # reported identically to no wordlist at all — the user was
+                # told to supply one they had already supplied.
+                print(
+                    f"Warning: could not read wordlist '{args.wordlist}'.",
+                    file=sys.stderr,
                 )
-            except (ValueError, OSError):
-                report.cracked_secret = None
 
         reports.append(report)
         if report.summary_severity() in ("CRITICAL", "HIGH") or report.cracked_secret:

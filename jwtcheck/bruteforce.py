@@ -147,6 +147,7 @@ def crack_detailed(
         previous_handler = signal.signal(signal.SIGALRM, _raise_timeout)
         signal.alarm(timeout)
 
+    tried = 0
     try:
         with open(wordlist_path, "r", encoding="utf-8", errors="ignore") as fh:
             for index, line in enumerate(fh):
@@ -157,18 +158,19 @@ def crack_detailed(
                 # Windows fallback: no SIGALRM, so poll the clock periodically.
                 if not use_sigalrm and index % 1000 == 0:
                     if time.monotonic() > deadline:
-                        return CrackResult(CrackStatus.TIMEOUT, tried=index)
+                        return CrackResult(CrackStatus.TIMEOUT, tried=tried)
 
+                tried += 1
                 candidate_sig = hmac.new(
                     secret.encode("utf-8"), signing_input, hash_fn
                 ).digest()
 
                 # Constant-time comparison — never use ==.
                 if hmac.compare_digest(candidate_sig, expected_sig):
-                    return CrackResult(CrackStatus.CRACKED, secret, index + 1)
+                    return CrackResult(CrackStatus.CRACKED, secret, tried)
 
     except _TimeoutReached:
-        return CrackResult(CrackStatus.TIMEOUT)
+        return CrackResult(CrackStatus.TIMEOUT, tried=tried)
     except OSError:
         return CrackResult(CrackStatus.IO_ERROR)
     finally:
@@ -178,4 +180,4 @@ def crack_detailed(
             if previous_handler is not None:
                 signal.signal(signal.SIGALRM, previous_handler)
 
-    return CrackResult(CrackStatus.EXHAUSTED)
+    return CrackResult(CrackStatus.EXHAUSTED, tried=tried)

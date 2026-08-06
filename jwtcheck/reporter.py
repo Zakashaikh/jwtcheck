@@ -137,7 +137,7 @@ def render_sarif(findings: List[Finding], tool_version: str = "0.1.0") -> str:
                 "driver": {
                     "name": "JWTCheck",
                     "version": tool_version,
-                    "informationUri": "https://github.com/example/jwtcheck",
+                    "informationUri": "https://github.com/Zakashaikh/jwtcheck",
                     "rules": sarif_rules,
                 }
             },
@@ -197,6 +197,19 @@ def render_token_report_text(report: TokenReport) -> str:
             f"{_BOLD}Brute-force{_RESET}: {severity_colour('CRITICAL')} "
             f"SECRET CRACKED -> '{report.cracked_secret}'"
         )
+    elif report.crack_status:
+        # Say why the search ended. "Not cracked" alone is not a finding:
+        # a timeout after two candidates and an exhausted wordlist mean
+        # very different things about the strength of the secret.
+        explain = {
+            "exhausted": (f"wordlist exhausted after {report.crack_tried} "
+                          f"candidates — secret not in this list"),
+            "timeout": "TIMED OUT — says nothing about secret strength",
+            "io_error": "wordlist could not be read",
+            "malformed": "token could not be parsed for brute-forcing",
+            "not_hmac": "not an HMAC token — nothing to brute-force",
+        }.get(str(report.crack_status), str(report.crack_status))
+        lines.append(f"{_BOLD}Brute-force{_RESET}: {explain}")
     elif report.brute_force_candidate:
         lines.append(
             f"{_BOLD}Brute-force{_RESET}: HMAC token — candidate for wordlist "

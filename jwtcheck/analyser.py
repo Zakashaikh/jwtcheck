@@ -108,6 +108,10 @@ class TokenReport:
     seconds_until_expiry: Optional[int] = None
     brute_force_candidate: bool = False
     cracked_secret: Optional[str] = None
+    # Why a brute-force attempt ended (see bruteforce.CrackStatus). Kept
+    # as a plain value so the report stays JSON-serialisable.
+    crack_status: Optional[str] = None
+    crack_tried: int = 0
     error: Optional[str] = None
 
     def summary_severity(self) -> str:
