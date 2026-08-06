@@ -92,12 +92,25 @@ RULES: Dict[str, Rule] = {
     ),
 
     # ===================================================================
-    # Attack Class 2 — Algorithm confusion (R04, R15)
-    # CVE-2017-11424 (PyJWT <= 1.5.0) and CVE-2022-29217 (1.5.0-2.3.0,
-    # fixed in 2.4.0): a PEM-encoded RSA public key is accepted as an HMAC
-    # secret, letting an attacker forge tokens using the issuer's own
-    # public key. NOT CVE-2022-21449, which is an Oracle Java SE ECDSA
-    # signature-verification bypass and does not affect PyJWT.
+    # Attack Class 2 — Algorithm selection and pinning (R04, R15)
+    #
+    # R04 is algorithm confusion proper: CVE-2017-11424 (PyJWT <= 1.5.0)
+    # and CVE-2022-29217 (1.5.0-2.3.0, fixed in 2.4.0), where a PEM-encoded
+    # RSA public key is accepted as an HMAC secret, letting an attacker
+    # forge tokens using the issuer's own public key. NOT CVE-2022-21449,
+    # which is an Oracle Java SE ECDSA signature-verification bypass and
+    # does not affect PyJWT.
+    #
+    # R15 is a distinct weakness and is deliberately NOT labelled algorithm
+    # confusion. It fires whenever an environment-supplied key is accepted
+    # for more than one algorithm, including two members of the same family
+    # (e.g. HS256 + HS512), which is not an algorithm-confusion precondition.
+    # What it does violate is RFC 8725 s3.1: "each key MUST be used with
+    # exactly one algorithm, and this MUST be checked when the cryptographic
+    # operation is performed." That is the correct authority for it, and it
+    # carries no CVE because it is application configuration, not a library
+    # defect. The class is named for algorithm *selection and pinning* so
+    # that both rules sit in it honestly.
     # ===================================================================
 
     "R04": Rule(
@@ -214,10 +227,10 @@ RULES: Dict[str, Rule] = {
     "R12": Rule(
         id="R12",
         name="ExcessiveLeeway",
-        description="The leeway argument to jwt.decode() exceeds 300 seconds, widening the window for expired tokens.",
+        description="The leeway argument to jwt.decode() exceeds 300 seconds, widening the window in which an expired token is still accepted.",
         severity="MEDIUM",
         category="CONFIGURATION",
-        remediation="Keep leeway at or below 60 seconds; rely on NTP for clock synchronisation.",
+        remediation="Reduce leeway to at most 300 seconds, and prefer NTP clock synchronisation over a wide tolerance.",
         attack_class="missing_claims",
         cwe="CWE-613",
     ),
@@ -238,12 +251,18 @@ RULES: Dict[str, Rule] = {
     "R14": Rule(
         id="R14",
         name="RsaKeyAsStringLiteral",
-        description="An RSA/PEM key is passed to jwt.decode() as a plain string literal rather than bytes loaded from a file.",
+        description="PEM key material is inlined in jwt.decode() as a string literal rather than loaded from a file or key store.",
         severity="HIGH",
         category="SECRET",
-        remediation="Load PEM key material as bytes from a file or secrets store, not a source-code string literal.",
+        remediation="Load PEM key material from a file or key store so it can be rotated without a code change.",
         attack_class="weak_secret",
-        cwe="CWE-798",
+        # CWE-321 (hard-coded cryptographic key), not CWE-798 (hard-coded
+        # credentials). A decode key is usually the *public* half, which is
+        # not a credential — but inlining it is still security-relevant,
+        # because an attacker who can read the source obtains exactly the
+        # value needed to mount the CVE-2022-29217 confusion attack, and
+        # the key cannot be rotated without redeploying.
+        cwe="CWE-321",
     ),
 
     # --- R15 belongs to Attack Class 2 (algorithm confusion) -----------
@@ -251,13 +270,12 @@ RULES: Dict[str, Rule] = {
     "R15": Rule(
         id="R15",
         name="AlgorithmNotPinnedEnvSecret",
-        description="The verification key comes from os.environ but the algorithms list is not pinned to a single algorithm.",
+        description="The verification key comes from os.environ but the algorithms list accepts more than one algorithm, so one key is used with several (RFC 8725 s3.1).",
         severity="MEDIUM",
         category="ALGORITHM",
-        remediation="Pin algorithms to a single expected algorithm even when the key is loaded from the environment.",
+        remediation="Pin algorithms to the single expected algorithm; RFC 8725 s3.1 requires each key to be used with exactly one algorithm.",
         attack_class="alg_confusion",
         cwe="CWE-757",
-        cve_example="CVE-2022-29217",
     ),
 }
 

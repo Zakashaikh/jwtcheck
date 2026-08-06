@@ -4,7 +4,7 @@
     "precision": 1.0,
     "recall": 1.0,
     "f1": 1.0,
-    "tp": 27,
+    "tp": 26,
     "fp": 0,
     "fn": 0
   },
@@ -48,10 +48,10 @@
       "tn": 27
     },
     "R06": {
-      "tp": 2,
+      "tp": 1,
       "fp": 0,
       "fn": 0,
-      "tn": 26
+      "tn": 27
     },
     "R07": {
       "tp": 2,
@@ -332,11 +332,9 @@
       "name": "r14_pem_string_key",
       "category": "vulnerable",
       "expected": [
-        "R06",
         "R14"
       ],
       "fired": [
-        "R06",
         "R14"
       ],
       "exact_match": true

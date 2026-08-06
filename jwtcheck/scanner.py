@@ -355,17 +355,25 @@ class JWTVisitor(ast.NodeVisitor):
             if has_hmac and has_asym:
                 self._report('R04', node)
 
-        # R06 — hardcoded string-literal verification key
-        if self._is_string_literal(resolved_key):
-            self._report('R06', node)
-
-        # R14 — RSA/PEM key passed as a plain string literal
-        if (
+        # R14 — PEM key material inlined as a string literal.
+        is_pem_literal = (
             isinstance(resolved_key, ast.Constant)
             and isinstance(resolved_key.value, str)
             and resolved_key.value.lstrip().startswith('-----BEGIN')
-        ):
+        )
+        if is_pem_literal:
             self._report('R14', node)
+
+        # R06 — hardcoded string-literal verification key.
+        #
+        # Suppressed when the literal is PEM key material, for two reasons.
+        # R14 already reports that case with the correct framing, so raising
+        # both duplicates one weakness. More importantly, a decode key is
+        # normally the *public* half of an asymmetric pair, and a public key
+        # inlined in source is not a hardcoded secret — calling it one is a
+        # false positive. R06 is for a shared secret appearing in the source.
+        if self._is_string_literal(resolved_key) and not is_pem_literal:
+            self._report('R06', node)
 
         # R08 — no audience validation (moot when verification is disabled)
         if not verify_disabled and self._get_keyword_value(node, 'audience') is None:

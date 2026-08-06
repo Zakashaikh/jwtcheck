@@ -15,6 +15,12 @@ from typing import Tuple, List
 # Base64url helpers
 # ---------------------------------------------------------------------------
 
+# The base64url alphabet of RFC 4648 s5: A-Z a-z 0-9 '-' '_'. Deliberately
+# excludes '+' and '/', which are base64 but not base64url. An empty segment
+# is permitted, since a JWS with an empty signature (alg=none) is well-formed.
+_B64URL_ALPHABET = re.compile(r"[A-Za-z0-9_-]*")
+
+
 def base64url_decode(segment: str) -> bytes:
     """
     Decode a base64url-encoded segment (as used in JWT parts).
@@ -31,6 +37,19 @@ def base64url_decode(segment: str) -> bytes:
     Raises:
         ValueError: If the segment is not valid base64url.
     """
+    # Reject anything outside the base64url alphabet BEFORE normalising.
+    #
+    # base64.b64decode() without validate=True silently discards characters
+    # outside the alphabet, so a segment containing '*' or '#' would decode
+    # happily and the tool would report on a token no conformant verifier
+    # would accept. Checking first, and checking against the base64URL
+    # alphabet specifically, also rejects literal '+' and '/' — which are
+    # valid base64 but NOT valid base64url (RFC 7515 s2, RFC 4648 s5).
+    if not _B64URL_ALPHABET.fullmatch(segment):
+        raise ValueError(
+            "Segment contains characters outside the base64url alphabet"
+        )
+
     # Normalise: replace URL-safe chars with standard base64 chars
     segment = segment.replace("-", "+").replace("_", "/")
 
@@ -45,7 +64,7 @@ def base64url_decode(segment: str) -> bytes:
         raise ValueError(f"Invalid base64url segment length: {len(segment)}")
 
     try:
-        return base64.b64decode(segment)
+        return base64.b64decode(segment, validate=True)
     except Exception as exc:
         raise ValueError(f"Malformed base64url segment: {exc}") from exc
 

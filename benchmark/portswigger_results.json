@@ -1,5 +1,5 @@
 {
-  "detected": 7,
+  "detected": 6,
   "n": 8,
   "token_detectable_hits": 6,
   "token_detectable_total": 6,
@@ -9,7 +9,7 @@
       "vector": "Server does not verify the signature at all.",
       "server_side": true,
       "detected": false,
-      "summary_severity": "CRITICAL"
+      "summary_severity": "HIGH"
     },
     {
       "lab": "2. Auth bypass via flawed signature verification (none)",
@@ -30,35 +30,35 @@
       "vector": "Attacker embeds a self-signed JWK in the header.",
       "server_side": false,
       "detected": true,
-      "summary_severity": "CRITICAL"
+      "summary_severity": "HIGH"
     },
     {
       "lab": "5. JKU header injection",
       "vector": "Attacker points jku at a key they control.",
       "server_side": false,
       "detected": true,
-      "summary_severity": "CRITICAL"
+      "summary_severity": "HIGH"
     },
     {
       "lab": "6. kid header path traversal",
       "vector": "kid used in a path-traversal key lookup.",
       "server_side": false,
       "detected": true,
-      "summary_severity": "CRITICAL"
+      "summary_severity": "HIGH"
     },
     {
       "lab": "7. Algorithm confusion (RS->HS)",
-      "vector": "Server verifies an HMAC token with an RSA public key.",
+      "vector": "Server verifies an HMAC token with an RSA public key. Indistinguishable from a legitimate HS256 token offline.",
       "server_side": true,
-      "detected": true,
-      "summary_severity": "CRITICAL"
+      "detected": false,
+      "summary_severity": "HIGH"
     },
     {
       "lab": "8. kid header SQL injection",
       "vector": "kid used unsafely in a SQL key lookup.",
       "server_side": false,
       "detected": true,
-      "summary_severity": "CRITICAL"
+      "summary_severity": "HIGH"
     }
   ]
 }

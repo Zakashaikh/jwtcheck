@@ -146,8 +146,11 @@ SAMPLES: List[Sample] = [
     _s("r14_pem_string_key",
        'import jwt\nkey = "-----BEGIN PUBLIC KEY-----\\nMIIB\\n-----END PUBLIC KEY-----"\n'
        'jwt.decode(token, key, algorithms=["RS256"], audience="a", issuer="i")\n',
-       {"R06", "R14"},
-       note="PEM literal is both hardcoded (R06) and RSA-as-string (R14)"),
+       {"R14"},
+       note="PEM public key inlined as a string literal (R14). R06 is "
+            "deliberately not expected: a decode key is the public half of "
+            "the pair, so reporting it as a hardcoded secret is a false "
+            "positive, and R14 already covers the key-management concern."),
 
     # ----- R15: env secret + algorithms not pinned to one ----------------
     _s("r15_env_multi_alg",

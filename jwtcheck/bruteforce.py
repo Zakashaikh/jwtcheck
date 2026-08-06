@@ -33,7 +33,8 @@ import json
 import signal
 import threading
 import time
-from typing import Callable, Optional
+from enum import Enum
+from typing import Callable, NamedTuple, Optional
 
 from .utils import base64url_decode
 
@@ -54,7 +55,44 @@ def _raise_timeout(signum, frame):  # noqa: ANN001 - signal handler signature
     raise _TimeoutReached()
 
 
+class CrackStatus(str, Enum):
+    """Why a brute-force attempt ended.
+
+    Reporting only ``None`` for every unsuccessful outcome makes a negative
+    result unfalsifiable: a run that timed out after two candidates and a run
+    that exhausted a ten-million-line wordlist are indistinguishable, yet only
+    the second says anything about the strength of the secret. Any claim of
+    the form "no secrets were recovered" needs this distinction to be
+    meaningful.
+    """
+
+    CRACKED = "cracked"          # secret recovered
+    EXHAUSTED = "exhausted"      # whole wordlist tried, no match
+    TIMEOUT = "timeout"          # ran out of time — says nothing about strength
+    NOT_HMAC = "not_hmac"        # token is not HS256/384/512
+    MALFORMED = "malformed"      # token could not be parsed
+    IO_ERROR = "io_error"        # wordlist unreadable
+
+
+class CrackResult(NamedTuple):
+    status: CrackStatus
+    secret: Optional[str] = None
+    tried: int = 0
+
+
 def crack(token: str, wordlist_path: str, timeout: int = 30) -> Optional[str]:
+    """Recover an HMAC secret from a wordlist, or return None.
+
+    Thin wrapper over :func:`crack_detailed` that discards the outcome
+    detail. Prefer ``crack_detailed`` when a negative result needs to be
+    interpreted or reported.
+    """
+    return crack_detailed(token, wordlist_path, timeout).secret
+
+
+def crack_detailed(
+    token: str, wordlist_path: str, timeout: int = 30
+) -> CrackResult:
     """
     Attempt to recover the HMAC signing secret for a token from a wordlist.
 
@@ -64,8 +102,8 @@ def crack(token: str, wordlist_path: str, timeout: int = 30) -> Optional[str]:
         timeout:       Maximum seconds to spend before giving up.
 
     Returns:
-        The cracked secret string on success, or None on timeout, exhaustion,
-        or if the token does not use a supported HMAC algorithm.
+        A CrackResult carrying the outcome, the secret when one was found,
+        and how many candidates were tried.
 
     Raises:
         ValueError: If the token does not have exactly three parts.
@@ -84,17 +122,17 @@ def crack(token: str, wordlist_path: str, timeout: int = 30) -> Optional[str]:
     try:
         expected_sig = base64url_decode(signature_b64)
     except ValueError:
-        return None
+        return CrackResult(CrackStatus.MALFORMED)
 
     # Determine the HMAC algorithm from the header.
     try:
         header = json.loads(base64url_decode(header_b64).decode("utf-8"))
     except ValueError:
-        return None
+        return CrackResult(CrackStatus.MALFORMED)
     alg = header.get("alg")
     hash_fn: Optional[Callable] = _HASH_FUNCS.get(alg)
     if hash_fn is None:
-        return None  # not an HMAC token — nothing to brute-force
+        return CrackResult(CrackStatus.NOT_HMAC)  # nothing to brute-force
 
     # Platform-aware timeout setup. SIGALRM only works in the main thread of
     # the main interpreter, so fall back to clock polling otherwise.
@@ -119,7 +157,7 @@ def crack(token: str, wordlist_path: str, timeout: int = 30) -> Optional[str]:
                 # Windows fallback: no SIGALRM, so poll the clock periodically.
                 if not use_sigalrm and index % 1000 == 0:
                     if time.monotonic() > deadline:
-                        return None
+                        return CrackResult(CrackStatus.TIMEOUT, tried=index)
 
                 candidate_sig = hmac.new(
                     secret.encode("utf-8"), signing_input, hash_fn
@@ -127,12 +165,12 @@ def crack(token: str, wordlist_path: str, timeout: int = 30) -> Optional[str]:
 
                 # Constant-time comparison — never use ==.
                 if hmac.compare_digest(candidate_sig, expected_sig):
-                    return secret
+                    return CrackResult(CrackStatus.CRACKED, secret, index + 1)
 
     except _TimeoutReached:
-        return None
+        return CrackResult(CrackStatus.TIMEOUT)
     except OSError:
-        return None
+        return CrackResult(CrackStatus.IO_ERROR)
     finally:
         # Always cancel the alarm and restore the previous handler.
         if use_sigalrm:
@@ -140,4 +178,4 @@ def crack(token: str, wordlist_path: str, timeout: int = 30) -> Optional[str]:
             if previous_handler is not None:
                 signal.signal(signal.SIGALRM, previous_handler)
 
-    return None
+    return CrackResult(CrackStatus.EXHAUSTED)

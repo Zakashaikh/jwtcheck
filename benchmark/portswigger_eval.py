@@ -106,9 +106,18 @@ def _labs():
         {
             "lab": "7. Algorithm confusion (RS->HS)",
             "token": _token({"alg": "HS256"}, {"sub": "admin"}, "public-key-as-secret"),
-            "detect": lambda r: r.brute_force_candidate,   # surfaced as HMAC token to review
+            # Previously this was `lambda r: r.brute_force_candidate`, and the
+            # row was scored as detected. That was wrong twice over: the
+            # predicate is true of EVERY HS256 token, so it identifies the
+            # algorithm family rather than the attack; and the row was
+            # simultaneously marked server-side, i.e. not token-detectable.
+            # A forged RS->HS token is bit-for-bit an ordinary HS256 token —
+            # the confusion lives entirely in which key the server verifies
+            # with, so no offline analyser can detect it from the token.
+            "detect": lambda r: False,
             "server_side": True,
-            "vector": "Server verifies an HMAC token with an RSA public key.",
+            "vector": "Server verifies an HMAC token with an RSA public key. "
+                      "Indistinguishable from a legitimate HS256 token offline.",
         },
         {
             "lab": "8. kid header SQL injection",
