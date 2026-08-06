@@ -1,0 +1,159 @@
+{
+  "purpose": "held-out validation set for the Chapter 5 precision study",
+  "discovery_channel": "unauthenticated repository search + local marker filter",
+  "inclusion_criterion": "repository contains one of ['jwt.decode', 'jwt.encode', 'from jwt import', 'PyJWKClient']",
+  "excluded_from": "benchmark/real_world_repos.txt (the original 96)",
+  "count": 30,
+  "repos": [
+    {
+      "repo": "wad-sh/Event-Booking-API",
+      "commit": "a199279048629abe40d3494a3b67e529266cf894",
+      "path": "heldout_targets/wad-sh__Event-Booking-API"
+    },
+    {
+      "repo": "chris83254/fastapi-boilerplate",
+      "commit": "af4eb78c2386c75c1d3a4c03ec9078e38858e1d7",
+      "path": "heldout_targets/chris83254__fastapi-boilerplate"
+    },
+    {
+      "repo": "damien-robotsix/robotsix-github-auth",
+      "commit": "e058ea43daf8d315d2da2e31bad3c86bfa5bcf0d",
+      "path": "heldout_targets/damien-robotsix__robotsix-github-auth"
+    },
+    {
+      "repo": "ANNAREDDY123/enterprise-ecommerce-order-fulfillment-system",
+      "commit": "798491d9cf4c0da7e9ebbe6973e7c4f3a2dd2eb0",
+      "path": "heldout_targets/ANNAREDDY123__enterprise-ecommerce-order-fulfillment-system"
+    },
+    {
+      "repo": "Werner1126/smart-learning-platform",
+      "commit": "ba12b1fc5ba811a4fb8c7e1c38a3a5ffefa879bf",
+      "path": "heldout_targets/Werner1126__smart-learning-platform"
+    },
+    {
+      "repo": "MiguelP0rtela/task-manager-api",
+      "commit": "732acd8f672f6a0e5f43818580791bb76c2288bd",
+      "path": "heldout_targets/MiguelP0rtela__task-manager-api"
+    },
+    {
+      "repo": "sundark1290-arch/TaskFlow-Pro",
+      "commit": "92132a615b704412e0f15489c32bc30255a5a8ad",
+      "path": "heldout_targets/sundark1290-arch__TaskFlow-Pro"
+    },
+    {
+      "repo": "Aadi2104/olympiad-connect",
+      "commit": "10ac837c34b1f4354443b1679db9ee3daf3bf4de",
+      "path": "heldout_targets/Aadi2104__olympiad-connect"
+    },
+    {
+      "repo": "Prshant-kumar1/Job-tracker-API",
+      "commit": "585adf0649064ff87ad4152d71941d3df8f5f558",
+      "path": "heldout_targets/Prshant-kumar1__Job-tracker-API"
+    },
+    {
+      "repo": "chibwesamuel/pulseapi",
+      "commit": "36e946fb3a0b49f5e4a0a8c29025f5525550bf19",
+      "path": "heldout_targets/chibwesamuel__pulseapi"
+    },
+    {
+      "repo": "genesisbrown-dev/devtrack-api",
+      "commit": "667e58367ef0ca9a46ae4c5a647c9301b38ee7f8",
+      "path": "heldout_targets/genesisbrown-dev__devtrack-api"
+    },
+    {
+      "repo": "splendidjur/task6-E-commerce-API",
+      "commit": "2b1c1c017e4a3ad49a06c4f93a1d563b6d60c073",
+      "path": "heldout_targets/splendidjur__task6-E-commerce-API"
+    },
+    {
+      "repo": "salikevenu/landmark-app",
+      "commit": "30ee5098fb22791927581eb360296bb49a3ebb94",
+      "path": "heldout_targets/salikevenu__landmark-app"
+    },
+    {
+      "repo": "rishisingh1406/async-agent-backend",
+      "commit": "3eeef9ff6c67dc324cb9f6c2d8bb7bdd01f23b48",
+      "path": "heldout_targets/rishisingh1406__async-agent-backend"
+    },
+    {
+      "repo": "ravitejakotrike/AI-Based-Verilog-TestBench-Generator",
+      "commit": "2ad2702cd10b7c8d7af1a8309de72d7202099746",
+      "path": "heldout_targets/ravitejakotrike__AI-Based-Verilog-TestBench-Generator"
+    },
+    {
+      "repo": "Noriishere/NorRestaurant",
+      "commit": "1c9abb7b63ae30ea5d4f862cc05367f7e40b9779",
+      "path": "heldout_targets/Noriishere__NorRestaurant"
+    },
+    {
+      "repo": "Pradyumna-Sawkar/bidx",
+      "commit": "6c3d0a272f57064f52f74f04aed80b3b1d695305",
+      "path": "heldout_targets/Pradyumna-Sawkar__bidx"
+    },
+    {
+      "repo": "Dhruv-gif-hub/FastAPI-auth-service",
+      "commit": "2f978124234f18ff4448b9c6d90fe9eb3f587f68",
+      "path": "heldout_targets/Dhruv-gif-hub__FastAPI-auth-service"
+    },
+    {
+      "repo": "lArtuh/Smart-Booking-System-API-Backend",
+      "commit": "cb00b0a31684a3b82362e9f7c9d6f55c7f31d163",
+      "path": "heldout_targets/lArtuh__Smart-Booking-System-API-Backend"
+    },
+    {
+      "repo": "Nick94665/aegisgpt-llm-gateway",
+      "commit": "c1df2d20fc00b9fb7606d4ef506267a9f1f7ad31",
+      "path": "heldout_targets/Nick94665__aegisgpt-llm-gateway"
+    },
+    {
+      "repo": "themanoj-025/UNION-BANK-",
+      "commit": "b7b14328a096aca8032baa0a1f888811b8a9f013",
+      "path": "heldout_targets/themanoj-025__UNION-BANK-"
+    },
+    {
+      "repo": "arakium/ExpenseTrackerAPI",
+      "commit": "26ab98c50c2085bef97bbd092e583a1909d61529",
+      "path": "heldout_targets/arakium__ExpenseTrackerAPI"
+    },
+    {
+      "repo": "harshadx27/Cafe-REST-API",
+      "commit": "9460a9334b04fdb26a61c53bfca43f95d114d818",
+      "path": "heldout_targets/harshadx27__Cafe-REST-API"
+    },
+    {
+      "repo": "jayforge-dev/flask-auth-crud",
+      "commit": "d52fd8d55bf8ee0f032d415511bac566be00dffa",
+      "path": "heldout_targets/jayforge-dev__flask-auth-crud"
+    },
+    {
+      "repo": "IcarusSec/ICARUS-Lab",
+      "commit": "316489297fc0eb9bc2487d29e2ee8c9ac65b6d41",
+      "path": "heldout_targets/IcarusSec__ICARUS-Lab"
+    },
+    {
+      "repo": "mzulqarnain-ceh/user-auth-api",
+      "commit": "55c7365f2c491d20b0fd48e45e0922f4a717a0e2",
+      "path": "heldout_targets/mzulqarnain-ceh__user-auth-api"
+    },
+    {
+      "repo": "Gloriazhou1127/salon-event-system",
+      "commit": "de74f4b8b0e301a5bc3117f1d585d3f7d65bd2ad",
+      "path": "heldout_targets/Gloriazhou1127__salon-event-system"
+    },
+    {
+      "repo": "arXiv/arxiv-auth",
+      "commit": "4235e40ef2d5e97d5cd93460bb3f1a0dbf5a4730",
+      "path": "heldout_targets/arXiv__arxiv-auth"
+    },
+    {
+      "repo": "Somtochukwu-Sabastine/Secure-Authentication-System",
+      "commit": "402b342f2acb3f12f487fe51d43bc70e9b23b7eb",
+      "path": "heldout_targets/Somtochukwu-Sabastine__Secure-Authentication-System"
+    },
+    {
+      "repo": "alpersonalwebsite/flask-auth0-authentication-authorization",
+      "commit": "7f4113fbb00e349fc05a0b58277e86f20c1a5962",
+      "path": "heldout_targets/alpersonalwebsite__flask-auth0-authentication-authorization"
+    }
+  ]
+}

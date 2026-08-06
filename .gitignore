@@ -33,3 +33,6 @@ Thumbs.db
 # AI tooling workspaces — not project content
 skill-observations/
 .serena/
+
+# Held-out validation clones — regenerable via benchmark/fetch_heldout.py
+heldout_targets/

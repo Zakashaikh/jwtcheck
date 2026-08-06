@@ -108,3 +108,31 @@ def test_non_hmac_token_reports_not_hmac():
     assert crack_detailed(token, _wordlist(["a"])).status is CrackStatus.NOT_HMAC
     # the legacy wrapper still returns None for callers that only want a secret
     assert crack(token, _wordlist(["a"])) is None
+
+
+# --- a directory scan must not silently report "clean" ------------------
+# `scan <dir>` used to default to non-recursive, so a project whose Python
+# lived in subdirectories produced "No JWT misuse patterns detected" — a
+# false all-clear, the worst failure mode for a security tool.
+
+def test_directory_scan_recurses_by_default():
+    from jwtcheck.cli import build_parser
+
+    root = tempfile.mkdtemp()
+    nested = os.path.join(root, "app", "api")
+    os.makedirs(nested)
+    with open(os.path.join(nested, "auth.py"), "w", encoding="utf-8") as fh:
+        fh.write('import jwt\njwt.decode(tok, "hardcoded", algorithms=["HS256"])\n')
+
+    args = build_parser().parse_args(["scan", root])
+    assert args.recursive is True, "directory scans must recurse by default"
+
+    from jwtcheck.scanner import Scanner
+    found = Scanner().scan_directory(root, recursive=args.recursive)
+    assert found, "a nested misuse must not be silently missed"
+
+
+def test_no_recursive_flag_still_available():
+    from jwtcheck.cli import build_parser
+    args = build_parser().parse_args(["scan", ".", "--no-recursive"])
+    assert args.recursive is False

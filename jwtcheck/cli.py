@@ -195,8 +195,16 @@ def build_parser() -> argparse.ArgumentParser:
     # scan
     p_scan = sub.add_parser("scan", help="Static analysis of Python source for PyJWT misuse.")
     p_scan.add_argument("target", help="File or directory to scan.")
-    p_scan.add_argument("--recursive", "-r", action="store_true",
-                        help="Recurse into subdirectories.")
+    # Recursion is ON by default. It used to be opt-in, which meant
+    # `jwtcheck scan myproject/` reported "No JWT misuse patterns detected"
+    # whenever the Python lived in subdirectories — a silent all-clear, which
+    # is the worst failure mode a security tool can have. The evaluation
+    # scripts were unaffected because they call scan_directory(recursive=True)
+    # directly, so no reported figure depends on the old default.
+    p_scan.add_argument("--recursive", "-r", action="store_true", default=True,
+                        help="Recurse into subdirectories (default).")
+    p_scan.add_argument("--no-recursive", dest="recursive", action="store_false",
+                        help="Scan only the top-level directory.")
     p_scan.add_argument("--format", choices=["text", "sarif"], default="text",
                         help="Output format (default: text).")
     p_scan.add_argument("--output", "-o", default="",
