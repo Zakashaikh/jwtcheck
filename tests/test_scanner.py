@@ -183,3 +183,41 @@ def test_verified_decode_still_flags_r08_r09():
     ids = _ids(findings)
     assert "R08" in ids
     assert "R09" in ids
+
+
+def test_relative_import_of_local_jwt_module_is_not_pyjwt():
+    # Held-out validation (arXiv/arxiv-auth) found a local cloud_auth/jwt.py
+    # imported as `from ..jwt import decode`. That reports module == 'jwt' but
+    # level == 2, so it must NOT be treated as PyJWT: the wrapper pins the
+    # algorithm internally, and the real PyJWT call is flagged at its own site.
+    findings = _scan_snippet(
+        'from ..jwt import decode\n'
+        'data = decode(token, secret)\n'
+    )
+    assert _ids(findings) == set(), f"expected no findings, got {_ids(findings)}"
+
+
+def test_absolute_import_from_pyjwt_still_matches():
+    # Regression guard for the level check: the genuine form must still fire.
+    findings = _scan_snippet(
+        'from jwt import decode\n'
+        'data = decode(token, secret)\n'
+    )
+    assert "R01" in _ids(findings)
+
+
+def test_vendored_site_packages_is_skipped(tmp_path):
+    # Held-out validation found a repository committing its virtualenv as
+    # myenv/, so the vendored redis package was scanned as project source.
+    # Skipping on the venv's *name* cannot catch that; skipping site-packages
+    # can, whatever the enclosing directory is called.
+    vendored = tmp_path / "myenv" / "Lib" / "site-packages" / "redis"
+    vendored.mkdir(parents=True)
+    (vendored / "token.py").write_text(
+        'import jwt\njwt.decode(t, options={"verify_signature": False})\n')
+    own = tmp_path / "app.py"
+    own.write_text('import jwt\njwt.decode(t, options={"verify_signature": False})\n')
+
+    findings = Scanner().scan_directory(str(tmp_path), recursive=True)
+    files = {os.path.basename(f.filepath) for f in findings}
+    assert files == {"app.py"}, f"expected only app.py, got {files}"

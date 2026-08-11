@@ -121,8 +121,15 @@ class JWTVisitor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
-        """Record members imported directly from jwt (``from jwt import decode``)."""
-        if node.module and node.module.split('.')[0] == 'jwt':
+        """Record members imported directly from jwt (``from jwt import decode``).
+
+        ``node.level`` must be 0. A relative import such as ``from ..jwt import
+        decode`` also reports ``module == 'jwt'``, but binds a *local* jwt.py,
+        not PyJWT. Held-out validation caught this on arXiv/arxiv-auth, where
+        the local wrapper pins the algorithm internally and every call to it was
+        being analysed as a bare PyJWT decode.
+        """
+        if node.level == 0 and node.module and node.module.split('.')[0] == 'jwt':
             for alias in node.names:
                 local = alias.asname or alias.name
                 self._jwt_funcs[local] = alias.name
@@ -448,6 +455,13 @@ class JWTVisitor(ast.NodeVisitor):
 _SKIP_DIRS = frozenset({
     '__pycache__', '.venv', 'venv', 'env', 'node_modules',
     '.git', '.tox', '.mypy_cache', '.pytest_cache', 'dist', 'build',
+    # Installed third-party code, never the project's own. Matching on these
+    # rather than only on the virtualenv's name is what makes the skip robust:
+    # a virtualenv may be called anything (held-out validation found one named
+    # myenv/ whose vendored redis package was scanned as if it were the
+    # application's source), but the package directory inside it is always
+    # site-packages or dist-packages.
+    'site-packages', 'dist-packages',
 })
 
 # Directory names and filename prefixes that indicate test / fixture code.
