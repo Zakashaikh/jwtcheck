@@ -1,0 +1,50 @@
+HIGH R14 RsaKeyAsStringLiteral
+  evidence_archive\sajjadium__ctf-archives\ctfs\TBTL\2024\misc\Your_papers_please\server.py:38:11
+    return jwt.decode(token, algorithms=[alg], key=PUBLIC_KEY)
+  PEM key material is inlined in jwt.decode() as a string literal rather than loaded from a file or key store.
+  Weakness: CWE-321
+  Fix: Load PEM key material from a file or key store so it can be rotated without a code change.
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\sajjadium__ctf-archives\ctfs\TBTL\2024\misc\Your_papers_please\server.py:38:11
+    return jwt.decode(token, algorithms=[alg], key=PUBLIC_KEY)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\sajjadium__ctf-archives\ctfs\TBTL\2024\misc\Your_papers_please\server.py:38:11
+    return jwt.decode(token, algorithms=[alg], key=PUBLIC_KEY)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  evidence_archive\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:14:12
+    token = jwt.encode({"username": f"guest_{random.randint(1,10000)}"}, priv_key, algorithm='RS256', headers={'pubkey': 'public.pem'})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  evidence_archive\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:26:15
+    return jwt.decode(token, pub_key, algorithms=['RS256', 'HS256'])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:26:15
+    return jwt.decode(token, pub_key, algorithms=['RS256', 'HS256'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:26:15
+    return jwt.decode(token, pub_key, algorithms=['RS256', 'HS256'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+Summary — 7 finding(s): CRITICAL: 1, HIGH: 2, MEDIUM: 4

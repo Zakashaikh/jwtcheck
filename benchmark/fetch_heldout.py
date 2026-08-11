@@ -51,6 +51,16 @@ ORIGINAL = os.path.join(HERE, "real_world_repos.txt")
 # The same markers the original study selected on.
 MARKERS = ("jwt.decode", "jwt.encode", "from jwt import", "PyJWKClient")
 
+# Source patterns that make R03 (SignatureVerificationDisabled) fire. The first
+# held-out sample contained none of them, so the verification-disabled
+# refinement never activated and could not be validated. --require-r03
+# stratifies a sample on this predicate so the refinement can be measured.
+VERIFY_DISABLED_MARKERS = (
+    '"verify_signature": False', "'verify_signature': False",
+    '"verify_signature":False', "'verify_signature':False",
+    "verify=False", "verify = False",
+)
+
 # Repository-search queries, used only when code search is unavailable.
 REPO_QUERIES = [
     "pyjwt language:python",
@@ -143,7 +153,53 @@ def is_the_library(path):
     """
     for root, dirs, files in os.walk(path):
         dirs[:] = [d for d in dirs if d not in (".git", "venv", ".venv", "node_modules")]
-        if os.path.basename(root) == "jwt" and {"api_jws.py", "algorithms.py"} <= set(files):
+        # Older PyJWT releases ship api.py rather than api_jws.py, and src/
+        # layouts nest the package, so match on algorithms.py plus any of the
+        # API modules. The stricter two-file test let two forks through.
+        if os.path.basename(root) == "jwt" and "algorithms.py" in files \
+                and {"api_jws.py", "api_jwt.py", "api.py"} & set(files):
+            return True
+    return False
+
+
+# Substring, not word-bounded: real package names run the token together
+# ("djangorestframework-simplejwt", "pyjwt", "authlib", "authx").
+LIB_NAME_RE = re.compile(r"(jwt|jose|oauth|oidc|openid|keycloak|authlib|authx)", re.I)
+# Descriptions need a second signal, so an application that merely says it
+# "uses JWT" is not mistaken for a library.
+LIB_KIND_RE = re.compile(r"(librar|sdk|toolkit|middleware|plugin|framework|"
+                         r"implementation of|client for)", re.I)
+PACKAGING_FILES = ("pyproject.toml", "setup.py", "setup.cfg")
+
+
+def is_jwt_library(path):
+    """
+    True if the repository ships as a JWT/auth library or tool.
+
+    Stratifying on --require-r03 selects heavily for this population:
+    libraries implement verification themselves, and token inspectors,
+    vulnerability analysers and teaching labs disable it by design. They are
+    out of scope for a study of misuse in *application* code, and including
+    them biases precision badly — the first R03-stratified draw returned 23
+    packaged projects out of 30.
+    """
+    for fn in PACKAGING_FILES:
+        fp = os.path.join(path, fn)
+        if not os.path.isfile(fp):
+            continue
+        try:
+            with open(fp, encoding="utf-8", errors="ignore") as fh:
+                meta = fh.read()
+        except OSError:
+            continue
+        # Only the descriptive fields, so a mere dependency on PyJWT does not
+        # disqualify an ordinary application.
+        names = re.findall(r"^\s*name\s*[=:]\s*(.+)$", meta, re.I | re.M)
+        blurb = re.findall(r"^\s*(?:description|keywords|summary)\s*[=:]\s*(.+)$",
+                           meta, re.I | re.M)
+        if any(LIB_NAME_RE.search(n) for n in names):
+            return True
+        if any(LIB_NAME_RE.search(b) and LIB_KIND_RE.search(b) for b in blurb):
             return True
     return False
 
@@ -161,6 +217,27 @@ def uses_pyjwt(path):
             except OSError:
                 continue
             if any(m in text for m in MARKERS):
+                return True
+    return False
+
+
+def disables_verification(path):
+    """True if any Python file in the repository turns PyJWT verification off."""
+    return _contains_any(path, VERIFY_DISABLED_MARKERS)
+
+
+def _contains_any(path, needles):
+    for root, dirs, files in os.walk(path):
+        dirs[:] = [d for d in dirs if d not in (".git", "venv", ".venv", "node_modules")]
+        for fn in files:
+            if not fn.endswith(".py"):
+                continue
+            try:
+                with open(os.path.join(root, fn), encoding="utf-8", errors="ignore") as fh:
+                    text = fh.read()
+            except OSError:
+                continue
+            if any(m in text for m in needles):
                 return True
     return False
 
@@ -184,10 +261,34 @@ def main():
     ap.add_argument("--target", type=int, default=30,
                     help="How many qualifying repositories to keep (default 30).")
     ap.add_argument("--per-query", type=int, default=30)
+    ap.add_argument("--out-dir", default=OUT_DIR,
+                    help="Where to clone (default heldout_targets/).")
+    ap.add_argument("--manifest", default=MANIFEST,
+                    help="Manifest to write (default benchmark/heldout_repos.json).")
+    ap.add_argument("--exclude-manifest", action="append", default=[],
+                    help="Also exclude every repo in this manifest. Repeatable; "
+                         "use it to keep a third sample disjoint from the second.")
+    ap.add_argument("--require-r03", action="store_true",
+                    help="Keep only repositories that disable signature "
+                         "verification somewhere, so R03 actually fires.")
+    ap.add_argument("--exclude-libraries", action="store_true",
+                    help="Drop JWT/auth libraries and tools, keeping only "
+                         "applications. Strongly recommended with "
+                         "--require-r03, which otherwise selects for them.")
     args = ap.parse_args()
 
+    out_dir, manifest_path = args.out_dir, args.manifest
+
     excluded = load_original()
-    print(f"Excluding {len(excluded)} repositories from the original study.\n")
+    print(f"Excluding {len(excluded)} repositories from the original study.")
+    for mf in args.exclude_manifest:
+        with open(mf, encoding="utf-8") as fh:
+            prior = json.load(fh)["repos"]
+        excluded |= {e["repo"].lower() for e in prior}
+        print(f"Excluding {len(prior)} more from {os.path.basename(mf)}.")
+    if args.require_r03:
+        print("Stratifying: only repositories that disable verification are kept.")
+    print()
 
     print("Discovering candidates...")
     candidates = gh_code_search(args.per_query)
@@ -207,14 +308,14 @@ def main():
         seen.add(key)
         ordered.append(name)
 
-    print(f"\n{len(ordered)} unique candidates not in the original study.")
-    os.makedirs(OUT_DIR, exist_ok=True)
+    print(f"\n{len(ordered)} unique candidates not already used.")
+    os.makedirs(out_dir, exist_ok=True)
 
-    kept, rejected = [], 0
+    kept, rejected, no_r03, libs = [], 0, 0, 0
     for name in ordered:
         if len(kept) >= args.target:
             break
-        dest = os.path.join(OUT_DIR, name.replace("/", "__"))
+        dest = os.path.join(out_dir, name.replace("/", "__"))
         if os.path.exists(dest):
             continue
         sha = clone(name, dest)
@@ -224,25 +325,42 @@ def main():
             shutil.rmtree(dest, ignore_errors=True)
             rejected += 1
             continue
+        if args.exclude_libraries and is_jwt_library(dest):
+            shutil.rmtree(dest, ignore_errors=True)
+            libs += 1
+            continue
+        if args.require_r03 and not disables_verification(dest):
+            shutil.rmtree(dest, ignore_errors=True)
+            no_r03 += 1
+            continue
         kept.append({"repo": name, "commit": sha,
                      "path": os.path.relpath(dest, ROOT).replace("\\", "/")})
         print(f"  [{len(kept):2}/{args.target}] {name}  @ {sha[:10]}")
 
-    with open(MANIFEST, "w", encoding="utf-8") as fh:
+    criterion = f"repository contains one of {list(MARKERS)}"
+    if args.require_r03:
+        criterion += (" AND disables signature verification somewhere "
+                      f"(one of {list(VERIFY_DISABLED_MARKERS)})")
+    with open(manifest_path, "w", encoding="utf-8") as fh:
         json.dump({
-            "purpose": "held-out validation set for the Chapter 5 precision study",
+            "purpose": ("R03-stratified validation set" if args.require_r03
+                        else "held-out validation set for the Chapter 5 precision study"),
             "discovery_channel": channel,
-            "inclusion_criterion": f"repository contains one of {list(MARKERS)}",
-            "excluded_from": "benchmark/real_world_repos.txt (the original 96)",
+            "inclusion_criterion": criterion,
+            "excluded_from": ["benchmark/real_world_repos.txt (the original 96)"]
+                             + args.exclude_manifest,
             "count": len(kept),
             "repos": kept,
         }, fh, indent=2)
 
-    print(f"\nKept {len(kept)} repositories; rejected {rejected} with no PyJWT usage.")
-    print(f"Cloned into : {OUT_DIR}")
-    print(f"Manifest    : {MANIFEST}")
+    print(f"\nKept {len(kept)}; rejected {rejected} with no PyJWT usage"
+          + (f"; {no_r03} had PyJWT but never disable verification" if args.require_r03 else "")
+          + (f"; {libs} were JWT/auth libraries rather than applications" if args.exclude_libraries else "")
+          + ".")
+    print(f"Cloned into : {out_dir}")
+    print(f"Manifest    : {manifest_path}")
     print("\nScan them with:")
-    print("  python -m jwtcheck.cli scan heldout_targets --exclude-tests")
+    print(f"  python benchmark/run_real_world.py --manifest {manifest_path} --out benchmark/third")
 
 
 if __name__ == "__main__":

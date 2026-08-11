@@ -1,0 +1,36 @@
+HIGH R07 MissingExpClaim
+  evidence_archive\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:5:14
+    encoded = jwt.encode({'some': 'payload'}, None, algorithm='none')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  evidence_archive\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  evidence_archive\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:15:14
+    encoded = jwt.encode({'some': 'payload'}, secret_key, algorithm='HS256')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+Summary — 5 finding(s): CRITICAL: 1, HIGH: 2, MEDIUM: 2

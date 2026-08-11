@@ -1,0 +1,1625 @@
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:40:12
+    token = jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:46:23
+    decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:46:23
+    decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:46:23
+    decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\Cybercommand-inc__webapp-vuln\31\jwt\app.py:21:18
+    decoded = jwt.decode(token, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\Cybercommand-inc__webapp-vuln\31\jwt\app.py:34:18
+    decoded = jwt.decode(token, key=None, algorithms=["none"], options={"verify_signature": False})
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\Cybercommand-inc__webapp-vuln\31\jwt\app.py:34:18
+    decoded = jwt.decode(token, key=None, algorithms=["none"], options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\Cybercommand-inc__webapp-vuln\31\jwt\app.py:45:18
+    decoded = jwt.decode(token, key=SECRET_KEY, algorithms=["HS256"])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\Cybercommand-inc__webapp-vuln\31\jwt\app.py:45:18
+    decoded = jwt.decode(token, key=SECRET_KEY, algorithms=["HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\Cybercommand-inc__webapp-vuln\31\jwt\app.py:45:18
+    decoded = jwt.decode(token, key=SECRET_KEY, algorithms=["HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\DrunkenCloud__bba_labs\18.py:34:16
+    token = jwt.encode(payload, SECRET, algorithm="HS256")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\DrunkenCloud__bba_labs\18.py:43:18
+    decoded = jwt.decode(token, SECRET, algorithms=["HS256"])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\DrunkenCloud__bba_labs\18.py:43:18
+    decoded = jwt.decode(token, SECRET, algorithms=["HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\DrunkenCloud__bba_labs\18.py:43:18
+    decoded = jwt.decode(token, SECRET, algorithms=["HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\GOFONCK__ProxyPanel\panel_server.py:574:19
+    data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\GOFONCK__ProxyPanel\panel_server.py:574:19
+    data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\GOFONCK__ProxyPanel\panel_server.py:574:19
+    data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\GOFONCK__ProxyPanel\panel_server.py:604:12
+    token = jwt.encode(payload, JWT_SECRET, algorithm='HS256')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\GOFONCK__ProxyPanel\sss.py:547:19
+    data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\GOFONCK__ProxyPanel\sss.py:547:19
+    data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\GOFONCK__ProxyPanel\sss.py:547:19
+    data = jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\GOFONCK__ProxyPanel\sss.py:575:16
+    token = jwt.encode(payload, JWT_SECRET, algorithm='HS256')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\IceWizard4902__VulnJWT\attack_poc\jku_evil.py:42:12
+    token = jwt.encode({"admin": "true", "iat": int(time.time())}, PRIV_KEY, algorithm="RS256", headers={"jku": "http://localhost:5001/public_keys.json", "kid": "i4Z87WkRf0Vxjg93Sr3OR609JxrjMTIp4qJXHzw2aGs"})
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\IceWizard4902__VulnJWT\attack_poc\jku_evil.py:42:12
+    token = jwt.encode({"admin": "true", "iat": int(time.time())}, PRIV_KEY, algorithm="RS256", headers={"jku": "http://localhost:5001/public_keys.json", "kid": "i4Z87WkRf0Vxjg93Sr3OR609JxrjMTIp4qJXHzw2aGs"})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\IceWizard4902__VulnJWT\attack_poc\kid_evil.py:42:12
+    token = jwt.encode({"admin": "true", "iat": int(time.time())}, PRIV_KEY, algorithm="RS256", headers={"kid": "http://localhost:5003/kid/priv.key"})
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\IceWizard4902__VulnJWT\attack_poc\kid_evil.py:42:12
+    token = jwt.encode({"admin": "true", "iat": int(time.time())}, PRIV_KEY, algorithm="RS256", headers={"kid": "http://localhost:5003/kid/priv.key"})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\IceWizard4902__VulnJWT\attack_poc\kid_evil.py:47:12
+    token = jwt.encode({"admin": "true", "iat": int(time.time())}, "", algorithm="HS256", headers={"kid": "./nul"})
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\IceWizard4902__VulnJWT\attack_poc\kid_evil.py:47:12
+    token = jwt.encode({"admin": "true", "iat": int(time.time())}, "", algorithm="HS256", headers={"kid": "./nul"})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\IceWizard4902__VulnJWT\jku.py:38:11
+    return jwt.encode({"username": username, "admin": "false", "iat": int(time.time())}, PRIV_KEY, algorithm="RS256", headers={"jku": "http://localhost:5000/public_keys.json", "kid": "Nzv4oc46mMpaVnzKHKzTmh2Ajip_ITEGZLoGCbkZBIg"})
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\IceWizard4902__VulnJWT\jku.py:38:11
+    return jwt.encode({"username": username, "admin": "false", "iat": int(time.time())}, PRIV_KEY, algorithm="RS256", headers={"jku": "http://localhost:5000/public_keys.json", "kid": "Nzv4oc46mMpaVnzKHKzTmh2Ajip_ITEGZLoGCbkZBIg"})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\IceWizard4902__VulnJWT\jku.py:45:15
+    data = jwt.decode(token, pub_key.key, algorithms=["RS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\IceWizard4902__VulnJWT\jku.py:45:15
+    data = jwt.decode(token, pub_key.key, algorithms=["RS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\IceWizard4902__VulnJWT\jwk.py:28:11
+    return jwt.encode({"username": username, "admin": "false", "iat": int(time.time())}, signing_key, algorithm="RS256", headers={"jwk": pub_key})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\IceWizard4902__VulnJWT\jwk.py:34:15
+    data = jwt.decode(token, signing_key.key, algorithms=["RS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\IceWizard4902__VulnJWT\jwk.py:34:15
+    data = jwt.decode(token, signing_key.key, algorithms=["RS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\IceWizard4902__VulnJWT\kid.py:9:11
+    return jwt.encode({"username": username, "admin": "false", "iat": int(time.time())}, H256KEY, algorithm="HS256", headers={"kid": "./secret/kid_key.txt"})
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\IceWizard4902__VulnJWT\kid.py:9:11
+    return jwt.encode({"username": username, "admin": "false", "iat": int(time.time())}, H256KEY, algorithm="HS256", headers={"kid": "./secret/kid_key.txt"})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\IceWizard4902__VulnJWT\kid.py:19:15
+    data = jwt.decode(token, key, algorithms=["HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\IceWizard4902__VulnJWT\kid.py:19:15
+    data = jwt.decode(token, key, algorithms=["HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\LeoooDias__botchat-oss\backend\app\auth.py:476:18
+    payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\LeoooDias__botchat-oss\backend\app\auth.py:476:18
+    payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\LeoooDias__botchat-oss\backend\app\auth.py:686:21
+    claims = jwt.decode(id_token, options={"verify_signature": False}, algorithms=["RS256", "HS256"])
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\LeoooDias__botchat-oss\backend\app\auth.py:686:21
+    claims = jwt.decode(id_token, options={"verify_signature": False}, algorithms=["RS256", "HS256"])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\LeoooDias__botchat-oss\backend\app\auth.py:771:21
+    claims = jwt.decode(received_id_token, options={"verify_signature": False}, algorithms=["RS256", "HS256"])
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\LeoooDias__botchat-oss\backend\app\auth.py:771:21
+    claims = jwt.decode(received_id_token, options={"verify_signature": False}, algorithms=["RS256", "HS256"])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\OlegEV__meeting-processor\debug_jwt.py:28:12
+    token = jwt.encode(payload, key='', algorithm='none')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\OlegEV__meeting-processor\debug_jwt.py:39:29
+    decoded_unverified = jwt.decode(token, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  rule_demo_corpus\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\OlegEV__meeting-processor\debug_jwt.py:106:20
+    expired_token = jwt.encode(expired_payload, key='', algorithm='none')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:69:15
+    user = jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:69:15
+    user = jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:69:15
+    user = jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:103:13
+    user=jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:103:13
+    user=jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:103:13
+    user=jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:121:13
+    user=jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:121:13
+    user=jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\dl.py:121:13
+    user=jwt.decode(token.encode(), app.jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\Oskarovsky__OskarroApp\resizer.py:24:14
+    msg = jwt.decode(body, jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\Oskarovsky__OskarroApp\resizer.py:24:14
+    msg = jwt.decode(body, jwt_secret_key, algorithm='HS256')
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\resizer.py:24:14
+    msg = jwt.decode(body, jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\Oskarovsky__OskarroApp\resizer.py:24:14
+    msg = jwt.decode(body, jwt_secret_key, algorithm='HS256')
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\RootCauseScan__Rules\python\examples\jwt-none-alg.py:5:14
+    encoded = jwt.encode({'some': 'payload'}, None, algorithm='none')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\RootCauseScan__Rules\python\examples\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\RootCauseScan__Rules\python\examples\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\RootCauseScan__Rules\python\examples\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\RootCauseScan__Rules\python\examples\jwt-none-alg.py:15:14
+    encoded = jwt.encode({'some': 'payload'}, secret_key, algorithm='HS256')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\Shreyas-135__CODEGLIA\semgrep-rules\python\jwt\security\jwt-none-alg.py:5:14
+    encoded = jwt.encode({'some': 'payload'}, None, algorithm='none')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\Shreyas-135__CODEGLIA\semgrep-rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\Shreyas-135__CODEGLIA\semgrep-rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\Shreyas-135__CODEGLIA\semgrep-rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\Shreyas-135__CODEGLIA\semgrep-rules\python\jwt\security\jwt-none-alg.py:15:14
+    encoded = jwt.encode({'some': 'payload'}, secret_key, algorithm='HS256')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:158:17
+    claims = jwt.decode(token, signing_key.key, **decode_kwargs)
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:158:17
+    claims = jwt.decode(token, signing_key.key, **decode_kwargs)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:158:17
+    claims = jwt.decode(token, signing_key.key, **decode_kwargs)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:255:21
+    unverified = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:255:21
+    unverified = jwt.decode(
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\Vulnetix__sast-rule-evals\jwt\vnx-jwt-004\jwt_none_alg.py:6:12
+    token = jwt.encode(payload, "", algorithm="none")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\Vulnetix__sast-rule-evals\jwt\vnx-jwt-004\jwt_none_alg.py:11:11
+    return jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\Vulnetix__sast-rule-evals\jwt\vnx-jwt-004\jwt_none_alg.py:11:11
+    return jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:4:8
+    token = jwt.encode({"user": "admin"}, key="", algorithm="none")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:4:8
+    token = jwt.encode({"user": "admin"}, key="", algorithm="none")
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:5:10
+    decoded = jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:5:10
+    decoded = jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\aleiepure__devtoolbox\src\services\jwt_decoder.py:51:26
+    return json.dumps(jwt.decode(token, options={"verify_signature": False}), indent=4, ensure_ascii=False)
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  rule_demo_corpus\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\backslash-security-tests__demidov-small-test\bad.py:182:21
+    cookie = jwt.encode(payload, 'csrf_vulneribility', algorithm='HS256')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\backslash-security-tests__demidov-small-test\bad.py:195:22
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\backslash-security-tests__demidov-small-test\bad.py:195:22
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\backslash-security-tests__demidov-small-test\bad.py:195:22
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\backslash-security-tests__demidov-small-test\bad.py:207:18
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\backslash-security-tests__demidov-small-test\bad.py:207:18
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\backslash-security-tests__demidov-small-test\bad.py:207:18
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:5:14
+    encoded = jwt.encode({'some': 'payload'}, None, algorithm='none')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\bumahkib7__qryon\crates\rules\rules\python\jwt\security\jwt-none-alg.py:15:14
+    encoded = jwt.encode({'some': 'payload'}, secret_key, algorithm='HS256')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\dacoburn__basics-test\custom_rules\python\jwt\security\jwt-none-alg.py:5:14
+    encoded = jwt.encode({'some': 'payload'}, None, algorithm='none')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\dacoburn__basics-test\custom_rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\dacoburn__basics-test\custom_rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\dacoburn__basics-test\custom_rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\dacoburn__basics-test\custom_rules\python\jwt\security\jwt-none-alg.py:15:14
+    encoded = jwt.encode({'some': 'payload'}, secret_key, algorithm='HS256')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R11 IssuerVerificationDisabled
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:77:30
+    payload = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:77:30
+    payload = jwt.decode(
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:161:30
+    payload = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:161:30
+    payload = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:161:30
+    payload = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:243:34
+    payload = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:243:34
+    payload = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:243:34
+    payload = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:36:22
+    payload = jwt.decode(
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:36:22
+    payload = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:36:22
+    payload = jwt.decode(
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:36:22
+    payload = jwt.decode(
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:74:22
+    payload = jwt.decode(
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:74:22
+    payload = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:74:22
+    payload = jwt.decode(
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\eastmoon1117__JKerCloudMonitor\auth\__init__.py:74:22
+    payload = jwt.decode(
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\emilyhorsman__socialauth\app.py:25:10
+    res = jwt.decode(request.cookies.get('jwt'), current_app.secret_key)
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\emilyhorsman__socialauth\app.py:25:10
+    res = jwt.decode(request.cookies.get('jwt'), current_app.secret_key)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\emilyhorsman__socialauth\app.py:25:10
+    res = jwt.decode(request.cookies.get('jwt'), current_app.secret_key)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\emilyhorsman__socialauth\app.py:51:16
+    token = jwt.encode(
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\emilyhorsman__socialauth\socialauth\providers\twitter.py:59:22
+    payload = jwt.decode(self.token_cookie,
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\emilyhorsman__socialauth\socialauth\providers\twitter.py:59:22
+    payload = jwt.decode(self.token_cookie,
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\emilyhorsman__socialauth\socialauth\providers\twitter.py:59:22
+    payload = jwt.decode(self.token_cookie,
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\emilyhorsman__socialauth\socialauth\providers\twitter.py:115:32
+    self.set_token_cookie = jwt.encode(payload,
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:109:16
+    token = jwt.encode({ 'data': { 'type': 'foobar' } }, 'sekret').decode('utf-8')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:109:16
+    token = jwt.encode({ 'data': { 'type': 'foobar' } }, 'sekret').decode('utf-8')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:116:16
+    token = jwt.encode({ 'data': { 'type': 'foobar' } }, 'invalid secret').decode('utf-8')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:116:16
+    token = jwt.encode({ 'data': { 'type': 'foobar' } }, 'invalid secret').decode('utf-8')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:123:16
+    token = jwt.encode({ 'data': { 'type': 'oauth_token_secret', 'id': 'foo' } }, 'sekret')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:123:16
+    token = jwt.encode({ 'data': { 'type': 'oauth_token_secret', 'id': 'foo' } }, 'sekret')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:137:16
+    token = jwt.encode({ 'data': { 'type': 'oauth_token_secret', 'id': 'foo' } }, 'sekret')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:137:16
+    token = jwt.encode({ 'data': { 'type': 'oauth_token_secret', 'id': 'foo' } }, 'sekret')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:158:18
+    payload = jwt.decode(res['set_token_cookie'], 'sekret', algorithm = 'HS256')
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:158:18
+    payload = jwt.decode(res['set_token_cookie'], 'sekret', algorithm = 'HS256')
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:158:18
+    payload = jwt.decode(res['set_token_cookie'], 'sekret', algorithm = 'HS256')
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\emilyhorsman__socialauth\tests.py:158:18
+    payload = jwt.decode(res['set_token_cookie'], 'sekret', algorithm = 'HS256')
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:112:18
+    payload = jwt.decode(token, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:146:16
+    token = jwt.encode(payload, RSA_PRIVATE, algorithm="RS256")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:176:18
+    payload = jwt.decode(token, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:195:12
+    token = jwt.encode(payload, RSA_PRIVATE, algorithm="RS256")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:226:18
+    payload = jwt.decode(token, SECRET, algorithms=["HS256", "RS256"])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:226:18
+    payload = jwt.decode(token, SECRET, algorithms=["HS256", "RS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:226:18
+    payload = jwt.decode(token, SECRET, algorithms=["HS256", "RS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+MEDIUM R15 AlgorithmNotPinnedEnvSecret
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:226:18
+    payload = jwt.decode(token, SECRET, algorithms=["HS256", "RS256"])
+  The verification key comes from os.environ but the algorithms list accepts more than one algorithm, so one key is used with several (RFC 8725 s3.1).
+  Weakness: CWE-757
+  Fix: Pin algorithms to the single expected algorithm; RFC 8725 s3.1 requires each key to be used with exactly one algorithm.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:305:18
+    payload = jwt.decode(token, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:343:18
+    payload = jwt.decode(token, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\hieudzpro2k10-svg__Pentest-API\vulnerable_server.py:415:18
+    sub = jwt.decode(auth, options={"verify_signature": False}).get("sub")
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:17:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:17:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:26:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm, options={"verify_exp": False})
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:26:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm, options={"verify_exp": False})
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:26:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm, options={"verify_exp": False})
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:34:9
+    return jwt.decode(jwsSignedTokenReceived, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\maxdiegoduron__Measurement-Hub\src\components\get_user.py:30:18
+    payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\maxdiegoduron__Measurement-Hub\src\components\get_user.py:30:18
+    payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+MEDIUM R12 ExcessiveLeeway
+  rule_demo_corpus\maxdiegoduron__Measurement-Hub\src\components\get_user.py:30:18
+    payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)
+  The leeway argument to jwt.decode() exceeds 300 seconds, widening the window in which an expired token is still accepted.
+  Weakness: CWE-613
+  Fix: Reduce leeway to at most 300 seconds, and prefer NTP clock synchronisation over a wide tolerance.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\maxdiegoduron__Measurement-Hub\utils\st_utils.py:855:18
+    payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\maxdiegoduron__Measurement-Hub\utils\st_utils.py:855:18
+    payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+MEDIUM R12 ExcessiveLeeway
+  rule_demo_corpus\maxdiegoduron__Measurement-Hub\utils\st_utils.py:855:18
+    payload = jwt.decode(encoded_jwt, pub_key, algorithms=['ES256'], leeway=3600)
+  The leeway argument to jwt.decode() exceeds 300 seconds, widening the window in which an expired token is still accepted.
+  Weakness: CWE-613
+  Fix: Reduce leeway to at most 300 seconds, and prefer NTP clock synchronisation over a wide tolerance.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:199:20
+    encodedCookie = jwt.encode(cookieData, pr_key, algorithm="RS256")
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:278:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:278:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:278:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:337:24
+    encodedCookie = jwt.encode(cookieData, pr_key, algorithm="RS256")
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:379:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:379:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:379:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\authentication.py:404:20
+    encodedCookie = jwt.encode(cookieData, pr_key, algorithm="RS256")
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\projects.py:125:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\projects.py:125:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\nfdi4plants__arcmanager_backend\app\api\endpoints\projects.py:125:23
+    decodedToken = jwt.decode(data, public_key, algorithms=["RS256", "HS256"])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R10 ExcessiveTokenLifetime
+  rule_demo_corpus\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:65:17
+    auth_token = jwt.encode({
+  A payload sets exp and iat as integer literals whose difference exceeds 86400 seconds (24 hours).
+  Weakness: CWE-613
+  Fix: Reduce the token lifetime; prefer short-lived access tokens with refresh tokens.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:111:9
+    id = jwt.decode(auth, get_secret())['sub']
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:111:9
+    id = jwt.decode(auth, get_secret())['sub']
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:111:9
+    id = jwt.decode(auth, get_secret())['sub']
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R14 RsaKeyAsStringLiteral
+  rule_demo_corpus\sajjadium__ctf-archives\ctfs\TBTL\2024\misc\Your_papers_please\server.py:38:11
+    return jwt.decode(token, algorithms=[alg], key=PUBLIC_KEY)
+  PEM key material is inlined in jwt.decode() as a string literal rather than loaded from a file or key store.
+  Weakness: CWE-321
+  Fix: Load PEM key material from a file or key store so it can be rotated without a code change.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\sajjadium__ctf-archives\ctfs\TBTL\2024\misc\Your_papers_please\server.py:38:11
+    return jwt.decode(token, algorithms=[alg], key=PUBLIC_KEY)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\sajjadium__ctf-archives\ctfs\TBTL\2024\misc\Your_papers_please\server.py:38:11
+    return jwt.decode(token, algorithms=[alg], key=PUBLIC_KEY)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:14:12
+    token = jwt.encode({"username": f"guest_{random.randint(1,10000)}"}, priv_key, algorithm='RS256', headers={'pubkey': 'public.pem'})
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:26:15
+    return jwt.decode(token, pub_key, algorithms=['RS256', 'HS256'])
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:26:15
+    return jwt.decode(token, pub_key, algorithms=['RS256', 'HS256'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\sajjadium__ctf-archives\ctfs\idekCTF\2021\web\saas\util.py:26:15
+    return jwt.decode(token, pub_key, algorithms=['RS256', 'HS256'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\semgrep__semgrep-rules\python\jwt\security\jwt-none-alg.py:5:14
+    encoded = jwt.encode({'some': 'payload'}, None, algorithm='none')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\semgrep__semgrep-rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\semgrep__semgrep-rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\semgrep__semgrep-rules\python\jwt\security\jwt-none-alg.py:10:4
+    jwt.decode(encoded, None, algorithms=['none'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\semgrep__semgrep-rules\python\jwt\security\jwt-none-alg.py:15:14
+    encoded = jwt.encode({'some': 'payload'}, secret_key, algorithm='HS256')
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\senrishi__DeltaForce_Sysad_Task3\task3b\JWT Web App\jwt_webapp.py:24:22
+    encoded = jwt.encode({"username": "notAdmin", "isAdmin": True},key="", algorithm="none")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\senrishi__DeltaForce_Sysad_Task3\task3b\JWT Web App\jwt_webapp.py:24:22
+    encoded = jwt.encode({"username": "notAdmin", "isAdmin": True},key="", algorithm="none")
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\senrishi__DeltaForce_Sysad_Task3\task3b\JWT Web App\jwt_webapp.py:30:22
+    encoded = jwt.encode({"username": f"{user}", "isAdmin": False}, key="",algorithm="none")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\senrishi__DeltaForce_Sysad_Task3\task3b\JWT Web App\jwt_webapp.py:30:22
+    encoded = jwt.encode({"username": f"{user}", "isAdmin": False}, key="",algorithm="none")
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\senrishi__DeltaForce_Sysad_Task3\task3b\JWT Web App\jwt_webapp.py:42:22
+    decoded = jwt.decode(token, key="", algorithms=["none"], options={"verify_signature": False})
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\senrishi__DeltaForce_Sysad_Task3\task3b\JWT Web App\jwt_webapp.py:42:22
+    decoded = jwt.decode(token, key="", algorithms=["none"], options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\senrishi__DeltaForce_Sysad_Task3\task3b\JWT Web App\jwt_webapp.py:42:22
+    decoded = jwt.decode(token, key="", algorithms=["none"], options={"verify_signature": False})
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:198:15
+    return jwt.encode({
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:214:16
+    token = jwt.encode({
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:221:15
+    json = jwt.decode(token, self.get_secret())
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:221:15
+    json = jwt.decode(token, self.get_secret())
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:221:15
+    json = jwt.decode(token, self.get_secret())
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:227:19
+    json = jwt.decode(token, self.get_secret())
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:227:19
+    json = jwt.decode(token, self.get_secret())
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\ticketfrei__ticketfrei\db.py:227:19
+    json = jwt.decode(token, self.get_secret())
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\ticketfrei__ticketfrei\user.py:65:15
+    return jwt.encode({
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:321:18
+    payload = jwt.decode(
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:321:18
+    payload = jwt.decode(
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:321:18
+    payload = jwt.decode(
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:331:22
+    payload = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:331:22
+    payload = jwt.decode(
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:331:22
+    payload = jwt.decode(
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:331:22
+    payload = jwt.decode(
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:351:18
+    raw = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:351:18
+    raw = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:351:18
+    raw = jwt.decode(
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+HIGH R06 HardcodedSecretDecode
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:351:18
+    raw = jwt.decode(
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R03 SignatureVerificationDisabled
+  rule_demo_corpus\valginer0__PGVectorRAGIndexer\license.py:575:22
+    payload = jwt.decode(key_string, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+HIGH R05 HardcodedSecretEncode
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:16:14
+    print(jwt.encode(jsonData, key="", algorithm=algo))
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:16:14
+    print(jwt.encode(jsonData, key="", algorithm=algo))
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R07 MissingExpClaim
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:19:14
+    print(jwt.encode(jsonData, secret, algorithm=algo))
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:25:14
+    print(jwt.decode(jwtToken, algorithms=['none']))
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:25:14
+    print(jwt.decode(jwtToken, algorithms=['none']))
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:25:14
+    print(jwt.decode(jwtToken, algorithms=['none']))
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+MEDIUM R08 MissingAudienceValidation
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:42:26
+    print(jwt.decode(jwtToken, secret.encode(),
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  rule_demo_corpus\viralvaghela__hack_jwt\hack_jwt.py:42:26
+    print(jwt.decode(jwtToken, secret.encode(),
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+Summary — 232 finding(s): CRITICAL: 69, HIGH: 71, MEDIUM: 92

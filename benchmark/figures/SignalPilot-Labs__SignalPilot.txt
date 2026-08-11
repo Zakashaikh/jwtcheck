@@ -1,0 +1,36 @@
+CRITICAL R01 MissingAlgorithmsParameter
+  evidence_archive\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:158:17
+    claims = jwt.decode(token, signing_key.key, **decode_kwargs)
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:158:17
+    claims = jwt.decode(token, signing_key.key, **decode_kwargs)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:158:17
+    claims = jwt.decode(token, signing_key.key, **decode_kwargs)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:255:21
+    unverified = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R04 AlgorithmConfusionHsRs
+  evidence_archive\SignalPilot-Labs__SignalPilot\signalpilot\gateway\gateway\auth\user.py:255:21
+    unverified = jwt.decode(
+  The algorithms list contains both an HMAC variant and an RSA/ECDSA variant, enabling key-confusion attacks.
+  Weakness: CWE-327
+  Fix: Pin a single algorithm family; never allow HMAC and asymmetric algorithms together.
+
+Summary — 5 finding(s): CRITICAL: 3, MEDIUM: 2

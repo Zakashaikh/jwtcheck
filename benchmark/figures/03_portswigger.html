@@ -1,0 +1,43 @@
+<meta charset='utf-8'>
+<style>
+:root { color-scheme: dark; }
+body { margin:0; background:#12141a; display:inline-block;
+       font-family:'Cascadia Mono','Consolas',monospace; }
+.term { display:inline-block; min-width:1100px; margin:0; background:#1b1e27; border-radius:10px;
+        box-shadow:0 10px 40px rgba(0,0,0,.6); overflow:hidden; }
+.bar  { background:#2a2e3a; padding:9px 14px; display:flex; align-items:center; gap:8px; }
+.dot  { width:12px; height:12px; border-radius:50%; }
+.t    { color:#9aa4bf; font-size:12.5px; margin-left:10px; letter-spacing:.02em; }
+pre   { margin:0; padding:18px 20px; color:#d6dbe8; font-size:13.5px; line-height:1.5;
+        white-space:pre; }
+.cmd  { color:#6ee7a8; }
+.crit { color:#ff6b6b; font-weight:700; }
+.high { color:#ff9f5a; font-weight:700; }
+.med  { color:#ffd166; font-weight:700; }
+.pass { color:#6ee7a8; font-weight:700; }
+.na   { color:#7c869e; }
+.rule { color:#8ab4ff; font-weight:700; }
+.dim  { color:#7c869e; }
+.sum  { color:#ffffff; font-weight:700; }
+</style>
+<div class='term'>
+  <div class='bar'><span class='dot' style='background:#ff5f57'></span><span class='dot' style='background:#febc2e'></span><span class='dot' style='background:#28c840'></span><span class='t'>PortSwigger JWT laboratory classes</span></div>
+<pre><span class='cmd'>$ python benchmark/portswigger_eval.py</span>
+
+============================================================
+RQ3 — PortSwigger JWT lab classes
+============================================================
+  [<span class="na">n/a </span>] 1. Auth bypass via unverified signature
+  [<span class="pass">PASS</span>] 2. Auth bypass via flawed signature verification (none)
+  [<span class="pass">PASS</span>] 3. Auth bypass via weak signing key
+  [<span class="pass">PASS</span>] 4. JWK header injection
+  [<span class="pass">PASS</span>] 5. JKU header injection
+  [<span class="pass">PASS</span>] 6. kid header path traversal
+  [<span class="na">n/a </span>] 7. Algorithm confusion (RS-&gt;HS)
+  [<span class="pass">PASS</span>] 8. kid header SQL injection
+------------------------------------------------------------
+<span class="sum">Overall surfaced       : 6/8</span>
+<span class="sum">Token-detectable hits  : 6/6</span>
+
+Written: benchmark/portswigger_results.md / .json</pre>
+</div>

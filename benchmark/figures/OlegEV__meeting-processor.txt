@@ -1,0 +1,50 @@
+HIGH R05 HardcodedSecretEncode
+  evidence_archive\OlegEV__meeting-processor\debug_jwt.py:28:12
+    token = jwt.encode(payload, key='', algorithm='none')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\OlegEV__meeting-processor\debug_jwt.py:39:29
+    decoded_unverified = jwt.decode(token, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  evidence_archive\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  evidence_archive\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+HIGH R06 HardcodedSecretDecode
+  evidence_archive\OlegEV__meeting-processor\debug_jwt.py:53:31
+    decoded_verified = jwt.decode(
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R05 HardcodedSecretEncode
+  evidence_archive\OlegEV__meeting-processor\debug_jwt.py:106:20
+    expired_token = jwt.encode(expired_payload, key='', algorithm='none')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+Summary — 7 finding(s): CRITICAL: 4, HIGH: 3

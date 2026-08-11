@@ -1,0 +1,80 @@
+{
+  "purpose": "R03-stratified application sample (curated)",
+  "discovery_channel": "unauthenticated repository search + local marker filter",
+  "inclusion_criterion": "repository contains one of ['jwt.decode', 'jwt.encode', 'from jwt import', 'PyJWKClient'] AND disables signature verification somewhere (one of ['\"verify_signature\": False', \"'verify_signature': False\", '\"verify_signature\":False', \"'verify_signature':False\", 'verify=False', 'verify = False'])",
+  "excluded_from": [
+    "benchmark/real_world_repos.txt (the original 96)",
+    "benchmark/heldout_repos.json"
+  ],
+  "count": 11,
+  "repos": [
+    {
+      "repo": "OPSKP/PyJWT",
+      "commit": "13ded9e963171afe5f49e337b87d98399abeb3a7",
+      "path": "third_targets_apps/OPSKP__PyJWT"
+    },
+    {
+      "repo": "alexfofanov/rbac-service",
+      "commit": "f6adef12933b29d08ca1f7e3b50d86aa9c1c352e",
+      "path": "third_targets_apps/alexfofanov__rbac-service"
+    },
+    {
+      "repo": "PradeepMalineni/PYJWT",
+      "commit": "0023edae322d4f4b3466cc9262126dc5253544b8",
+      "path": "third_targets_apps/PradeepMalineni__PYJWT"
+    },
+    {
+      "repo": "L7R4/cmc_api",
+      "commit": "3334d3c31e2ed7b83699669877b5814a91c2b382",
+      "path": "third_targets_apps/L7R4__cmc_api"
+    },
+    {
+      "repo": "zaka265-star/MyTaskly-mcp",
+      "commit": "a33824b9ddb14922c75ce4725af750da3a7a092a",
+      "path": "third_targets_apps/zaka265-star__MyTaskly-mcp"
+    },
+    {
+      "repo": "hkcoder18/2026-May-01",
+      "commit": "cedc1885dd356bb34908c6aa11018523e5b02b66",
+      "path": "third_targets_apps/hkcoder18__2026-May-01"
+    },
+    {
+      "repo": "Lafabio/planosc-backend-kiwify",
+      "commit": "34c3c36a6ae861f80118c7b81b9f8e6dafffb744",
+      "path": "third_targets_apps/Lafabio__planosc-backend-kiwify"
+    },
+    {
+      "repo": "wuhonglei/chat-agent",
+      "commit": "4989857f1b01bec540a55eadf79da4a84132c469",
+      "path": "third_targets_apps/wuhonglei__chat-agent"
+    },
+    {
+      "repo": "Writeup-DB/JWT-101-Lab",
+      "commit": "833ea50768772254be87fee06a73aeb2bfaf2a58",
+      "path": "third_targets_apps/Writeup-DB__JWT-101-Lab"
+    },
+    {
+      "repo": "tatiane-ss/backend-challenge-tssgaec",
+      "commit": "ecc4a43e64ca68dab6d387b7d3657ee94943e721",
+      "path": "third_targets_apps/tatiane-ss__backend-challenge-tssgaec"
+    },
+    {
+      "repo": "shiladityamajumder/healthcare-auth-service",
+      "commit": "09c70aabbfac1bc9b1973a8dcf6b3474119f3109",
+      "path": "third_targets_apps/shiladityamajumder__healthcare-auth-service"
+    }
+  ],
+  "manual_exclusions": {
+    "descope/python-sdk": "vendor authentication SDK, not an application",
+    "usestapel/stapel-auth": "packaged auth component",
+    "usestapel/stapel-core": "packaged core library",
+    "merixstudio/django-trench": "Django 2FA library",
+    "mano8/fa-auth-m8": "reusable FastAPI auth microservice package",
+    "dperezcabrera/pico-auth": "packaged auth library",
+    "mano8/security-tests-m8": "security-testing package",
+    "scifeks/voorhees": "JWT inspection REPL - tool, not application",
+    "laisfgzz/validador_JWT_local": "local JWT validator - tool, not application",
+    "IBM/mcp-context-forge": "federating gateway/infrastructure (author decision)"
+  },
+  "curation_note": "Automated filters removed PyJWT forks and packaged JWT/auth libraries. The entries above were removed on manual review, which the automated filter could not classify. A deliberately vulnerable teaching lab (Writeup-DB/JWT-101-Lab) and a coding-challenge submission (tatiane-ss/backend-challenge-tssgaec) were deliberately RETAINED as genuine third-party code."
+}

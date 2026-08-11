@@ -1,0 +1,50 @@
+HIGH R05 HardcodedSecretEncode
+  evidence_archive\Vulnetix__sast-rule-evals\jwt\vnx-jwt-004\jwt_none_alg.py:6:12
+    token = jwt.encode(payload, "", algorithm="none")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  evidence_archive\Vulnetix__sast-rule-evals\jwt\vnx-jwt-004\jwt_none_alg.py:11:11
+    return jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\Vulnetix__sast-rule-evals\jwt\vnx-jwt-004\jwt_none_alg.py:11:11
+    return jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+HIGH R05 HardcodedSecretEncode
+  evidence_archive\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:4:8
+    token = jwt.encode({"user": "admin"}, key="", algorithm="none")
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  evidence_archive\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:4:8
+    token = jwt.encode({"user": "admin"}, key="", algorithm="none")
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  evidence_archive\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:5:10
+    decoded = jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\Vulnetix__sast-rule-evals\secrets\vnx-sec-015\jwt_none.py:5:10
+    decoded = jwt.decode(token, options={"verify_signature": False}, algorithms=["none"])
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+Summary — 7 finding(s): CRITICAL: 4, HIGH: 3

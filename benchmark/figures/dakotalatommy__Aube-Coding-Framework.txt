@@ -1,0 +1,57 @@
+CRITICAL R11 IssuerVerificationDisabled
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:77:30
+    payload = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:77:30
+    payload = jwt.decode(
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:161:30
+    payload = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:161:30
+    payload = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:161:30
+    payload = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:243:34
+    payload = jwt.decode(
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:243:34
+    payload = jwt.decode(
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  evidence_archive\dakotalatommy__Aube-Coding-Framework\src\backend\app\auth.py:243:34
+    payload = jwt.decode(
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+Summary — 8 finding(s): CRITICAL: 7, MEDIUM: 1

@@ -1,0 +1,58 @@
+<meta charset='utf-8'>
+<style>
+:root { color-scheme: dark; }
+body { margin:0; background:#12141a; display:inline-block;
+       font-family:'Cascadia Mono','Consolas',monospace; }
+.term { display:inline-block; min-width:1100px; margin:0; background:#1b1e27; border-radius:10px;
+        box-shadow:0 10px 40px rgba(0,0,0,.6); overflow:hidden; }
+.bar  { background:#2a2e3a; padding:9px 14px; display:flex; align-items:center; gap:8px; }
+.dot  { width:12px; height:12px; border-radius:50%; }
+.t    { color:#9aa4bf; font-size:12.5px; margin-left:10px; letter-spacing:.02em; }
+pre   { margin:0; padding:18px 20px; color:#d6dbe8; font-size:13.5px; line-height:1.5;
+        white-space:pre; }
+.cmd  { color:#6ee7a8; }
+.crit { color:#ff6b6b; font-weight:700; }
+.high { color:#ff9f5a; font-weight:700; }
+.med  { color:#ffd166; font-weight:700; }
+.pass { color:#6ee7a8; font-weight:700; }
+.na   { color:#7c869e; }
+.rule { color:#8ab4ff; font-weight:700; }
+.dim  { color:#7c869e; }
+.sum  { color:#ffffff; font-weight:700; }
+</style>
+<div class='term'>
+  <div class='bar'><span class='dot' style='background:#ff5f57'></span><span class='dot' style='background:#febc2e'></span><span class='dot' style='background:#28c840'></span><span class='t'>All fifteen rules on the demonstration corpus</span></div>
+<pre><span class='cmd'>$ jwtcheck scan rule_demo_corpus</span>
+
+<span class="high">HIGH</span> <span class="rule">R05</span> HardcodedSecretEncode
+<span class="dim">  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:40:12</span>
+    token = jwt.encode(data, SECRET_KEY, algorithm=ALGORITHM)
+  A hardcoded string literal is used as the signing key in jwt.encode().
+<span class="dim">  Weakness: CWE-798</span>
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+<span class="high">HIGH</span> <span class="rule">R06</span> HardcodedSecretDecode
+<span class="dim">  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:46:23</span>
+    decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+<span class="dim">  Weakness: CWE-798</span>
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+<span class="med">MEDIUM</span> <span class="rule">R08</span> MissingAudienceValidation
+<span class="dim">  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:46:23</span>
+    decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+<span class="dim">  Weakness: CWE-346</span>
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+<span class="med">MEDIUM</span> <span class="rule">R09</span> MissingIssuerValidation
+<span class="dim">  rule_demo_corpus\Central-University-IT-prod__2024-hack-msk-team24-Prod_Hackaton_Backend\ext.py:46:23</span>
+    decoded_data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+  jwt.decode() is called with no issuer parameter, so the token&#x27;s origin is not verified.
+<span class="dim">  Weakness: CWE-346</span>
+
+    ... 1597 lines omitted ...
+
+
+<span class="sum">Summary — 232 finding(s): CRITICAL: 69, HIGH: 71, MEDIUM: 92</span></pre>
+</div>

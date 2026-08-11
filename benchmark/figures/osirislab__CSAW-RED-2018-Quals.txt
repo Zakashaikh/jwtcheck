@@ -1,0 +1,29 @@
+HIGH R10 ExcessiveTokenLifetime
+  evidence_archive\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:65:17
+    auth_token = jwt.encode({
+  A payload sets exp and iat as integer literals whose difference exceeds 86400 seconds (24 hours).
+  Weakness: CWE-613
+  Fix: Reduce the token lifetime; prefer short-lived access tokens with refresh tokens.
+
+CRITICAL R01 MissingAlgorithmsParameter
+  evidence_archive\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:111:9
+    id = jwt.decode(auth, get_secret())['sub']
+  jwt.decode() is called with no algorithms parameter, allowing the token header to select the verification algorithm.
+  Weakness: CWE-757
+  Fix: Always pass algorithms= explicitly, e.g. jwt.decode(token, key, algorithms=['HS256']).
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:111:9
+    id = jwt.decode(auth, get_secret())['sub']
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\osirislab__CSAW-RED-2018-Quals\Web\Adrift\solver.py:111:9
+    id = jwt.decode(auth, get_secret())['sub']
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+Summary — 4 finding(s): CRITICAL: 1, HIGH: 1, MEDIUM: 2

@@ -1,0 +1,130 @@
+{
+  "n_repos_listed": 11,
+  "n_repos_scanned": 11,
+  "total_findings": 46,
+  "by_rule": {
+    "R08": 10,
+    "R09": 11,
+    "R03": 9,
+    "R07": 9,
+    "R05": 5,
+    "R06": 2
+  },
+  "by_severity": {
+    "MEDIUM": 21,
+    "CRITICAL": 9,
+    "HIGH": 16
+  },
+  "per_repo": [
+    {
+      "repo": "OPSKP/PyJWT",
+      "n_findings": 10,
+      "by_rule": {
+        "R08": 2,
+        "R09": 2,
+        "R03": 3,
+        "R07": 3
+      },
+      "by_severity": {
+        "MEDIUM": 4,
+        "CRITICAL": 3,
+        "HIGH": 3
+      }
+    },
+    {
+      "repo": "alexfofanov/rbac-service",
+      "n_findings": 5,
+      "by_rule": {
+        "R08": 2,
+        "R09": 2,
+        "R03": 1
+      },
+      "by_severity": {
+        "MEDIUM": 4,
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "PradeepMalineni/PYJWT",
+      "n_findings": 2,
+      "by_rule": {
+        "R03": 2
+      },
+      "by_severity": {
+        "CRITICAL": 2
+      }
+    },
+    {
+      "repo": "L7R4/cmc_api",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "zaka265-star/MyTaskly-mcp",
+      "n_findings": 2,
+      "by_rule": {
+        "R09": 1,
+        "R05": 1
+      },
+      "by_severity": {
+        "MEDIUM": 1,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "hkcoder18/2026-May-01",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Lafabio/planosc-backend-kiwify",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "wuhonglei/chat-agent",
+      "n_findings": 3,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1,
+        "R03": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2,
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "Writeup-DB/JWT-101-Lab",
+      "n_findings": 24,
+      "by_rule": {
+        "R05": 4,
+        "R07": 6,
+        "R03": 2,
+        "R06": 2,
+        "R08": 5,
+        "R09": 5
+      },
+      "by_severity": {
+        "HIGH": 12,
+        "CRITICAL": 2,
+        "MEDIUM": 10
+      }
+    },
+    {
+      "repo": "tatiane-ss/backend-challenge-tssgaec",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "shiladityamajumder/healthcare-auth-service",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    }
+  ]
+}

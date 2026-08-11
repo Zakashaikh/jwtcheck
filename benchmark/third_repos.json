@@ -1,0 +1,162 @@
+{
+  "purpose": "R03-stratified validation set",
+  "discovery_channel": "unauthenticated repository search + local marker filter",
+  "inclusion_criterion": "repository contains one of ['jwt.decode', 'jwt.encode', 'from jwt import', 'PyJWKClient'] AND disables signature verification somewhere (one of ['\"verify_signature\": False', \"'verify_signature': False\", '\"verify_signature\":False', \"'verify_signature':False\", 'verify=False', 'verify = False'])",
+  "excluded_from": [
+    "benchmark/real_world_repos.txt (the original 96)",
+    "benchmark/heldout_repos.json"
+  ],
+  "count": 30,
+  "repos": [
+    {
+      "repo": "TijnvdK/pyjwt",
+      "commit": "b93f3a2bf11de15b4668516d2038f53d519b6e62",
+      "path": "third_targets/TijnvdK__pyjwt"
+    },
+    {
+      "repo": "OPSKP/PyJWT",
+      "commit": "13ded9e963171afe5f49e337b87d98399abeb3a7",
+      "path": "third_targets/OPSKP__PyJWT"
+    },
+    {
+      "repo": "alexfofanov/rbac-service",
+      "commit": "f6adef12933b29d08ca1f7e3b50d86aa9c1c352e",
+      "path": "third_targets/alexfofanov__rbac-service"
+    },
+    {
+      "repo": "vroomfondel/jwtjwkhelper",
+      "commit": "ccadb04a5fb4dd5c3a02cfe3ccc78ea7e5aadf7c",
+      "path": "third_targets/vroomfondel__jwtjwkhelper"
+    },
+    {
+      "repo": "ioxiocom/pyjwt-key-fetcher",
+      "commit": "9bc51cdb31235eae0e415317cb333029ca2f938f",
+      "path": "third_targets/ioxiocom__pyjwt-key-fetcher"
+    },
+    {
+      "repo": "autocode07/jpadilla__pyjwt.0afba10c",
+      "commit": "e9231e37fa50a1c3576ebdaa9e546070ae482879",
+      "path": "third_targets/autocode07__jpadilla__pyjwt.0afba10c"
+    },
+    {
+      "repo": "PradeepMalineni/PYJWT",
+      "commit": "0023edae322d4f4b3466cc9262126dc5253544b8",
+      "path": "third_targets/PradeepMalineni__PYJWT"
+    },
+    {
+      "repo": "L7R4/cmc_api",
+      "commit": "3334d3c31e2ed7b83699669877b5814a91c2b382",
+      "path": "third_targets/L7R4__cmc_api"
+    },
+    {
+      "repo": "zaka265-star/MyTaskly-mcp",
+      "commit": "a33824b9ddb14922c75ce4725af750da3a7a092a",
+      "path": "third_targets/zaka265-star__MyTaskly-mcp"
+    },
+    {
+      "repo": "crgwbr/asymmetric-jwt-auth",
+      "commit": "47c568d5519f69655bab2d9342b92d936c97f42c",
+      "path": "third_targets/crgwbr__asymmetric-jwt-auth"
+    },
+    {
+      "repo": "garrethcain/django-easyjwt",
+      "commit": "fc3f9085376485cdb7cac309bd81183127fd60d8",
+      "path": "third_targets/garrethcain__django-easyjwt"
+    },
+    {
+      "repo": "yezz123/authx",
+      "commit": "31d78b7f00b2ba3eae96484d1bb25d1e9186536a",
+      "path": "third_targets/yezz123__authx"
+    },
+    {
+      "repo": "descope/python-sdk",
+      "commit": "c3b6e8683f505544d7dceb3d18f7cae8059dcbd2",
+      "path": "third_targets/descope__python-sdk"
+    },
+    {
+      "repo": "MrThearMan/jwt-email-auth",
+      "commit": "a6470778aab17fdf078ec4656ee87f94af95e0a8",
+      "path": "third_targets/MrThearMan__jwt-email-auth"
+    },
+    {
+      "repo": "hkcoder18/2026-May-01",
+      "commit": "cedc1885dd356bb34908c6aa11018523e5b02b66",
+      "path": "third_targets/hkcoder18__2026-May-01"
+    },
+    {
+      "repo": "authlib/authlib",
+      "commit": "772bc72fe8440e6c5dd0a6615fb42d7466f85546",
+      "path": "third_targets/authlib__authlib"
+    },
+    {
+      "repo": "Lafabio/planosc-backend-kiwify",
+      "commit": "34c3c36a6ae861f80118c7b81b9f8e6dafffb744",
+      "path": "third_targets/Lafabio__planosc-backend-kiwify"
+    },
+    {
+      "repo": "IBM/mcp-context-forge",
+      "commit": "41a6580a48603820d20d839eee373c6c45773e30",
+      "path": "third_targets/IBM__mcp-context-forge"
+    },
+    {
+      "repo": "wuhonglei/chat-agent",
+      "commit": "4989857f1b01bec540a55eadf79da4a84132c469",
+      "path": "third_targets/wuhonglei__chat-agent"
+    },
+    {
+      "repo": "usestapel/stapel-auth",
+      "commit": "80760c98811bcf713970cb5b471417143f9964a4",
+      "path": "third_targets/usestapel__stapel-auth"
+    },
+    {
+      "repo": "usestapel/stapel-core",
+      "commit": "b688d89d6000672af81de25ab77bc38666892706",
+      "path": "third_targets/usestapel__stapel-core"
+    },
+    {
+      "repo": "jazzband/djangorestframework-simplejwt",
+      "commit": "a7cb077ea0809f78cc6a99cb6825ab7594eae627",
+      "path": "third_targets/jazzband__djangorestframework-simplejwt"
+    },
+    {
+      "repo": "max-pfeiffer/keycloak-jwt-checker",
+      "commit": "5895bde756255935a0ab1f19340c90180d32131e",
+      "path": "third_targets/max-pfeiffer__keycloak-jwt-checker"
+    },
+    {
+      "repo": "Writeup-DB/JWT-101-Lab",
+      "commit": "833ea50768772254be87fee06a73aeb2bfaf2a58",
+      "path": "third_targets/Writeup-DB__JWT-101-Lab"
+    },
+    {
+      "repo": "merixstudio/django-trench",
+      "commit": "b7f0eb4f0031e6013826e59a38ebd7010661cfd9",
+      "path": "third_targets/merixstudio__django-trench"
+    },
+    {
+      "repo": "varunbaisane/jwt-vulnerability-analyzer",
+      "commit": "b9c4920552ce89e591327f9533a61efee7ca9913",
+      "path": "third_targets/varunbaisane__jwt-vulnerability-analyzer"
+    },
+    {
+      "repo": "mano8/fa-auth-m8",
+      "commit": "dccc494ce1a64ac20057579e89cccba53ea227c5",
+      "path": "third_targets/mano8__fa-auth-m8"
+    },
+    {
+      "repo": "jamescrowley321/py-identity-model",
+      "commit": "2521263ac98ae900391ebbf7e44740f42c13c454",
+      "path": "third_targets/jamescrowley321__py-identity-model"
+    },
+    {
+      "repo": "tatiane-ss/backend-challenge-tssgaec",
+      "commit": "ecc4a43e64ca68dab6d387b7d3657ee94943e721",
+      "path": "third_targets/tatiane-ss__backend-challenge-tssgaec"
+    },
+    {
+      "repo": "shiladityamajumder/healthcare-auth-service",
+      "commit": "09c70aabbfac1bc9b1973a8dcf6b3474119f3109",
+      "path": "third_targets/shiladityamajumder__healthcare-auth-service"
+    }
+  ]
+}

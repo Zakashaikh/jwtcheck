@@ -1,0 +1,909 @@
+{
+  "purpose": "demonstration corpus in which all 15 rules fire",
+  "not_a_precision_sample": "The rule_coverage half was found by searching for the pattern each rule detects. No precision or recall figure may be derived from it.",
+  "scanner_commit": "07994fa",
+  "size": 30,
+  "rules_covered": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R15"
+  ],
+  "repos": [
+    {
+      "repo": "hieudzpro2k10-svg/Pentest-API",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R03",
+        "R04",
+        "R05",
+        "R08",
+        "R09",
+        "R15"
+      ],
+      "n_findings": 11,
+      "evidence": {
+        "R03": [
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L112",
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L176",
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L305"
+        ],
+        "R04": [
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L226"
+        ],
+        "R05": [
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L146",
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L195"
+        ],
+        "R08": [
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L226"
+        ],
+        "R09": [
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L226"
+        ],
+        "R15": [
+          "https://github.com/hieudzpro2k10-svg/Pentest-API/blob/9f53b315496ff370469de2348b5940b056fd92bd/vulnerable_server.py#L226"
+        ]
+      }
+    },
+    {
+      "repo": "emilyhorsman/socialauth",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R01",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 20,
+      "evidence": {
+        "R01": [
+          "app.py:25",
+          "tests.py:158",
+          "socialauth/providers/twitter.py:59"
+        ],
+        "R05": [
+          "tests.py:109",
+          "tests.py:116",
+          "tests.py:123"
+        ],
+        "R06": [
+          "tests.py:158"
+        ],
+        "R07": [
+          "app.py:51",
+          "tests.py:109",
+          "tests.py:116"
+        ],
+        "R08": [
+          "app.py:25",
+          "tests.py:158",
+          "socialauth/providers/twitter.py:59"
+        ],
+        "R09": [
+          "app.py:25",
+          "tests.py:158",
+          "socialauth/providers/twitter.py:59"
+        ]
+      }
+    },
+    {
+      "repo": "OlegEV/meeting-processor",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R03",
+        "R05",
+        "R06",
+        "R11"
+      ],
+      "n_findings": 7,
+      "evidence": {
+        "R02": [
+          "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py#L53"
+        ],
+        "R03": [
+          "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py#L39",
+          "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py#L53"
+        ],
+        "R05": [
+          "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py#L28",
+          "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py#L106"
+        ],
+        "R06": [
+          "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py#L53"
+        ],
+        "R11": [
+          "https://github.com/OlegEV/meeting-processor/blob/8c3383f7e996806311a948da814bd6ebd66935a6/debug_jwt.py#L53"
+        ]
+      }
+    },
+    {
+      "repo": "valginer0/PGVectorRAGIndexer",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R03",
+        "R04",
+        "R06",
+        "R08",
+        "R09",
+        "R13"
+      ],
+      "n_findings": 12,
+      "evidence": {
+        "R03": [
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L351",
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L575"
+        ],
+        "R04": [
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L321",
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L331",
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L351"
+        ],
+        "R06": [
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L351"
+        ],
+        "R08": [
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L321",
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L331"
+        ],
+        "R09": [
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L321",
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L331"
+        ],
+        "R13": [
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L331",
+          "https://github.com/valginer0/PGVectorRAGIndexer/blob/88b2787310cbd9e09a7edbe4edda04f07727e600/license.py#L351"
+        ]
+      }
+    },
+    {
+      "repo": "sajjadium/ctf-archives",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R04",
+        "R07",
+        "R08",
+        "R09",
+        "R14"
+      ],
+      "n_findings": 7,
+      "evidence": {
+        "R04": [
+          "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/idekCTF/2021/web/saas/util.py#L26"
+        ],
+        "R07": [
+          "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/idekCTF/2021/web/saas/util.py#L14"
+        ],
+        "R08": [
+          "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/TBTL/2024/misc/Your_papers_please/server.py#L38",
+          "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/idekCTF/2021/web/saas/util.py#L26"
+        ],
+        "R09": [
+          "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/TBTL/2024/misc/Your_papers_please/server.py#L38",
+          "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/idekCTF/2021/web/saas/util.py#L26"
+        ],
+        "R14": [
+          "https://github.com/sajjadium/ctf-archives/blob/cd1fee0295eea9cbc3f0d6e55edfab49b092b9d9/ctfs/TBTL/2024/misc/Your_papers_please/server.py#L38"
+        ]
+      }
+    },
+    {
+      "repo": "osirislab/CSAW-RED-2018-Quals",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R01",
+        "R08",
+        "R09",
+        "R10"
+      ],
+      "n_findings": 4,
+      "evidence": {
+        "R01": [
+          "https://github.com/osirislab/CSAW-RED-2018-Quals/blob/5228845c1aa5d07ccb4ae2de753922649e153078/Web/Adrift/solver.py#L111"
+        ],
+        "R08": [
+          "https://github.com/osirislab/CSAW-RED-2018-Quals/blob/5228845c1aa5d07ccb4ae2de753922649e153078/Web/Adrift/solver.py#L111"
+        ],
+        "R09": [
+          "https://github.com/osirislab/CSAW-RED-2018-Quals/blob/5228845c1aa5d07ccb4ae2de753922649e153078/Web/Adrift/solver.py#L111"
+        ],
+        "R10": [
+          "https://github.com/osirislab/CSAW-RED-2018-Quals/blob/5228845c1aa5d07ccb4ae2de753922649e153078/Web/Adrift/solver.py#L65"
+        ]
+      }
+    },
+    {
+      "repo": "maxdiegoduron/Measurement-Hub",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R08",
+        "R09",
+        "R12"
+      ],
+      "n_findings": 6,
+      "evidence": {
+        "R08": [
+          "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/src/components/get_user.py#L30",
+          "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/utils/st_utils.py#L855"
+        ],
+        "R09": [
+          "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/src/components/get_user.py#L30",
+          "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/utils/st_utils.py#L855"
+        ],
+        "R12": [
+          "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/src/components/get_user.py#L30",
+          "https://github.com/maxdiegoduron/Measurement-Hub/blob/e76d17f29c9f3b5a0c35392b0ed8472762bf2ce8/utils/st_utils.py#L855"
+        ]
+      }
+    },
+    {
+      "repo": "viralvaghela/hack_jwt",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R05",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 8,
+      "evidence": {
+        "R02": [
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L25"
+        ],
+        "R05": [
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L16"
+        ],
+        "R07": [
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L16",
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L19"
+        ],
+        "R08": [
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L25",
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L42"
+        ],
+        "R09": [
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L25",
+          "https://github.com/viralvaghela/hack_jwt/blob/7b6efb694f0dd4f496f6d1ae6021d3a718be564f/hack_jwt.py#L42"
+        ]
+      }
+    },
+    {
+      "repo": "senrishi/DeltaForce_Sysad_Task3",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R03",
+        "R05",
+        "R06",
+        "R07"
+      ],
+      "n_findings": 7,
+      "evidence": {
+        "R02": [
+          "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py#L42"
+        ],
+        "R03": [
+          "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py#L42"
+        ],
+        "R05": [
+          "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py#L24",
+          "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py#L30"
+        ],
+        "R06": [
+          "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py#L42"
+        ],
+        "R07": [
+          "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py#L24",
+          "https://github.com/senrishi/DeltaForce_Sysad_Task3/blob/56103a3a389fc705273e40add64c4a124e0e6915/task3b/JWT%20Web%20App/jwt_webapp.py#L30"
+        ]
+      }
+    },
+    {
+      "repo": "Cybercommand-inc/webapp-vuln",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R03",
+        "R06",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 6,
+      "evidence": {
+        "R02": [
+          "https://github.com/Cybercommand-inc/webapp-vuln/blob/4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8/31/jwt/app.py#L34"
+        ],
+        "R03": [
+          "https://github.com/Cybercommand-inc/webapp-vuln/blob/4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8/31/jwt/app.py#L21",
+          "https://github.com/Cybercommand-inc/webapp-vuln/blob/4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8/31/jwt/app.py#L34"
+        ],
+        "R06": [
+          "https://github.com/Cybercommand-inc/webapp-vuln/blob/4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8/31/jwt/app.py#L45"
+        ],
+        "R08": [
+          "https://github.com/Cybercommand-inc/webapp-vuln/blob/4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8/31/jwt/app.py#L45"
+        ],
+        "R09": [
+          "https://github.com/Cybercommand-inc/webapp-vuln/blob/4010c75e2e29ffba8fd6049b06cbd29d3e56e4c8/31/jwt/app.py#L45"
+        ]
+      }
+    },
+    {
+      "repo": "SignalPilot-Labs/SignalPilot",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R01",
+        "R03",
+        "R04",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 5,
+      "evidence": {
+        "R01": [
+          "https://github.com/SignalPilot-Labs/SignalPilot/blob/6b039ad5c6adfee9985a802282226e97c4e39cab/signalpilot/gateway/gateway/auth/user.py#L158"
+        ],
+        "R03": [
+          "https://github.com/SignalPilot-Labs/SignalPilot/blob/6b039ad5c6adfee9985a802282226e97c4e39cab/signalpilot/gateway/gateway/auth/user.py#L255"
+        ],
+        "R04": [
+          "https://github.com/SignalPilot-Labs/SignalPilot/blob/6b039ad5c6adfee9985a802282226e97c4e39cab/signalpilot/gateway/gateway/auth/user.py#L255"
+        ],
+        "R08": [
+          "https://github.com/SignalPilot-Labs/SignalPilot/blob/6b039ad5c6adfee9985a802282226e97c4e39cab/signalpilot/gateway/gateway/auth/user.py#L158"
+        ],
+        "R09": [
+          "https://github.com/SignalPilot-Labs/SignalPilot/blob/6b039ad5c6adfee9985a802282226e97c4e39cab/signalpilot/gateway/gateway/auth/user.py#L158"
+        ]
+      }
+    },
+    {
+      "repo": "aleiepure/devtoolbox",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R03",
+        "R08",
+        "R09",
+        "R11",
+        "R13"
+      ],
+      "n_findings": 5,
+      "evidence": {
+        "R03": [
+          "https://github.com/aleiepure/devtoolbox/blob/de7d6f2c0198730651660b3618ec9da4a04b49cc/src/services/jwt_decoder.py#L51"
+        ],
+        "R08": [
+          "https://github.com/aleiepure/devtoolbox/blob/de7d6f2c0198730651660b3618ec9da4a04b49cc/src/services/jwt_decoder.py#L56"
+        ],
+        "R09": [
+          "https://github.com/aleiepure/devtoolbox/blob/de7d6f2c0198730651660b3618ec9da4a04b49cc/src/services/jwt_decoder.py#L56"
+        ],
+        "R11": [
+          "https://github.com/aleiepure/devtoolbox/blob/de7d6f2c0198730651660b3618ec9da4a04b49cc/src/services/jwt_decoder.py#L56"
+        ],
+        "R13": [
+          "https://github.com/aleiepure/devtoolbox/blob/de7d6f2c0198730651660b3618ec9da4a04b49cc/src/services/jwt_decoder.py#L56"
+        ]
+      }
+    },
+    {
+      "repo": "IceWizard4902/VulnJWT",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R05",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 17,
+      "evidence": {
+        "R05": [
+          "jku.py:38",
+          "kid.py:9",
+          "attack_poc/jku_evil.py:42"
+        ],
+        "R07": [
+          "jku.py:38",
+          "jwk.py:28",
+          "kid.py:9"
+        ],
+        "R08": [
+          "jku.py:45",
+          "jwk.py:34",
+          "kid.py:19"
+        ],
+        "R09": [
+          "jku.py:45",
+          "jwk.py:34",
+          "kid.py:19"
+        ]
+      }
+    },
+    {
+      "repo": "Oskarovsky/OskarroApp",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R01",
+        "R06",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 13,
+      "evidence": {
+        "R01": [
+          "dl.py:69",
+          "dl.py:103",
+          "dl.py:121"
+        ],
+        "R06": [
+          "resizer.py:24"
+        ],
+        "R08": [
+          "dl.py:69",
+          "dl.py:103",
+          "dl.py:121"
+        ],
+        "R09": [
+          "dl.py:69",
+          "dl.py:103",
+          "dl.py:121"
+        ]
+      }
+    },
+    {
+      "repo": "nfdi4plants/arcmanager_backend",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R04",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 12,
+      "evidence": {
+        "R04": [
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L278",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L379",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/projects.py#L125"
+        ],
+        "R07": [
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L199",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L337",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L404"
+        ],
+        "R08": [
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L278",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L379",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/projects.py#L125"
+        ],
+        "R09": [
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L278",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/authentication.py#L379",
+          "https://github.com/nfdi4plants/arcmanager_backend/blob/2dfda647f4a9429e12c026daada611b0fd989eae/app/api/endpoints/projects.py#L125"
+        ]
+      }
+    },
+    {
+      "repo": "ticketfrei/ticketfrei",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R01",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 9,
+      "evidence": {
+        "R01": [
+          "db.py:221",
+          "db.py:227"
+        ],
+        "R07": [
+          "db.py:198",
+          "db.py:214",
+          "user.py:65"
+        ],
+        "R08": [
+          "db.py:221",
+          "db.py:227"
+        ],
+        "R09": [
+          "db.py:221",
+          "db.py:227"
+        ]
+      }
+    },
+    {
+      "repo": "GOFONCK/ProxyPanel",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R05",
+        "R06",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 8,
+      "evidence": {
+        "R05": [
+          "panel_server.py:604",
+          "sss.py:575"
+        ],
+        "R06": [
+          "panel_server.py:574",
+          "sss.py:547"
+        ],
+        "R08": [
+          "panel_server.py:574",
+          "sss.py:547"
+        ],
+        "R09": [
+          "panel_server.py:574",
+          "sss.py:547"
+        ]
+      }
+    },
+    {
+      "repo": "dakotalatommy/Aube-Coding-Framework",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R03",
+        "R09",
+        "R11",
+        "R13"
+      ],
+      "n_findings": 8,
+      "evidence": {
+        "R03": [
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L161",
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L243"
+        ],
+        "R09": [
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L77"
+        ],
+        "R11": [
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L77",
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L161",
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L243"
+        ],
+        "R13": [
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L161",
+          "https://github.com/dakotalatommy/Aube-Coding-Framework/blob/d82bf7e19eb6c25a8fbc565e18cce34f45fac41b/src/backend/app/auth.py#L243"
+        ]
+      }
+    },
+    {
+      "repo": "eastmoon1117/JKerCloudMonitor",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R01",
+        "R08",
+        "R09",
+        "R13"
+      ],
+      "n_findings": 8,
+      "evidence": {
+        "R01": [
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L36",
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L74"
+        ],
+        "R08": [
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L36",
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L74"
+        ],
+        "R09": [
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L36",
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L74"
+        ],
+        "R13": [
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L36",
+          "https://github.com/eastmoon1117/JKerCloudMonitor/blob/94990407961ca4498278c50304b30162100e0389/auth/__init__.py#L74"
+        ]
+      }
+    },
+    {
+      "repo": "Vulnetix/sast-rule-evals",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R03",
+        "R05",
+        "R07"
+      ],
+      "n_findings": 7,
+      "evidence": {
+        "R02": [
+          "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/jwt/vnx-jwt-004/jwt_none_alg.py#L11",
+          "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/secrets/vnx-sec-015/jwt_none.py#L5"
+        ],
+        "R03": [
+          "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/jwt/vnx-jwt-004/jwt_none_alg.py#L11",
+          "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/secrets/vnx-sec-015/jwt_none.py#L5"
+        ],
+        "R05": [
+          "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/jwt/vnx-jwt-004/jwt_none_alg.py#L6",
+          "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/secrets/vnx-sec-015/jwt_none.py#L4"
+        ],
+        "R07": [
+          "https://github.com/Vulnetix/sast-rule-evals/blob/99c56b0d68ad921c9c509325367a4e77bb835aec/secrets/vnx-sec-015/jwt_none.py#L4"
+        ]
+      }
+    },
+    {
+      "repo": "backslash-security-tests/demidov-small-test",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R05",
+        "R06",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 7,
+      "evidence": {
+        "R05": [
+          "bad.py:182"
+        ],
+        "R06": [
+          "bad.py:195",
+          "bad.py:207"
+        ],
+        "R08": [
+          "bad.py:195",
+          "bad.py:207"
+        ],
+        "R09": [
+          "bad.py:195",
+          "bad.py:207"
+        ]
+      }
+    },
+    {
+      "repo": "LeoooDias/botchat-oss",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R03",
+        "R04",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 6,
+      "evidence": {
+        "R03": [
+          "https://github.com/LeoooDias/botchat-oss/blob/3730d94a18af5eefb6bd38db99c0685209171d40/backend/app/auth.py#L686",
+          "https://github.com/LeoooDias/botchat-oss/blob/3730d94a18af5eefb6bd38db99c0685209171d40/backend/app/auth.py#L771"
+        ],
+        "R04": [
+          "https://github.com/LeoooDias/botchat-oss/blob/3730d94a18af5eefb6bd38db99c0685209171d40/backend/app/auth.py#L686",
+          "https://github.com/LeoooDias/botchat-oss/blob/3730d94a18af5eefb6bd38db99c0685209171d40/backend/app/auth.py#L771"
+        ],
+        "R08": [
+          "https://github.com/LeoooDias/botchat-oss/blob/3730d94a18af5eefb6bd38db99c0685209171d40/backend/app/auth.py#L476"
+        ],
+        "R09": [
+          "https://github.com/LeoooDias/botchat-oss/blob/3730d94a18af5eefb6bd38db99c0685209171d40/backend/app/auth.py#L476"
+        ]
+      }
+    },
+    {
+      "repo": "java-crypto/cross_platform_crypto",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R03",
+        "R08",
+        "R09",
+        "R13"
+      ],
+      "n_findings": 6,
+      "evidence": {
+        "R03": [
+          "https://github.com/java-crypto/cross_platform_crypto/blob/0c8ec72d215afdd71da7c11e9a25b917b279e877/JwtJwsRs256Signature/JwsRs256Signature.py#L34"
+        ],
+        "R08": [
+          "https://github.com/java-crypto/cross_platform_crypto/blob/0c8ec72d215afdd71da7c11e9a25b917b279e877/JwtJwsRs256Signature/JwsRs256Signature.py#L17",
+          "https://github.com/java-crypto/cross_platform_crypto/blob/0c8ec72d215afdd71da7c11e9a25b917b279e877/JwtJwsRs256Signature/JwsRs256Signature.py#L26"
+        ],
+        "R09": [
+          "https://github.com/java-crypto/cross_platform_crypto/blob/0c8ec72d215afdd71da7c11e9a25b917b279e877/JwtJwsRs256Signature/JwsRs256Signature.py#L17",
+          "https://github.com/java-crypto/cross_platform_crypto/blob/0c8ec72d215afdd71da7c11e9a25b917b279e877/JwtJwsRs256Signature/JwsRs256Signature.py#L26"
+        ],
+        "R13": [
+          "https://github.com/java-crypto/cross_platform_crypto/blob/0c8ec72d215afdd71da7c11e9a25b917b279e877/JwtJwsRs256Signature/JwsRs256Signature.py#L26"
+        ]
+      }
+    },
+    {
+      "repo": "RootCauseScan/Rules",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 5,
+      "evidence": {
+        "R02": [
+          "https://github.com/RootCauseScan/Rules/blob/8b559cc59eb7d2920dbc8f1cd51b7c959d1f8270/python/examples/jwt-none-alg.py#L10"
+        ],
+        "R07": [
+          "https://github.com/RootCauseScan/Rules/blob/8b559cc59eb7d2920dbc8f1cd51b7c959d1f8270/python/examples/jwt-none-alg.py#L5",
+          "https://github.com/RootCauseScan/Rules/blob/8b559cc59eb7d2920dbc8f1cd51b7c959d1f8270/python/examples/jwt-none-alg.py#L15"
+        ],
+        "R08": [
+          "https://github.com/RootCauseScan/Rules/blob/8b559cc59eb7d2920dbc8f1cd51b7c959d1f8270/python/examples/jwt-none-alg.py#L10"
+        ],
+        "R09": [
+          "https://github.com/RootCauseScan/Rules/blob/8b559cc59eb7d2920dbc8f1cd51b7c959d1f8270/python/examples/jwt-none-alg.py#L10"
+        ]
+      }
+    },
+    {
+      "repo": "Shreyas-135/CODEGLIA",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 5,
+      "evidence": {
+        "R02": [
+          "https://github.com/Shreyas-135/CODEGLIA/blob/c433f69171d64eec4e7e0aa39837a5d9a3ffd564/semgrep-rules/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R07": [
+          "https://github.com/Shreyas-135/CODEGLIA/blob/c433f69171d64eec4e7e0aa39837a5d9a3ffd564/semgrep-rules/python/jwt/security/jwt-none-alg.py#L5",
+          "https://github.com/Shreyas-135/CODEGLIA/blob/c433f69171d64eec4e7e0aa39837a5d9a3ffd564/semgrep-rules/python/jwt/security/jwt-none-alg.py#L15"
+        ],
+        "R08": [
+          "https://github.com/Shreyas-135/CODEGLIA/blob/c433f69171d64eec4e7e0aa39837a5d9a3ffd564/semgrep-rules/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R09": [
+          "https://github.com/Shreyas-135/CODEGLIA/blob/c433f69171d64eec4e7e0aa39837a5d9a3ffd564/semgrep-rules/python/jwt/security/jwt-none-alg.py#L10"
+        ]
+      }
+    },
+    {
+      "repo": "bumahkib7/qryon",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 5,
+      "evidence": {
+        "R02": [
+          "https://github.com/bumahkib7/qryon/blob/227241f2e0f8b256787d2b08b603287175d7ecda/crates/rules/rules/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R07": [
+          "https://github.com/bumahkib7/qryon/blob/227241f2e0f8b256787d2b08b603287175d7ecda/crates/rules/rules/python/jwt/security/jwt-none-alg.py#L5",
+          "https://github.com/bumahkib7/qryon/blob/227241f2e0f8b256787d2b08b603287175d7ecda/crates/rules/rules/python/jwt/security/jwt-none-alg.py#L15"
+        ],
+        "R08": [
+          "https://github.com/bumahkib7/qryon/blob/227241f2e0f8b256787d2b08b603287175d7ecda/crates/rules/rules/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R09": [
+          "https://github.com/bumahkib7/qryon/blob/227241f2e0f8b256787d2b08b603287175d7ecda/crates/rules/rules/python/jwt/security/jwt-none-alg.py#L10"
+        ]
+      }
+    },
+    {
+      "repo": "dacoburn/basics-test",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 5,
+      "evidence": {
+        "R02": [
+          "https://github.com/dacoburn/basics-test/blob/2f37afd4d5ab3b36482507cd0fb7d97a5e79234c/custom_rules/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R07": [
+          "https://github.com/dacoburn/basics-test/blob/2f37afd4d5ab3b36482507cd0fb7d97a5e79234c/custom_rules/python/jwt/security/jwt-none-alg.py#L5",
+          "https://github.com/dacoburn/basics-test/blob/2f37afd4d5ab3b36482507cd0fb7d97a5e79234c/custom_rules/python/jwt/security/jwt-none-alg.py#L15"
+        ],
+        "R08": [
+          "https://github.com/dacoburn/basics-test/blob/2f37afd4d5ab3b36482507cd0fb7d97a5e79234c/custom_rules/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R09": [
+          "https://github.com/dacoburn/basics-test/blob/2f37afd4d5ab3b36482507cd0fb7d97a5e79234c/custom_rules/python/jwt/security/jwt-none-alg.py#L10"
+        ]
+      }
+    },
+    {
+      "repo": "semgrep/semgrep-rules",
+      "source": "rule_coverage (pattern-searched, commit-pinned)",
+      "rules": [
+        "R02",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 5,
+      "evidence": {
+        "R02": [
+          "https://github.com/semgrep/semgrep-rules/blob/63b847ed18cb75582f49d29f8a44a349facd7a1d/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R07": [
+          "https://github.com/semgrep/semgrep-rules/blob/63b847ed18cb75582f49d29f8a44a349facd7a1d/python/jwt/security/jwt-none-alg.py#L5",
+          "https://github.com/semgrep/semgrep-rules/blob/63b847ed18cb75582f49d29f8a44a349facd7a1d/python/jwt/security/jwt-none-alg.py#L15"
+        ],
+        "R08": [
+          "https://github.com/semgrep/semgrep-rules/blob/63b847ed18cb75582f49d29f8a44a349facd7a1d/python/jwt/security/jwt-none-alg.py#L10"
+        ],
+        "R09": [
+          "https://github.com/semgrep/semgrep-rules/blob/63b847ed18cb75582f49d29f8a44a349facd7a1d/python/jwt/security/jwt-none-alg.py#L10"
+        ]
+      }
+    },
+    {
+      "repo": "Central-University-IT-prod/2024-hack-msk-team24-Prod_Hackaton_Backend",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R05",
+        "R06",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 4,
+      "evidence": {
+        "R05": [
+          "ext.py:40"
+        ],
+        "R06": [
+          "ext.py:46"
+        ],
+        "R08": [
+          "ext.py:46"
+        ],
+        "R09": [
+          "ext.py:46"
+        ]
+      }
+    },
+    {
+      "repo": "DrunkenCloud/bba_labs",
+      "source": "real_world (quasi-random sample)",
+      "rules": [
+        "R05",
+        "R06",
+        "R08",
+        "R09"
+      ],
+      "n_findings": 4,
+      "evidence": {
+        "R05": [
+          "18.py:34"
+        ],
+        "R06": [
+          "18.py:43"
+        ],
+        "R08": [
+          "18.py:43"
+        ],
+        "R09": [
+          "18.py:43"
+        ]
+      }
+    }
+  ]
+}

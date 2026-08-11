@@ -1,0 +1,287 @@
+{
+  "n_repos_listed": 30,
+  "n_repos_scanned": 30,
+  "total_findings": 63,
+  "by_rule": {
+    "R08": 26,
+    "R09": 24,
+    "R13": 2,
+    "R04": 1,
+    "R06": 4,
+    "R07": 2,
+    "R05": 3,
+    "R01": 1
+  },
+  "by_severity": {
+    "MEDIUM": 50,
+    "CRITICAL": 4,
+    "HIGH": 9
+  },
+  "per_repo": [
+    {
+      "repo": "wad-sh/Event-Booking-API",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "chris83254/fastapi-boilerplate",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "damien-robotsix/robotsix-github-auth",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "ANNAREDDY123/enterprise-ecommerce-order-fulfillment-system",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Werner1126/smart-learning-platform",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "MiguelP0rtela/task-manager-api",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "sundark1290-arch/TaskFlow-Pro",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Aadi2104/olympiad-connect",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 2
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Prshant-kumar1/Job-tracker-API",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "chibwesamuel/pulseapi",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "genesisbrown-dev/devtrack-api",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "splendidjur/task6-E-commerce-API",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "salikevenu/landmark-app",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "rishisingh1406/async-agent-backend",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "ravitejakotrike/AI-Based-Verilog-TestBench-Generator",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Noriishere/NorRestaurant",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Pradyumna-Sawkar/bidx",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Dhruv-gif-hub/FastAPI-auth-service",
+      "n_findings": 6,
+      "by_rule": {
+        "R08": 3,
+        "R09": 3
+      },
+      "by_severity": {
+        "MEDIUM": 6
+      }
+    },
+    {
+      "repo": "lArtuh/Smart-Booking-System-API-Backend",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "Nick94665/aegisgpt-llm-gateway",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "themanoj-025/UNION-BANK-",
+      "n_findings": 11,
+      "by_rule": {
+        "R08": 4,
+        "R09": 4,
+        "R13": 2,
+        "R04": 1
+      },
+      "by_severity": {
+        "MEDIUM": 8,
+        "CRITICAL": 3
+      }
+    },
+    {
+      "repo": "arakium/ExpenseTrackerAPI",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "harshadx27/Cafe-REST-API",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "jayforge-dev/flask-auth-crud",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "IcarusSec/ICARUS-Lab",
+      "n_findings": 5,
+      "by_rule": {
+        "R06": 1,
+        "R08": 2,
+        "R09": 2
+      },
+      "by_severity": {
+        "HIGH": 1,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "mzulqarnain-ceh/user-auth-api",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Gloriazhou1127/salon-event-system",
+      "n_findings": 2,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "arXiv/arxiv-auth",
+      "n_findings": 11,
+      "by_rule": {
+        "R08": 5,
+        "R09": 5,
+        "R07": 1
+      },
+      "by_severity": {
+        "MEDIUM": 10,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "Somtochukwu-Sabastine/Secure-Authentication-System",
+      "n_findings": 8,
+      "by_rule": {
+        "R06": 2,
+        "R08": 2,
+        "R09": 2,
+        "R05": 2
+      },
+      "by_severity": {
+        "HIGH": 4,
+        "MEDIUM": 4
+      }
+    },
+    {
+      "repo": "alpersonalwebsite/flask-auth0-authentication-authorization",
+      "n_findings": 6,
+      "by_rule": {
+        "R05": 1,
+        "R07": 1,
+        "R01": 1,
+        "R06": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "HIGH": 3,
+        "CRITICAL": 1,
+        "MEDIUM": 2
+      }
+    }
+  ]
+}

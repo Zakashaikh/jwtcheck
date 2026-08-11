@@ -38,9 +38,9 @@ TARGETS_DIR = os.path.join(ROOT, "realworld_targets")
 OUT_DIR = os.path.join(HERE, "real_world")
 
 
-def read_repo_list():
+def read_repo_list(path=REPO_LIST):
     repos = []
-    with open(REPO_LIST, encoding="utf-8") as fh:
+    with open(path, encoding="utf-8") as fh:
         for line in fh:
             line = line.strip()
             if line and not line.startswith("#"):
@@ -75,12 +75,27 @@ def main():
                     help="Scan already-cloned repos without cloning.")
     ap.add_argument("--limit", type=int, default=0,
                     help="Only process the first N repos (0 = all).")
+    ap.add_argument("--manifest",
+                    help="JSON manifest (e.g. heldout_repos.json) instead of "
+                         "the .txt list. Entries carry their own commit-pinned "
+                         "local path, so nothing is cloned or re-resolved.")
+    ap.add_argument("--out", help=f"Output directory (default: {OUT_DIR}).")
     args = ap.parse_args()
 
-    os.makedirs(TARGETS_DIR, exist_ok=True)
-    os.makedirs(OUT_DIR, exist_ok=True)
+    out_dir = args.out or OUT_DIR
+    label = "Held-out" if args.manifest else "Real-world"
 
-    repos = read_repo_list()
+    os.makedirs(TARGETS_DIR, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
+
+    if args.manifest:
+        with open(args.manifest, encoding="utf-8") as fh:
+            entries = json.load(fh)["repos"]
+        repos = [e["repo"] for e in entries]
+        known_paths = {e["repo"]: os.path.join(ROOT, e["path"]) for e in entries}
+    else:
+        repos = read_repo_list()
+        known_paths = {}
     if args.limit:
         repos = repos[:args.limit]
 
@@ -93,8 +108,9 @@ def main():
 
     for i, repo in enumerate(repos, 1):
         print(f"[{i}/{len(repos)}] {repo}")
-        path = clone(repo) if not args.no_clone else os.path.join(
-            TARGETS_DIR, repo.replace("/", "__"))
+        path = known_paths.get(repo) or (
+            clone(repo) if not args.no_clone else os.path.join(
+                TARGETS_DIR, repo.replace("/", "__")))
         if not path or not os.path.isdir(path):
             continue
         cloned_ok += 1
@@ -127,12 +143,12 @@ def main():
         "by_severity": dict(sev_totals),
         "per_repo": per_repo,
     }
-    with open(os.path.join(OUT_DIR, "summary.json"), "w", encoding="utf-8") as fh:
+    with open(os.path.join(out_dir, "summary.json"), "w", encoding="utf-8") as fh:
         json.dump(summary, fh, indent=2)
 
     # ----- write summary.md ---------------------------------------------
     lines = [
-        "# Real-world scan summary",
+        f"# {label} scan summary",
         "",
         f"Repositories scanned: **{cloned_ok}/{len(repos)}**  ",
         f"Total findings: **{summary['total_findings']}**",
@@ -151,15 +167,15 @@ def main():
               "| Repo | Findings |", "|------|----------|"]
     for p in sorted(per_repo, key=lambda x: -x["n_findings"])[:20]:
         lines.append(f"| {p['repo']} | {p['n_findings']} |")
-    with open(os.path.join(OUT_DIR, "summary.md"), "w", encoding="utf-8") as fh:
+    with open(os.path.join(out_dir, "summary.md"), "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines) + "\n")
 
     # ----- write triage.md (manual TP/FP classification) ----------------
     tlines = [
-        "# Real-world triage worksheet",
+        f"# {label} triage worksheet",
         "",
         "Mark each finding TP (true positive) or FP (false positive) in the "
-        "last column. Real-world precision = TP / (TP + FP).",
+        f"last column. {label} precision = TP / (TP + FP).",
         "",
         "| Repo | Rule | Sev | File:Line | Snippet | TP/FP |",
         "|------|------|-----|-----------|---------|-------|",
@@ -170,7 +186,7 @@ def main():
             f"| {r['repo']} | {r['rule']} | {r['severity']} | "
             f"{r['file']}:{r['line']} | `{snip}` |  |"
         )
-    with open(os.path.join(OUT_DIR, "triage.md"), "w", encoding="utf-8") as fh:
+    with open(os.path.join(out_dir, "triage.md"), "w", encoding="utf-8") as fh:
         fh.write("\n".join(tlines) + "\n")
 
     print("\n" + "=" * 60)
@@ -179,7 +195,7 @@ def main():
           f"(CRITICAL {sev_totals.get('CRITICAL',0)}, "
           f"HIGH {sev_totals.get('HIGH',0)}, "
           f"MEDIUM {sev_totals.get('MEDIUM',0)})")
-    print(f"Reports in {OUT_DIR}\\  (summary.json, summary.md, triage.md)")
+    print(f"Reports in {out_dir}\\  (summary.json, summary.md, triage.md)")
 
 
 if __name__ == "__main__":

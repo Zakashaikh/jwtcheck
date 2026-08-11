@@ -1,0 +1,57 @@
+HIGH R05 HardcodedSecretEncode
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:16:14
+    print(jwt.encode(jsonData, key="", algorithm=algo))
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R07 MissingExpClaim
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:16:14
+    print(jwt.encode(jsonData, key="", algorithm=algo))
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+HIGH R07 MissingExpClaim
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:19:14
+    print(jwt.encode(jsonData, secret, algorithm=algo))
+  jwt.encode() is called with a payload dict that has no 'exp' key, producing a token that never expires.
+  Weakness: CWE-613
+  Fix: Add an 'exp' claim to the payload so tokens expire.
+
+CRITICAL R02 NoneAlgorithmAccepted
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:25:14
+    print(jwt.decode(jwtToken, algorithms=['none']))
+  The 'none' algorithm is present in the algorithms list, so an unsigned token would be accepted.
+  Weakness: CWE-347
+  Fix: Remove 'none' from the algorithms list and pin a concrete algorithm such as HS256 or RS256.
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:25:14
+    print(jwt.decode(jwtToken, algorithms=['none']))
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:25:14
+    print(jwt.decode(jwtToken, algorithms=['none']))
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:42:26
+    print(jwt.decode(jwtToken, secret.encode(),
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\viralvaghela__hack_jwt\hack_jwt.py:42:26
+    print(jwt.decode(jwtToken, secret.encode(),
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+Summary — 8 finding(s): CRITICAL: 1, HIGH: 3, MEDIUM: 4

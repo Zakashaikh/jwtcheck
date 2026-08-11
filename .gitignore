@@ -33,6 +33,12 @@ Thumbs.db
 # AI tooling workspaces — not project content
 skill-observations/
 .serena/
+.playwright-mcp/
 
-# Held-out validation clones — regenerable via benchmark/fetch_heldout.py
+# Validation-sample clones. Third-party source under mixed licences; each
+# sample is regenerable from its committed manifest, which pins every
+# repository to the exact commit scanned.
 heldout_targets/
+third_targets/
+third_targets_apps/
+fourth_targets/

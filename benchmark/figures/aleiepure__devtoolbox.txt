@@ -1,0 +1,36 @@
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\aleiepure__devtoolbox\src\services\jwt_decoder.py:51:26
+    return json.dumps(jwt.decode(token, options={"verify_signature": False}), indent=4, ensure_ascii=False)
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+CRITICAL R11 IssuerVerificationDisabled
+  evidence_archive\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  options={'verify_iss': False} is passed to jwt.decode(), disabling issuer verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_iss override so PyJWT validates the issuer.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  evidence_archive\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\aleiepure__devtoolbox\src\services\jwt_decoder.py:56:12
+    jwt.decode(token, key,
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+Summary — 5 finding(s): CRITICAL: 3, MEDIUM: 2

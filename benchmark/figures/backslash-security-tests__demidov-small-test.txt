@@ -1,0 +1,50 @@
+HIGH R05 HardcodedSecretEncode
+  realworld_targets\backslash-security-tests__demidov-small-test\bad.py:182:21
+    cookie = jwt.encode(payload, 'csrf_vulneribility', algorithm='HS256')
+  A hardcoded string literal is used as the signing key in jwt.encode().
+  Weakness: CWE-798
+  Fix: Load the secret from an environment variable or secrets manager, never a source-code literal.
+
+HIGH R06 HardcodedSecretDecode
+  realworld_targets\backslash-security-tests__demidov-small-test\bad.py:195:22
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  realworld_targets\backslash-security-tests__demidov-small-test\bad.py:195:22
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  realworld_targets\backslash-security-tests__demidov-small-test\bad.py:195:22
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+HIGH R06 HardcodedSecretDecode
+  realworld_targets\backslash-security-tests__demidov-small-test\bad.py:207:18
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  A hardcoded string literal is used as the verification key in jwt.decode().
+  Weakness: CWE-798
+  Fix: Load the verification key from an environment variable or secrets manager, never a source-code literal.
+
+MEDIUM R08 MissingAudienceValidation
+  realworld_targets\backslash-security-tests__demidov-small-test\bad.py:207:18
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  realworld_targets\backslash-security-tests__demidov-small-test\bad.py:207:18
+    payload = jwt.decode(cookie, 'csrf_vulneribility', algorithms=['HS256'])
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+Summary — 7 finding(s): HIGH: 3, MEDIUM: 4

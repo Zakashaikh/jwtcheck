@@ -1,0 +1,249 @@
+{
+  "n_repos_listed": 21,
+  "n_repos_scanned": 21,
+  "total_findings": 90,
+  "by_rule": {
+    "R08": 13,
+    "R09": 16,
+    "R03": 31,
+    "R07": 9,
+    "R05": 11,
+    "R11": 2,
+    "R13": 2,
+    "R04": 2,
+    "R01": 2,
+    "R06": 2
+  },
+  "by_severity": {
+    "MEDIUM": 29,
+    "CRITICAL": 39,
+    "HIGH": 22
+  },
+  "per_repo": [
+    {
+      "repo": "OPSKP/PyJWT",
+      "n_findings": 10,
+      "by_rule": {
+        "R08": 2,
+        "R09": 2,
+        "R03": 3,
+        "R07": 3
+      },
+      "by_severity": {
+        "MEDIUM": 4,
+        "CRITICAL": 3,
+        "HIGH": 3
+      }
+    },
+    {
+      "repo": "alexfofanov/rbac-service",
+      "n_findings": 5,
+      "by_rule": {
+        "R08": 2,
+        "R09": 2,
+        "R03": 1
+      },
+      "by_severity": {
+        "MEDIUM": 4,
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "PradeepMalineni/PYJWT",
+      "n_findings": 2,
+      "by_rule": {
+        "R03": 2
+      },
+      "by_severity": {
+        "CRITICAL": 2
+      }
+    },
+    {
+      "repo": "descope/python-sdk",
+      "n_findings": 4,
+      "by_rule": {
+        "R03": 1,
+        "R08": 1,
+        "R09": 2
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 3
+      }
+    },
+    {
+      "repo": "L7R4/cmc_api",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "zaka265-star/MyTaskly-mcp",
+      "n_findings": 2,
+      "by_rule": {
+        "R09": 1,
+        "R05": 1
+      },
+      "by_severity": {
+        "MEDIUM": 1,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "hkcoder18/2026-May-01",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "Lafabio/planosc-backend-kiwify",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "IBM/mcp-context-forge",
+      "n_findings": 24,
+      "by_rule": {
+        "R03": 14,
+        "R11": 2,
+        "R13": 2,
+        "R04": 2,
+        "R01": 1,
+        "R08": 1,
+        "R09": 1,
+        "R05": 1
+      },
+      "by_severity": {
+        "CRITICAL": 21,
+        "MEDIUM": 2,
+        "HIGH": 1
+      }
+    },
+    {
+      "repo": "wuhonglei/chat-agent",
+      "n_findings": 3,
+      "by_rule": {
+        "R08": 1,
+        "R09": 1,
+        "R03": 1
+      },
+      "by_severity": {
+        "MEDIUM": 2,
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "usestapel/stapel-auth",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "usestapel/stapel-core",
+      "n_findings": 3,
+      "by_rule": {
+        "R01": 1,
+        "R08": 1,
+        "R09": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1,
+        "MEDIUM": 2
+      }
+    },
+    {
+      "repo": "Writeup-DB/JWT-101-Lab",
+      "n_findings": 24,
+      "by_rule": {
+        "R05": 4,
+        "R07": 6,
+        "R03": 2,
+        "R06": 2,
+        "R08": 5,
+        "R09": 5
+      },
+      "by_severity": {
+        "HIGH": 12,
+        "CRITICAL": 2,
+        "MEDIUM": 10
+      }
+    },
+    {
+      "repo": "merixstudio/django-trench",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "mano8/fa-auth-m8",
+      "n_findings": 1,
+      "by_rule": {
+        "R09": 1
+      },
+      "by_severity": {
+        "MEDIUM": 1
+      }
+    },
+    {
+      "repo": "tatiane-ss/backend-challenge-tssgaec",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "shiladityamajumder/healthcare-auth-service",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "dperezcabrera/pico-auth",
+      "n_findings": 0,
+      "by_rule": {},
+      "by_severity": {}
+    },
+    {
+      "repo": "laisfgzz/validador_JWT_local",
+      "n_findings": 1,
+      "by_rule": {
+        "R03": 1
+      },
+      "by_severity": {
+        "CRITICAL": 1
+      }
+    },
+    {
+      "repo": "mano8/security-tests-m8",
+      "n_findings": 7,
+      "by_rule": {
+        "R05": 4,
+        "R03": 3
+      },
+      "by_severity": {
+        "HIGH": 4,
+        "CRITICAL": 3
+      }
+    },
+    {
+      "repo": "scifeks/voorhees",
+      "n_findings": 2,
+      "by_rule": {
+        "R05": 1,
+        "R03": 1
+      },
+      "by_severity": {
+        "HIGH": 1,
+        "CRITICAL": 1
+      }
+    }
+  ]
+}

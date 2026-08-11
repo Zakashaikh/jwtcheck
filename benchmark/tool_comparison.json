@@ -1,20 +1,32 @@
 {
   "summary": {
-    "n_vulnerable": 15,
-    "n_safe": 4,
+    "n_vulnerable": 16,
+    "n_safe": 5,
     "jwt_detections": {
       "jwtcheck": 15,
       "bandit": 0,
-      "semgrep": 3
+      "semgrep": 0
     },
     "safe_false_positives": {
       "jwtcheck": 0,
       "bandit": 0,
       "semgrep": 0
     },
-    "semgrep_ran": true
+    "semgrep_ran": true,
+    "tool_versions": {
+      "jwtcheck": "1.0.0",
+      "bandit": "1.9.4",
+      "semgrep": "1.168.0"
+    }
   },
   "rows": [
+    {
+      "file": "__pycache__",
+      "category": "vulnerable",
+      "jwtcheck": [],
+      "bandit": [],
+      "semgrep": []
+    },
     {
       "file": "r01_no_algorithms.py",
       "category": "vulnerable",
@@ -36,9 +48,7 @@
         "R09"
       ],
       "bandit": [],
-      "semgrep": [
-        "jwt-python-none-alg"
-      ]
+      "semgrep": []
     },
     {
       "file": "r03_verify_signature_false.py",
@@ -47,9 +57,7 @@
         "R03"
       ],
       "bandit": [],
-      "semgrep": [
-        "unverified-jwt-decode"
-      ]
+      "semgrep": []
     },
     {
       "file": "r04_algorithm_confusion.py",
@@ -67,9 +75,7 @@
         "R05"
       ],
       "bandit": [],
-      "semgrep": [
-        "jwt-python-hardcoded-secret"
-      ]
+      "semgrep": []
     },
     {
       "file": "r06_hardcoded_secret_decode.py",
@@ -147,7 +153,6 @@
       "file": "r14_rsa_string_key.py",
       "category": "vulnerable",
       "jwtcheck": [
-        "R06",
         "R14"
       ],
       "bandit": [],
@@ -160,6 +165,13 @@
         "R04",
         "R15"
       ],
+      "bandit": [],
+      "semgrep": []
+    },
+    {
+      "file": "__pycache__",
+      "category": "safe",
+      "jwtcheck": [],
       "bandit": [],
       "semgrep": []
     },

@@ -1,0 +1,43 @@
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:17:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm)
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:17:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm)
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R13 ExpiryVerificationDisabled
+  evidence_archive\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:26:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm, options={"verify_exp": False})
+  options={'verify_exp': False} is passed to jwt.decode(), disabling expiry checking.
+  Weakness: CWE-347
+  Fix: Remove the verify_exp override so PyJWT enforces token expiry.
+
+MEDIUM R08 MissingAudienceValidation
+  evidence_archive\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:26:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm, options={"verify_exp": False})
+  jwt.decode() is called with no audience parameter, so tokens are not bound to this service.
+  Weakness: CWE-346
+  Fix: Pass audience= to jwt.decode() to bind tokens to the intended service.
+
+MEDIUM R09 MissingIssuerValidation
+  evidence_archive\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:26:14
+    decoded = jwt.decode(jwsSignedToken, jwkRsaPublicKey, algorithms=jwsAlgorithm, options={"verify_exp": False})
+  jwt.decode() is called with no issuer parameter, so the token's origin is not verified.
+  Weakness: CWE-346
+  Fix: Pass issuer= to jwt.decode() to verify the token's origin.
+
+CRITICAL R03 SignatureVerificationDisabled
+  evidence_archive\java-crypto__cross_platform_crypto\JwtJwsRs256Signature\JwsRs256Signature.py:34:9
+    return jwt.decode(jwsSignedTokenReceived, options={"verify_signature": False})
+  options={'verify_signature': False} is passed to jwt.decode(), disabling all signature verification.
+  Weakness: CWE-347
+  Fix: Remove the verify_signature override so PyJWT verifies the signature.
+
+Summary — 6 finding(s): CRITICAL: 2, MEDIUM: 4
