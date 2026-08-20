@@ -79,6 +79,19 @@ def _run_scan(args: argparse.Namespace) -> int:
 
     _write_output(output, args.output)
 
+    # Files that mentioned jwt but could not be parsed were NOT analysed, so a
+    # clean report is not a clean verdict for them. Warn on stderr so stdout
+    # stays clean for -o / SARIF piping, and leave the exit code alone: a
+    # skipped file is a warning, not an error.
+    if scanner.skipped:
+        print(
+            f"Note: {len(scanner.skipped)} file(s) could not be parsed "
+            "and were not analysed:",
+            file=sys.stderr,
+        )
+        for path, reason in scanner.skipped:
+            print(f"  {path}: {reason}", file=sys.stderr)
+
     # Exit 1 if any findings remain after filtering, else 0.
     return 1 if findings else 0
 

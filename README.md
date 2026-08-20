@@ -93,21 +93,25 @@ jwtcheck --version
 # scan a single file
 jwtcheck scan app.py
 
-# scan a whole project, recursively, skipping test files
-jwtcheck scan ./myproject --recursive --exclude-tests
+# scan a whole project, skipping test files (recursion is on by default)
+jwtcheck scan ./myproject --exclude-tests
 
 # only show the most serious issues
-jwtcheck scan ./myproject -r --severity critical
+jwtcheck scan ./myproject --severity critical
 
 # machine-readable output for CI / dashboards
-jwtcheck scan ./myproject -r --format sarif -o results.sarif
+jwtcheck scan ./myproject --format sarif -o results.sarif
+
+# limit the scan to the top-level directory
+jwtcheck scan ./myproject --no-recursive
 ```
 
 **`scan` options**
 
 | Flag | Meaning |
 |------|---------|
-| `--recursive`, `-r` | Recurse into subdirectories. |
+| `--recursive`, `-r` | Recurse into subdirectories. **This is the default**; the flag is kept for backwards compatibility. |
+| `--no-recursive` | Scan only the top-level directory. |
 | `--format {text,sarif}` | Output format (default `text`; `sarif` for tooling). |
 | `--output`, `-o` | Write to a file instead of stdout. |
 | `--severity {critical,high,medium,all}` | Only report findings at or above this level. |
@@ -188,6 +192,15 @@ about values it cannot resolve statically. The following patterns are, by design
   (via a tracked import alias) and `from jwt import decode` calls are matched. A
   decode hidden behind a helper (`self._decode(token)`, `auth.verify(token)`) or
   a functools wrapper is not followed.
+- **PyJWT only — other `jwt` libraries are out of scope.** A call is analysed
+  only when the `jwt` name is bound to the PyJWT package through a tracked
+  import. Libraries presenting a near-identical API under the same name —
+  notably **python-jose** (`from jose import jwt`), very common in FastAPI
+  projects — are therefore never analysed, despite sharing the same misuse
+  surface. This is the single biggest cause of clean verdicts in the real-world
+  study: roughly 22 of the 32 no-finding repositories out of the 96 scanned use
+  python-jose rather than PyJWT. Extending the alias table to cover these
+  libraries is noted as future work.
 - **Dynamically-built arguments.** An `algorithms` list assembled at runtime
   (`.append()`, a comprehension, or returned from a function) resolves to
   "unknown", so the algorithm rules (R01/R02/R04) are not evaluated for it.

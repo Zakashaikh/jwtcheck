@@ -206,6 +206,18 @@ def test_absolute_import_from_pyjwt_still_matches():
     assert "R01" in _ids(findings)
 
 
+def test_unparseable_file_is_recorded_not_silently_dropped(tmp_path):
+    # An unparseable file used to return [] — indistinguishable from a clean
+    # file. The real-world study found 5 such files, 2 with real JWT misuse.
+    bad = tmp_path / "broken.py"
+    bad.write_text('import jwt\ndef f():\nreturn jwt.decode(t, k)\n')
+
+    local_scanner = Scanner()
+    findings = local_scanner.scan_file(str(bad))
+    assert findings == []
+    assert [p for p, _ in local_scanner.skipped] == [str(bad)]
+
+
 def test_vendored_site_packages_is_skipped(tmp_path):
     # Held-out validation found a repository committing its virtualenv as
     # myenv/, so the vendored redis package was scanned as project source.

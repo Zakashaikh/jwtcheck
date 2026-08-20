@@ -483,17 +483,30 @@ def _is_test_path(filepath: str) -> bool:
 class Scanner:
     """Public interface for file and directory scanning."""
 
+    def __init__(self) -> None:
+        # Files that mentioned 'jwt' but could not be analysed, as
+        # (filepath, reason) pairs. An unparseable file previously returned []
+        # and was therefore indistinguishable from a genuinely clean one — a
+        # silent all-clear, the worst failure mode for a security tool. The
+        # real-world study found 5 such files, 2 of them containing real misuse.
+        # Accumulates across every scan_file call, so scan_directory keeps the
+        # whole list.
+        self.skipped: List[tuple] = []
+
     def scan_file(self, filepath: str) -> List[Finding]:
         """
         Scan a single Python file for JWT misuse patterns.
 
         Quick pre-filter: if 'jwt' does not appear in the source (case-insensitive)
-        the file is skipped without AST parsing.
+        the file is skipped without AST parsing. Files that pass that pre-filter
+        but cannot be read or parsed are recorded in ``self.skipped``; files
+        without 'jwt' are not interesting and are not reported.
         """
         try:
             with open(filepath, 'r', encoding='utf-8', errors='replace') as fh:
                 source = fh.read()
-        except OSError:
+        except OSError as exc:
+            self.skipped.append((filepath, f"could not read file: {exc}"))
             return []
 
         if 'jwt' not in source.lower():
@@ -501,7 +514,8 @@ class Scanner:
 
         try:
             tree = ast.parse(source, filename=filepath)
-        except SyntaxError:
+        except SyntaxError as exc:
+            self.skipped.append((filepath, f"syntax error: {exc.msg} (line {exc.lineno})"))
             return []
 
         visitor = JWTVisitor(source.splitlines(), filepath)
